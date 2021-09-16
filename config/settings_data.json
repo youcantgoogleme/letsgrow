@@ -5410,6 +5410,7 @@
       },
       "1597870329495": {
         "type": "home_image-teaser-row",
+        "disabled": true,
         "blocks": {
           "1597870341817": {
             "type": "Image-Block",
