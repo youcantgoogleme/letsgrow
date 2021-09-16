@@ -1,0 +1,75 @@
+
+{% include 'block__assign-image_a_b-size' %}
+
+
+{% capture image_layout %}
+  <div class="{{ block_width_a }} img-wrapper">
+    <div class="img-wrapper-inner clear">
+      <div class="img-link-content-wrapper {% if block.settings.innner_alignment_img %}align--{{ block.settings.innner_alignment_img }}{% endif %} {{ block.settings.offset-top-img }}"  style="width:{{ block.settings.inner__width_img}}%;{% if block.settings.margin__left_img != 0 %}margin-left:{{ block.settings.margin__left_img }}%;{% endif %} {% if block.settings.margin__top_img != 0 %}margin-top:{{ block.settings.margin__top_img }}%;{% endif %}">
+        {% if block.settings.image_link != blank %}
+          <a href="{{ block.settings.image_link }}" class="wrapper-link">
+        {% endif %}
+          {% if block.settings.image != blank %}
+              <div class="img-wrapper">
+                {% assign image_alt = block.settings.image.alt %}
+                {{ block.settings.image | img_url: image_size_a, scale: 1, format: 'pjpg' | img_tag: image_alt, 'block_img_link_img' }}
+              </div>
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+
+        {% if block.settings.image_link != blank %}
+          </a>
+        {% endif %}
+
+
+      </div>
+    </div>
+  </div>
+{% endcapture %}
+
+{% capture text_layout %}
+
+  <div class="{{ block_width_b }} text-wrapper clear">
+    <div class="text-wrapper-inner clear">
+      <div class="block__text-teaser-small {% if block.settings.align_text != blank %}block-align-{{ block.settings.alignment_text_inner }} text-align-{{ block.settings.align_text }}{% endif %}" style="width:{{ block.settings.inner__width_text}}%;{% if block.settings.margin__left_text != 0 %}margin-left:{{ block.settings.margin__left_text }}%;{% endif %} {% if block.settings.margin__top_text != 0 %}margin-top:{{ block.settings.margin__top_text }}%;{% endif %}">
+        {% if block.settings.title != blank %}
+          <h2 class="title">{{ block.settings.title | escape }}</h2>
+        {% endif %}
+        {% if block.settings.text != blank %}
+        <div class="main-text">{{ block.settings.text }}</div>
+        {% endif %}
+        {% if block.settings.image-link-text != blank %}
+        <div class="teaser-text {% if block.settings.image-teaser-link_alignment %}align--{{ block.settings.image-teaser-link_alignment }}{% endif %}">
+          {% if block.settings.image_link != blank %}
+          <a class="{{block.settings.link-style}}" style="background-color:{{block.settings.button-color}}" href="{{ block.settings.teaser_link }}" class="wrapper-link">
+            {% endif %}
+            <span class="link-text-custom-color" style="color:{{ block.settings.link_color }}">{{block.settings.image-link-text}}</span>
+            {% if block.settings.image_link != blank %}
+          </a>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+{% endcapture %}
+
+<div class="tab-and-up row">
+  {% if block.settings.layout == 'left' %}
+    {{ image_layout }}
+	{{ text_layout }}
+  {% endif %}
+
+
+  {% if block.settings.layout == 'right' %}
+	{{ text_layout }}
+    {{ image_layout }}
+  {% endif %}
+</div>
+
+<div class="mobile row">
+    {{ image_layout }}
+	{{ text_layout }}
+</div>

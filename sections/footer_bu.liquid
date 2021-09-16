@@ -1,0 +1,428 @@
+{% if section.settings.show_newsletter %}
+  {% unless template == 'index' and section.settings.show_newsletter_on_home_page == false %}
+    
+    {% comment %} {% include 'newsletter' %} {% endcomment %}
+    
+<!-- Begin MailChimp Signup Form -->
+<div id="mc_embed_signup">
+<form action="//rotholz-clothing.us7.list-manage.com/subscribe/post?u=8576f8fe7f6b4d2931f8021db&id=fc9bb42c7c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+	
+	<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_8576f8fe7f6b4d2931f8021db_fc9bb42c7c" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    </div>
+</form>
+</div>
+
+<!--End mc_embed_signup-->
+  {% endunless %}
+{% endif %}
+
+
+  {% capture footer_social_media %}
+      {% include 'social_networks', show_social_name: true %}
+      {% endcapture %}
+      
+      {% for block in section.blocks %}
+        {% case block.type %}
+            {% when 'newsletter' %}
+
+              <section class="footer__newsletter" {{ block.shopify_attributes }}>
+                <h3 class="footer__title">{{ 'layout.footer.newsletter_title' | t }}</h3>
+
+
+                <!-- Begin MailChimp Signup Form -->
+                <div id="mc_embed_signup">
+                <form action="//rotholz-clothing.us7.list-manage.com/subscribe/post?u=8576f8fe7f6b4d2931f8021db&id=fc9bb42c7c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                    <div id="mc_embed_signup_scroll">
+
+                    <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Deine Email" required>
+                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_8576f8fe7f6b4d2931f8021db_fc9bb42c7c" tabindex="-1" value=""></div>
+                    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                    </div>
+                </form>
+                </div>
+                <div class="newsletter-extra-info">
+                  <div class="newsletter-icon">
+                        <img class="product-detail__icon" src="{{ 'newsletter-icon.svg' | asset_url }}" />
+                  </div>
+                   <div class="newsletter-extra-info-text">
+                      {{block.settings.newsletter-customer-info }}
+                  </div>
+                </div>
+                <!--End mc_embed_signup-->   
+
+
+                {% comment %}
+                    {% assign footer_form_posted_successfully = false %}
+                    {% capture footer_form_action %}/contact#shopify-section-{{ section.id }}{% endcapture %}
+
+                    {%- capture footer_newsletter_form -%}
+                      {%- form 'customer', action: footer_form_action, class: 'footer__newsletter-form' -%}
+                        {% if form.posted_successfully? %}
+                          {% assign footer_form_posted_successfully = true %}
+                        {% endif %}
+
+                        <input type="hidden" name="contact[tags]" value="newsletter">
+                        <input class="footer__newsletter-input footer__newsletter-input--email" type="email" name="contact[email]" aria-label="{{ 'layout.footer.newsletter_placeholder' | t }}" placeholder="{{ 'layout.footer.newsletter_placeholder' | t }}">
+                        <button class="footer__newsletter-submit button" type="submit">{{ 'layout.footer.newsletter_submit' | t }}</button>
+                      {%- endform -%}
+                    {%- endcapture -%}
+
+                    {%- if footer_form_posted_successfully -%}
+                      <p>{{ 'layout.footer.newsletter_success' | t }}</p>
+                    {%- else -%}
+                      {{ footer_newsletter_form }}
+                    {%- endif -%}
+                {% endcomment %}
+
+              </section>
+
+
+
+          {% endcase %}
+        {% endfor %}
+
+<footer class="footer" role="contentinfo">
+
+
+  
+  <div class="inner">
+    
+
+    
+    <div class="footer__wrapper">
+	<div class="row">
+      
+      
+      
+      
+       {% for block in section.blocks %}
+      		{% case block.type %}
+      			{% when 'officeimage' %}
+      
+      				<div class="col-md-8 col-xlg15-6">
+                      <div class="footer__studio-image">
+                        {% if block.settings.add__image != blank %}
+                            {{ block.settings.add__image | img_url: 500, scale: 1, format: 'pjpg' | img_tag: block.settings.image.alt, 'foooter-studio-image' }}
+                        {% else %}
+                            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                        {% endif %}
+                      </div>
+     				</div>
+      
+      
+            {% endcase %}
+      {% endfor %}
+      
+      
+      {% for block in section.blocks %}
+      
+        {% case block.type %}
+      
+      		
+          {% when 'contact' %}
+            <div class="col-md-4 col-xlg15-3">
+              <section class="footer__module footer__contact" {{ block.shopify_attributes }}>
+                <h3 class="footer__title">{{ 'layout.footer.contact_title' | t }}</h3>
+
+                {% if block.settings.contact_address != blank %}
+                <div class="footer__address">{{ block.settings.contact_address }}</div>
+                {% endif %}
+
+                {% if block.settings.contact_phone != blank %}
+                <p class="footer__phone">{{ block.settings.contact_phone }}</p>
+                {% endif %}
+
+                {% if block.settings.contact_email != blank %}
+                <p class="footer__email">
+                  <a href="mailto:{{ block.settings.contact_email }}">{{ block.settings.contact_email }}</a>
+                </p>
+                {% endif %}
+                
+                {% if block.settings.opening_hours != blank %}
+                <p class="footer__opening-hours">
+                  	{{ block.settings.opening_hours }}
+                </p>
+                {% endif %}
+                
+                
+                {% comment %} <div class="footer__social"> {{ footer_social_media }} </div>{% endcomment %} 
+              </section>
+            </div>
+      
+      
+      
+      	{% comment %} 
+           {% when 'social' %}
+                {% capture footer_social_media %}
+                  {% include 'social_networks', show_social_name: true %}
+                {% endcapture %}
+
+                {% if footer_social_media != blank %}
+                  <section class="footer__module footer__social" {{ block.shopify_attributes }}>
+                    {% comment %}<h3 class="footer__title">{{ 'layout.footer.social_title' | t }}</h3>{% endcomment %}
+                    {{ footer_social_media }}
+                  </section>
+                {% endif %}
+     	{% endcomment %}
+      
+        {% endcase %}
+      
+      
+      {% endfor %}
+      
+      
+      
+      
+      {% comment %} <div class="linkslist footer__module footer__link__lists" > {% endcomment %}
+      {% for block in section.blocks %}
+
+		{% case block.type %}
+      	
+               
+            {% when 'links' %}
+ 
+                {% assign linklist = linklists[block.settings.menu_linklist] %}
+
+                {% unless linklist.empty? %}
+        
+        		<div class="col-md-8 col-xlg15-3">
+                    <section class="footer__module__inner" {{ block.shopify_attributes }}>
+                      
+                      
+                      
+                      <h3 class="footer__title">{{ linklist.title }}</h3>
+                      
+
+                      <ul class="footer__linklist">
+                        {% for link in linklist.links %}
+                          <li class="footer__linklist-item">
+                            <a href="{{ link.url }}" class="footer__linklist-link">{{ link.title }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                      
+                      {% if linklist.title == "Information" %}
+                      	<div class="footer__social"> {{ footer_social_media }} </div>
+                      {% endif %}
+                      
+                      
+                    </section>
+      			</div>
+        		
+        
+                {% endunless %}
+          
+ 
+      	{% endcase %}
+      
+      
+      	 {% endfor %}
+        {% comment %} </div> {% endcomment %}
+      
+      
+
+      
+      
+    </div>
+      </div>
+  </div>
+
+  <div class="footer__misc">
+    <div class="inner">
+      <p class="footer__copyright">
+        {% capture shop_copyright %}<a href="/">{{ shop.name }}</a>{% endcapture %}
+        {{ 'layout.footer.copyright_html' | t: shop_copyright: shop_copyright }}
+      </p>
+
+      {% if section.settings.show_payment_methods %}
+        <ul class="footer__payment-methods">
+          {% for type in shop.enabled_payment_types %}
+            {% if type contains 'visa' %}<li class="footer__payment-method">{% include 'icon' with 'visa' %}</li>{% endif %}
+            {% if type contains 'master' %}<li class="footer__payment-method">{% include 'icon' with 'mastercard' %}</li>{% endif %}
+            {% if type contains 'american_express' %}<li class="footer__payment-method">{% include 'icon' with 'amex' %}</li>{% endif %}
+            {% if type contains 'dankort' %}<li class="footer__payment-method">{% include 'icon' with 'dk' %}</li>{% endif %}
+            {% if type contains 'jcb' %}<li class="footer__payment-method">{% include 'icon' with 'jcb' %}</li>{% endif %}
+            {% if type contains 'dogecoint' %}<li class="footer__payment-method">{% include 'icon' with 'dogecoin' %}</li>{% endif %}
+            {% if type contains 'discover' %}<li class="footer__payment-method">{% include 'icon' with 'discover' %}</li>{% endif %}
+            {% if type contains 'diners_club' %}<li class="footer__payment-method">{% include 'icon' with 'diners-club' %}</li>{% endif %}
+            {% if type contains 'maestro' %}<li class="footer__payment-method">{% include 'icon' with 'maestro' %}</li>{% endif %}
+            {% if type contains 'stripe' %}<li class="footer__payment-method">{% include 'icon' with 'stripe' %}</li>{% endif %}
+            {% if type contains 'paypal' %}<li class="footer__payment-method">{% include 'icon' with 'paypal' %}</li>{% endif %}
+            {% if type contains 'litecoin' %}<li class="footer__payment-method">{% include 'icon' with 'litecoin' %}</li>{% endif %}
+            {% if type contains 'bitcoin' %}<li class="footer__payment-method">{% include 'icon' with 'bitcoin' %}</li>{% endif %}
+            {% if type contains 'forbrugsforeningen' %}<li class="footer__payment-method">{% include 'icon' with 'forbrugsforeningen' %}</li>{% endif %}
+            {% if type contains 'apple_pay' %}<li class="footer__payment-method">{% include 'icon' with 'apple-pay' %}</li>{% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+</footer>
+
+{% if section.settings.show_back_to_top %}
+  <a href="#" class="back-to-top" title="Back to the top">
+    {% include 'icon' with 'back-to-top-arrow' %}
+  </a>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Footer",
+  "class": "shopify-section__footer",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_payment_methods",
+      "label": "Show payment methods",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_back_to_top",
+      "label": "Show back to top button",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Newsletter"
+    },
+    {
+      "type": "paragraph",
+      "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)."
+    },
+    {
+      "type": "paragraph",
+      "content": "You can sync your customers with a newsletter service by installing their app."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_newsletter",
+      "label": "Show newsletter",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_newsletter_on_home_page",
+      "label": "Show newsletter on home page",
+      "info": "By disabling this option, you can use the dedicated home page newsletter section to display the newsletter in a different position",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "officeimage",
+      "name": "Image Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "add__image",
+          "label": "add Image"
+        }
+      ]
+    },
+	
+	{
+      "type": "contact",
+      "name": "Contact info",
+      "limit": 1,
+      "settings": [
+		{
+          "type": "richtext",
+          "id": "contact_address",
+          "label": "Address",
+          "default": "<p>This can be a small text giving extra info</p>"
+        },
+        {
+          "type": "text",
+          "id": "contact_phone",
+          "label": "Phone number"
+        },
+        {
+          "type": "text",
+          "id": "contact_email",
+          "label": "Email"
+        },
+		{
+          "type": "html",
+          "id": "opening_hours",
+          "label": "Opending hours"
+        }
+      ]
+    },
+    {
+      "type": "social",
+      "name": "Social media",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Make sure to have properly configured your social networks in the theme settings"
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "name": "Links",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu_linklist",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "limit": 1,
+      "settings": [
+		{
+          "type": "richtext",
+          "id": "newsletter-customer-info",
+          "label": "Info Text"
+        },
+
+        {
+          "type": "paragraph",
+          "content": "Der Shopify default Newsletter ist mit Mailchimp überschrieben. FOLGENDE INFO UNTEN GILT NICHT !Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)."
+        },
+        {
+          "type": "paragraph",
+          "content": "You can sync your customers with a newsletter service by installing their app."
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "contact",
+        "settings": {
+          "contact_phone": "(333) 123 456",
+          "contact_email": "john@doe.com"
+        }
+      },
+      {
+        "type": "social",
+        "settings": {}
+      },
+      {
+        "type": "links",
+        "settings": {
+          "menu_linklist": "footer"
+        }
+      },
+      {
+        "type": "newsletter",
+        "settings": {}
+      }
+    ]
+  }
+}
+{% endschema %}

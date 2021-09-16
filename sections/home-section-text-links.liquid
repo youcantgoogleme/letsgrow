@@ -1,0 +1,56 @@
+
+
+{% if section.settings.wrapper == true %}
+<div class="section-wrapper">
+  {% endif %}
+  <div class="link-row">
+    {% for block in section.blocks %}
+    {{block.settings.link}}
+    {% endfor %}
+  </div>
+  {% if section.settings.wrapper == true %}
+</div>
+{% endif %}
+
+
+
+{% schema %}
+
+
+{
+  "name": "Text Link Row",
+  "class": "section__link-row",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "wrapper",
+      "label": "Wrapper",
+      "default":   true,
+      "info":      "Create a 100% Wrapper"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "Link-Block",
+      "name": "Link Block",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "link",
+          "label": "link",
+          "default": "<p>Link</p>"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "category": "Link",
+      "name": "Link Row"
+    }
+  ]
+}
+
+{% endschema %}

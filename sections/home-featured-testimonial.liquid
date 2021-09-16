@@ -1,0 +1,326 @@
+
+<div id="{{section.id}}" class="testimonials owl-carousel owl-theme ">
+  
+
+{% for block in section.blocks %}
+
+
+{% if block.settings.image-width %}
+{% assign image__width = block.settings.image-width %}
+{% else %}
+{% assign image__width = 7 %}
+{% endif %}
+{% assign text__width = 12 | minus: image__width %}
+
+{% if block.settings.button_type == 'button--link' %}
+{% assign link__class = 'arrow-link' %}
+{% else %}
+{% assign link__class = 'btn button' %}
+{% endif %}
+
+
+{% capture image_layout %}
+<div class="feature-row__item feature-row__item-image{% if block.settings.layout == 'left' %} layout-left{% else%} layout-right{% endif %} col-xs-12 col-sm-{{image__width}} image__{{ block.settings.layout }} image_grow_{{ block.settings.image_grow }}">
+    {% if block.settings.button_link != blank %}
+    <a href="{{ block.settings.button_link }}" class="wrapper-link">
+        {% endif %}
+        {% if block.settings.image != blank %}
+        {{ block.settings.image | img_url: '1000x1000' | img_tag: block.settings.image.alt, 'feature-row__image' }}
+        {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+        {% if block.settings.button_link != blank %}
+    </a>
+    {% endif %}
+    {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+    <div class="button-wrapper">
+        <a href="{{ block.settings.button_link }}" class="cta {{ link__class }} {{ block.settings.button_type }} align-{{ block.settings.button-alignment }}" >
+            {{ block.settings.button_label }}
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endcapture %}
+
+
+{% capture text_layout %}
+<div class="feature-row__item feature-row__text{% if block.settings.layout == 'left' %} layout-left{% else%} layout-right{% endif %} feature-row__text--{{ block.settings.text-layout }} col-xs-12 col-sm-{{ text__width }}">
+    <div class="feature-row__text-wrapper clear">
+
+
+  
+        {% if block.settings.button_link != blank %}
+        <a href="{{ block.settings.button_link }}" class="wrapper-link">
+            {% endif %}
+            {% if block.settings.title != blank %}
+            <h2 class="h3">{{ block.settings.title | escape }}</h2>
+            {% endif %}
+            {% if block.settings.button_link != blank %}
+        </a>
+        {% endif %}
+
+
+
+        {% if block.settings.button_link != blank %}
+        <a href="{{ block.settings.button_link }}" class="wrapper-link">
+            {% endif %}
+            {% if block.settings.text != blank %}
+            <div class="rte-setting featured-row__subtext">{{ block.settings.text }}</div>
+            {% endif %}
+            {% if block.settings.button_link != blank %}
+        </a>
+        {% endif %}
+
+        {% if block.settings.button_link != blank %}
+        <a href="{{ block.settings.button_link }}" class="wrapper-link normal-text">
+            {% endif %}
+            {% if block.settings.text != blank %}
+            <div class="rte-setting featured-row__normal_text">{{ block.settings.regular_small_text }}</div>
+            {% endif %}
+            {% if block.settings.button_link != blank %}
+        </a>
+        {% endif %}
+
+    </div>
+</div>
+{% endcapture %}
+
+  <div class="row">
+    <div class="col-12">
+
+      <div class="testimonial-wrapper{% if block.settings.layout == 'left' %} layout-left {% else %} layout-right{%endif %}" style="{% if block.settings.background-color %}background-color: {{ block.settings.background-color }}{% endif %};">
+        {% if block.settings.layout == 'left' %}
+        {{ image_layout }}
+        {% endif %}
+
+        {{ text_layout }}
+
+        {% if block.settings.layout == 'right' %}
+        {{ image_layout }}
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+
+{% endfor %}
+  
+</div>
+
+
+<script defer>
+
+
+  jQuery(document).ready(function() {
+
+    jQuery("#{{section.id}}").owlCarousel({
+           items : 1,
+           lazyLoad:true,
+           lazyLoadEager: 1,
+           nav: true, // Show next and prev buttons
+           loop: true,
+           autoplay: false,
+           autoplayHoverPause: true,
+           autoplaySpeed: 400,
+           dots:true,
+           navSpeed:400,
+           autoHeight:true,
+           checkVisibility:false,
+           onInitialized: checkheight,
+           navText: [
+           '<span aria-label="' + 'Previous' + '"><svg class="icon icon-arrow-left-thin"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-left-thin"></use></svg></span>',
+           '<span aria-label="' + 'Next' + '"><svg class="icon icon-arrow-right-thin"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right-thin"></use></svg></span>'
+           ],
+           responsive:{
+           0:{
+           stagePadding: 35
+           },
+           769:{
+           stagePadding: 0
+           }
+           }
+           });
+    function checkheight(event) {
+      jQuery('.testimonials').css('height', 'auto');
+    }
+
+
+  });
+
+</script>
+
+
+
+{% schema %}
+
+{
+"name": "Testimonial",
+"class": "section_image-text",
+
+"blocks": [
+{
+"type": "Image-Block",
+"name": "Image Block",
+"settings": [
+{
+"type": "color",
+"id": "background-color",
+"label": "Background Color",
+"default": "#ffffff"
+},
+{
+"type": "image_picker",
+"id": "image",
+"label": "Image"
+},
+{
+"type": "select",
+"id": "image-width",
+"label": "Image width",
+"default": "7",
+"options": [
+{
+"value": "3",
+"label": "3"
+},
+{
+"value": "4",
+"label": "4"
+},
+{
+"value": "5",
+"label": "5"
+},
+{
+"value": "6",
+"label": "6"
+},
+{
+"value": "7",
+"label": "7"
+},
+{
+"value": "8",
+"label": "8"
+}
+]
+},
+{
+"type": "select",
+"id": "layout",
+"label": "Layout",
+"default": "left",
+"options": [
+{
+"value": "left",
+"label": "Image on left"
+},
+{
+"value": "right",
+"label": "Image on right"
+}
+]
+},
+{
+"type": "text",
+"id": "title",
+"label": "Heading",
+"default": "Teaser Headline small"
+},
+{
+"type": "select",
+"id": "text-layout",
+"label": "Text Layout",
+"default": "left",
+"options": [
+{
+"value": "left",
+"label": "Text align left"
+},
+{
+"value": "right",
+"label": "Text align right"
+},
+{
+"value": "center",
+"label": "text align center"
+}
+]
+},
+{
+"type": "richtext",
+"id": "text",
+"label": "Headline Text",
+"default": "<p>This is the module Headline</p>"
+},
+{
+"type": "richtext",
+"id": "regular_small_text",
+"label": "Regular Small Text",
+"default": "<p>This can be a normal info Text also a bit longer</p>"
+},
+{
+"type": "select",
+"id": "button_type",
+"label": "Button Type",
+"options": [
+{
+"value": "button--link",
+"label": "Link"
+},
+{
+"value": "button--transparent",
+"label": "Transparent"
+},
+{
+"value": "button--secondary",
+"label": "Button Secondary"
+},
+{
+"value": "button--primary",
+"label": "Button Primary"
+}
+]
+},
+{
+"type": "select",
+"id": "button-alignment",
+"label": "Button Text alignment",
+"default": "left",
+"options": [
+{
+"value": "left",
+"label": "left"
+},
+{
+"value": "right",
+"label": "right"
+},
+{
+"value": "center",
+"label": "center"
+}
+]
+},
+{
+"type": "text",
+"id": "button_label",
+"label": "Button label"
+},
+{
+"type": "url",
+"id": "button_link",
+"label": "Button link"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Home Feature Testimonal ",
+"category": "Image"
+}
+]
+}
+
+{% endschema %}

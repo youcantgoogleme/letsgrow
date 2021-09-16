@@ -1,0 +1,58 @@
+
+
+{% if  section.settings.boss == true and section.settings.mobile-two == true %}
+
+{% case section.settings.width %}
+
+{% when '25%' %}
+{% assign block_width = 'col-xs-6 col-sm-6 col-md-3' %}
+{% when '33%' %}
+{% assign block_width = 'col-xs-6 col-sm-6 col-md-4' %}
+{% when '50%' %}
+{% assign block_width = 'col-xs-6 col-sm-6 col-md-6' %}
+{% when '66%' %}
+{% assign block_width = 'col-xs-6 col-xsm-8' %}
+{% when '75%' %}
+{% assign block_width = 'col-xs-6 col-xsm-10' %}
+{% when '100%' %}
+{% assign block_width = 'col-xs-6' %}
+
+{% endcase %}
+
+{% elsif  section.settings.boss == true and section.settings.mobile-two == false %}
+
+{% case section.settings.width %}
+
+{% when '25%' %}
+{% assign block_width = 'col-xs-12 col-sm-6 col-md-3' %}
+{% when '33%' %}
+{% assign block_width = 'col-xs-12 col-sm-6 col-md-4' %}
+{% when '50%' %}
+{% assign block_width = 'col-xs-12 col-sm-6 col-md-6' %}
+{% when '66%' %}
+{% assign block_width = 'col-xs-12 col-xsm-8' %}
+{% when '75%' %}
+{% assign block_width = 'col-xs-12 col-xsm-10' %}
+{% when '100%' %}
+{% assign block_width = 'col-xs-12' %}
+
+{% endcase %}
+
+{% else %}
+
+{% case section.settings.width %}
+{% when '25%' %}
+{% assign block_width = 'col-xs-6 col-sm-3' %}
+{% when '33%' %}
+{% assign block_width = 'col-xs-6 col-sm-4' %}
+{% when '50%' %}
+{% assign block_width = 'col-xs-6 col-sm-6' %}
+{% when '66%' %}
+{% assign block_width = 'col-xs-6 col-xsm-8' %}
+{% when '75%' %}
+{% assign block_width = 'col-xs-6 col-xsm-10' %}
+{% when '100%' %}
+{% assign block_width = 'col-xs-12 col-xsm-12' %}
+{% endcase %}
+
+{% endif %}

@@ -1,0 +1,193 @@
+{% include 'section__assign__image-sizes' %}
+{% include 'block__assign-block-width' %}
+
+           
+  	
+    {% if section.settings.wrapper == true %}
+      <div class="section-wrapper clear">
+    {% endif %}
+    
+        <div class="no-padding">
+          <div class="{{ block_width }} {% if section.settings.alignment %}align--{{ section.settings.alignment }}{% endif %}">
+            <div class="image-teaser__item-inner">
+              {% if section.settings.teaser_link != blank %}
+              <a href="{{ section.settings.teaser_link }}" class="wrapper-link">
+                {% endif %}
+                {% if section.settings.image != blank %}
+                {{ section.settings.image | img_url: image_size, scale: 1, format: 'pjpg' | img_tag: section.settings.image.alt, 'img-teaser-item-img' }}
+                {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+                {% if section.settings.teaser_link != blank %}
+              </a>
+              {% endif %}
+              {% if section.settings.teaser-image-text != blank %}
+              <div class="teaser-text{% if section.settings.text-align %} align--{{ section.settings.text-align }}{% endif %}" style="color:{{ section.settings.text_color }}">
+                {% if section.settings.teaser_link != blank %}
+                <a href="{{ section.settings.teaser_link }}" class="wrapper-link">
+                  {% endif %}
+                  <span class="link-text-custom-color">{{section.settings.teaser-image-text}}</span>
+                  {% if section.settings.teaser_link != blank %}
+                </a>
+                {% endif %}
+              </div>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+        
+    {% if section.settings.wrapper == true %}
+      </div>
+    {% endif %}
+    
+                    
+                
+                
+                
+                
+{% schema %}
+{
+  "name": "Image + Text inside",
+  "class": "section__item__image section__image-teaser clear",
+  "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "checkbox",
+            "id": "wrapper",
+            "label": "Wrapper",
+            "default":   false,
+            "info":      "Create a 100% Wrapper"
+          },
+
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Image Alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              },
+              {
+                "value": "center",
+                "label": "center"
+              },
+              {
+                "value": "right",
+                "label": "right"
+              }
+            ]
+          },
+          {
+            "type": "richtext",
+            "id": "teaser-image-text",
+            "label": "Text",
+            "default": "<p>Link Text</p>"
+          },
+          {
+           "type": "color",
+           "id": "text_color",
+           "label": "Text Color",
+           "default": "#ffffff"
+          },
+          {
+            "type": "select",
+            "id": "text-align",
+            "label": "Text alignment",
+            "default": "bottom-left",
+              "options": [
+              {
+              "value": "bottom-left",
+              "label": "Bottom Left"
+              },
+              {
+              "value": "bottom-right",
+              "label": "Bottom Right"
+              },
+              {
+              "value": "top-left",
+              "label": "Top Left"
+              },
+              {
+              "value": "top-right",
+              "label": "Top Right"
+              },              
+				{
+              "value": "under",
+              "label": "under"
+              },
+				{
+              "value": "under center",
+              "label": "under center"
+              }
+              ]
+          },
+          {
+            "type": "url",
+            "id": "teaser_link",
+            "label": "Teaser link"
+          }
+  ],
+    "blocks": [
+    {
+      "type": "Image-Block",
+      "name": "Image Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "add__image",
+          "label": "add Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Image",
+      "name": "Image + Text inside"
+    }
+  ]
+}
+
+{% endschema %}

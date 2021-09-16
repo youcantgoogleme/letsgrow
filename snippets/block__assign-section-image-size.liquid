@@ -1,0 +1,42 @@
+{% comment %}
+********* multiplikation der Image Size führt zu Rundungsfehlern
+
+{% case section.settings.width %}
+{% when '25%' %}
+{% assign image_size = '635x'   %}
+{% when '33%' %}
+{% assign image_size = '880x'  %}
+{% when '50%' %}
+{% assign image_size = '1270x'  %}
+{% when '66%' %}
+{% assign image_size = '1270x'  %}
+{% when '75%' %}
+{% assign image_size = '1270x'  %}
+{% when '100%' %}
+{% assign image_size = '1270x'  %}
+{% endcase %}
+
+{% endcomment %}
+
+
+{% assign image_size_adjust = 1 %}
+{% if section.settings.inner__width != blank %}
+{% assign image_size_adjust = section.settings.inner__width | divided_by: 100.00 %}
+{% endif %}
+
+{% case section.settings.width %}
+{% when '25%' %}
+{% assign image_size = '635x' | times:image_size_adjust | floor  %}
+{% when '33%' %}
+{% assign image_size = '880x'| times:image_size_adjust | floor  %}
+{% when '50%' %}
+{% assign image_size = '1270x' | times:image_size_adjust | floor %}
+{% when '66%' %}
+{% assign image_size = '1270x' | times:image_size_adjust | floor %}
+{% when '75%' %}
+{% assign image_size = '1270x' | times:image_size_adjust | floor %}
+{% when '100%' %}
+{% assign image_size = '1270x' | times:image_size_adjust | floor %}
+{% endcase %}
+
+

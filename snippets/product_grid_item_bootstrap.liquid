@@ -1,0 +1,158 @@
+
+{% case grid_items_per_row %}
+{% when '1' or 1 %}
+{% assign image_size = '1400x' %}
+
+{% when '2' or 2 %}
+{% assign image_size = '1000x' %}
+
+{% when '3' or 3 %}
+{% assign image_size = '650x' %}
+
+{% when '4' or 4 %}
+{% assign image_size = '650x' %}
+
+{% when '5' or 5 %}
+{% assign image_size = '650x' %}
+
+{% when '6' or 6 %}
+{% assign image_size = '650x' %}
+{% endcase %}
+
+{% case settings.mobile_grid_items_per_row %}
+{% when '1' or 1 %}
+{% assign mobile_image = 'col-xs-12' %}
+
+{% when '2' or 2 %}
+{% assign mobile_image = 'col-xs-6' %}
+
+{% endcase %}
+
+
+{% if product.first_available_variant.compare_at_price > product.first_available_variant.price %}
+{% assign product_on_sale = true %}
+{% else %}
+{% assign product_on_sale = false %}
+{% endif %}
+
+
+{% assign teaser_size ='single' %}
+{% for tag in product.tags %}
+{% if tag contains '__big' %}
+{% assign teaser_size = 'double' %}
+{% assign image_size = '1000x' %}
+{% break %}
+{% endif %}
+{% endfor %}
+
+
+
+<div class="collection__item product-item {{teaser_size}}{% unless product.available %} product-item--sold-out{% endunless %}{% if teaser_size == 'double' %} col-xs-12 col-sm-12 col-md-8{% else %} {{mobile_image}} col-xsm-6 col-sm-4 col-md-4 col-sxlg-3{% endif %}">
+
+  <div class="product-item__inner">
+
+    <div class="product-item__labels">
+
+      {% for tag in product.tags %}
+        {% if tag contains '__label' %}
+        <div class="product-item__label">
+          <span class="label label--custom">{{ tag | split: '__label:' | last }}</span>
+        </div>
+        {% break %} 
+        {% endif %}
+      {% endfor %}
+
+
+      {% if product_on_sale %}
+      {% comment %}
+      <div class="product-item__label">
+        <span class="label label--on-sale">{{ 'product.labels.on_sale' | t }}</span>
+      </div>
+      {% endcomment %}
+      {% comment %}
+      {% elsif product.available == false %}
+      <div class="product-item__label">
+        <span class="label label--sold-out">{{ 'product.labels.sold_out' | t }}</span>
+      </div>
+      {% endcomment %}
+      {% endif %}
+
+      <div class="product-item__quick-shop">
+        {% if product.available and show_quick_shop %}
+        <div class="product-item__label product-item__label--hidden">
+          <button class="label label--quick-shop" data-action="open-quick-shop" data-quick-shop-url="{{ product.url | append: '?view=quick_shop' }}">
+            {% include 'icon' with 'cart-empty' %}{{ 'product.labels.quick_shop' | t }}
+          </button>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <a href="{{ product.url | within: collection }}" class="product-item__image">
+      <div class="product-item__image-wrapper">
+        {% if teaser_size == 'double' %}
+          <img  src="{{ product.images.last | img_url: image_size,format: 'pjpg' }}" alt="{{ product.images.last.alt | escape }}" />
+          {% else %}
+            {% assign  image_url = product.featured_image | img_url: image_size %}
+            {% assign  image_url_small = product.featured_image | img_url: '60x' %}
+            {% assign  image_url_210 = product.featured_image | img_url: '210x' %}
+            {% assign  image_url_420 = product.featured_image | img_url: '420x' %}
+            {% assign  image_url_730 = product.featured_image | img_url: '730x' %}
+            <img src="{{image_url_small}}" data-srcset="{{ image_url_210 }} 210w, {{ image_url_420 }} 420w, {{ image_url_730 }} 730w," data-sizes="(min-width: 1024px) 25vw,(min-width: 600px) 33vw, 50vw" class="lazy" alt="{{product.featured_image.alt}}" >
+
+            {% if product.images.size >= 2 %} 
+            {% assign  image_url_2 = product.images[1] | img_url: image_size %}
+            {% assign  image_url_2_small = product.images[1] | img_url: '100x' %}
+            {% assign  image_url_2_210 = product.images[1] | img_url: '210x' %}
+            {% assign  image_url_2_420 = product.images[1] | img_url: '420x' %}
+            {% assign  image_url_2_730 = product.images[1] | img_url: '730x' %}
+
+            <img class="lazy second-product-image" src="{{image_url_2_small}}" data-srcset="{{ image_url_2_210 }} 210w, {{ image_url_2_420 }} 420w, {{ image_url_2_730 }} 730w," data-sizes="(min-width: 1024px) 25vw,(min-width: 600px) 33vw, 50vw" alt="{{product.images[1].alt}}" >
+
+          {% endif %}
+        {% endif %}
+      </div>
+    </a>
+
+    <div class="product-item__info">
+      {% if show_vendor and product.vendor != blank %}
+      <h3 class="product-item__vendor">
+        <a href="{{ product.vendor | url_for_vendor }}">{{ product.vendor }}</a>
+      </h3>
+      {% endif %}
+
+      <h3 class="product-item__title title-category-product">
+        <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+      </h3>
+
+      {% if product.available == false %}
+      <div class="product-item__sold">
+        <span class="flag-sold-out">{{ 'product.labels.sold_out' | t }}</span>
+      </div>
+      {% endif %}
+
+      {% if product.template_suffix != 'release-teaser' %}
+      {% include 'price' %}
+      {% else %}
+      <div class="product-item__price">
+        RELEASE: 18. Oktober 2019 / 18 Uhr
+      </div>
+      {% endif %}
+
+      
+      <div class="product-item-options">
+        {% if product.variants.size > 1 %}
+        {% for variant in product.variants %}
+        {% if variant.available %}
+        <span class="active">{{ variant.options[0] }}</span>
+        {% else %}
+        <span class="inactive">{{ variant.options[0] }}</span>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+      </div>
+
+
+    </div>
+  </div>
+</div>

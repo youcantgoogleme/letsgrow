@@ -1,0 +1,19 @@
+.addeertz-org {
+  float:none;
+  background-color: #f1f1f1;
+    padding: 5px 0 10px;
+}
+
+.addeertz-additional {
+  float: left;
+  line-height: 2.8;
+}
+
+
+#shopify-section-collection {
+	margin-top: 50px;
+}
+
+.collection__item {
+	margin: 20px 0;
+}

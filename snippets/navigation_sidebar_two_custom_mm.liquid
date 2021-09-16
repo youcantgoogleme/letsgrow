@@ -1,0 +1,11 @@
+<div class="navigation_sidebar_two_custom_mm">
+
+  <div class="sidbar-nav-linklisttitle_mm" id="link-list-titel-men">{{ linklists.men.title }}</div>
+	
+  <ul class="sidebar-nav-link-list-mm" id="sidebar-nav-link-list-mm-men">
+    {% for link in linklists.men.links %}
+    	<li><a class="sidbar-nav-link_mm" href="{{ link.url }}">{{ link.title }}</a></li>
+    {% endfor %}
+  </ul>
+  
+</div>

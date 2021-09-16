@@ -1,0 +1,448 @@
+{% comment %}
+  Set settings
+{% endcomment %}
+
+{% assign collection_switch_images = false %}
+
+{% comment %}
+  Start our code of the html.
+{% endcomment %}
+
+  {% assign choosenOptions = "Size |ps-split| " | split: ' |ps-split| ' %}
+  {% assign optionsNames = "Size |ps-split| " | split: ' |ps-split| ' %}
+  {% assign shopifyDomain = "rotholz-store.myshopify.com" | replace : ".myshopify.com", "" %}
+
+  {% if product.options.size > 1 or product.options.size == 1 and product.options[0] != "Title" %}
+    {% for option in product.options_with_values %}
+
+      {% if choosenOptions contains option.name %}
+
+		{% comment %}
+			Parse the name of the option for the URL.
+		{% endcomment %}
+
+		{% assign parsedOptionName = option.name
+        | replace: " ", "-"
+        | replace: "(", "1"
+		| replace: ")", "2"
+		| replace: "'", "3"
+		| replace: "+", "4"
+		| replace: "#", "5"
+		| replace: ".", "6"
+		| replace: "/", "7"
+		| replace: "*", "8"
+		| replace: "&", "9"
+		| replace: "!", "10"
+		| replace: "@", "11"
+		| replace: "%", "12"
+		| replace: "|", "13"
+		| replace: "^", "14"
+		| replace: "$", "15"
+		| replace: "?", "16"
+		| replace: "\", "17"
+		| replace: "--", "-"
+		| replace: "--", "-" %}
+
+		{% for optionName in choosenOptions %}
+			{% if optionName == option.name %}
+				{% assign panda-swatch-name = optionsNames[forloop.index0] %}
+				{% break; %}
+			{% endif %}
+		{% endfor %}
+
+		{% assign option_index = forloop.index0 %}
+        {% assign option_index_to_hide = forloop.index %}
+        {% assign optionIndex = "option" | append: option_index_to_hide %}
+		{% assign selected = "" %}
+
+        {% if panda-swatch == "product" %}
+
+          <div class="panda-swatches-cont ps-align-left clearfix" data-option-index="{{ option_index }}">
+            <label class="panda-header">{{ panda-swatch-name }}</label>
+
+            {% for value in option.values %}
+
+              {% comment %}
+                Parse the name of the swatch for the URL.
+              {% endcomment %}
+
+              {% assign parsedSwatchName = value
+              | replace: " ", "-"
+              | replace: "(", "1"
+              | replace: ")", "2"
+              | replace: "'", "3"
+              | replace: "+", "4"
+              | replace: "#", "5"
+              | replace: ".", "6"
+              | replace: "/", "7"
+              | replace: "*", "8"
+              | replace: "&", "9"
+              | replace: "!", "10"
+              | replace: "@", "11"
+              | replace: "%", "12"
+              | replace: "|", "13"
+              | replace: "^", "14"
+              | replace: "$", "15"
+              | replace: "?", "16"
+              | replace: "\", "17"
+              | replace: "--", "-"
+              | replace: "--", "-" %}
+
+              {% assign selected = "" %}
+
+              {% if product.selected_or_first_available_variant[optionIndex] == value  %}
+                  {% assign selected = "ps-selected" %}
+              {% endif %}
+
+              <div class="panda-swatch {{ selected }}" data-value="{{ value | escape }}">
+
+                <div class="ps-image-cont" style="background-size: cover; background-color:{{ parsedSwatchName }};background-position: center center; background-image: url(https://s3-us-west-2.amazonaws.com/swatchify-static.sellerpanda.com/swatches/{{ shopifyDomain }}/{{ parsedOptionName }}/{{ parsedSwatchName }}.png);">
+                  
+                </div>
+                <span>{{ value }}</span>
+                <span class="tooltip"> {{ value }} <span class="triangle-top"></span></span>
+              </div>
+
+            {% endfor %}
+
+          </div>
+
+          <script>
+
+            var psClosestByTag = function(el, tag) {
+                  while (el.tagName != tag) {
+                      el = el.parentNode;
+                      if (!el) {
+                          return null;
+                      }
+                  }
+                  return el;
+              }
+
+              var psHaveClass = function(element, cls) {
+                  return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+              }
+
+                var thisSetInterVal{{ option_index }} = setInterval(function() {
+
+                  var psCont = document.getElementsByClassName("panda-swatches-cont");
+
+                    if(psCont) {
+
+                      Array.prototype.forEach.call(psCont, function(elem) {
+
+                        var formEl = psClosestByTag(elem, "FORM");
+
+                        if(formEl) {
+                            var selector3 = formEl.getElementsByClassName("selector-wrapper");
+                            var selector2 = formEl.getElementsByClassName("radio-wrapper");
+                            var selector1 = formEl.getElementsByClassName("inline-field-wrapper");
+                            var selector4 = formEl.getElementsByClassName("product-form__item");
+                            var swatchSelector = formEl.getElementsByClassName("swatch");
+
+                            if(selector1 && selector1[{{ option_index }}]) {
+                              selector1[{{ option_index }}].style.display = 'none';
+                              clearInterval(thisSetInterVal{{ option_index }});
+                            }
+
+                            if(selector2 && selector2[{{ option_index }}]) {
+                              selector2[{{ option_index }}].style.display = 'none';
+                              clearInterval(thisSetInterVal{{ option_index }});
+                            }
+
+                            if(selector3 && selector3[{{ option_index }}]) {
+                              selector3[{{ option_index }}].style.display = 'none';
+                              clearInterval(thisSetInterVal{{ option_index }});
+                            }
+
+                            if(selector4 && selector4[{{ option_index }}]) {
+                              selector4[{{ option_index }}].style.display = 'none';
+                              clearInterval(thisSetInterVal{{ option_index }});
+                            }
+
+                            //if(psHaveClass(selector3[{{ option_index }}].parentNode, "select")) {
+                              //selector3[{{ option_index }}].parentNode.querySelectorAll('label')[0].style.display = 'none';
+                            //}
+
+                            if(swatchSelector && swatchSelector[{{ option_index }}]) {
+                              swatchSelector[{{ option_index }}].style.display = 'none';
+                            }
+                        }
+
+                      })
+                    }
+                }, 200);
+
+            </script>
+
+        {% else %}
+
+			{% assign valueCount = 1 %}
+            {% assign valueLeft = 0 %}
+			{% assign valuesSize = option.values.size %}
+			{% assign imageUrl = nil %}
+
+			{% if option.values.size > 1 %}
+
+              <div class="panda-swatches-coll-cont">
+                {% for value in option.values %}
+
+                  {% if valueCount > 3 %}
+                      {% assign valueLeft = option.values.size | minus: 3 %}
+                      {% break %}
+                  {% else %}
+                      {% assign valueCount = valueCount | plus: 1 %}
+                  {% endif %}
+
+                {% comment %}
+                  Parse the name of the swatch for the URL.
+                {% endcomment %}
+
+                {% assign parsedSwatchName = value
+                | replace: " ", "-"
+                | replace: "(", "1"
+                | replace: ")", "2"
+                | replace: "'", "3"
+                | replace: "+", "4"
+                | replace: "#", "5"
+                | replace: ".", "6"
+                | replace: "/", "7"
+                | replace: "*", "8"
+                | replace: "&", "9"
+                | replace: "!", "10"
+                | replace: "@", "11"
+                | replace: "%", "12"
+                | replace: "|", "13"
+                | replace: "^", "14"
+                | replace: "$", "15"
+                | replace: "?", "16"
+                | replace: "\", "17"
+                | replace: "--", "-"
+                | replace: "--", "-" %}
+
+                {% for variant in product.variants %}
+                  {% if variant[optionIndex] != value %}
+                      {% continue %}
+                  {% endif %}
+
+                  {% if variant.image.src != nil %}
+                    {% assign imageUrl = variant.image.src | img_url: 'large' %}
+                    {% assign imageAspect = variant.image.aspect_ratio %}
+                    <script> img = new Image(); img.src = $(this).data("src");</script>
+                    {% break %}
+                  {% else %}
+                    {% assign imageUrl = nil %}
+                  {% endif %}
+
+                {% endfor %}
+
+                <div class="panda-swatch-coll{% if collection_switch_images == 1 and imageUrl != nil %} ps-have-image{% endif %}" data-src="{{ imageUrl }}" data-aspectRatio="{{ imageAspect }}">
+
+                  <div class="ps-image-cont" style="background-size: cover; background-color:{{ parsedSwatchName }};background-position: center center; background-image: url(https://s3-us-west-2.amazonaws.com/swatchify-static.sellerpanda.com/swatches/{{ shopifyDomain }}/{{ parsedOptionName }}/{{ parsedSwatchName }}.png);">
+
+                  </div>
+
+                </div>
+
+              {% endfor %}
+                {% if valueLeft > 0 %}
+                <label class="ps-have-more" data-src="{{ product.url | within: collection }}">{{ valueLeft }} More</label>
+                {% endif %}
+              </div>
+
+              {% break %}
+
+			{% endif %}
+
+        {% endif %}
+
+      {% endif %}
+
+    {% endfor %}
+
+  {% endif %}
+
+{{ 'script_p.js' | asset_url | script_tag }}
+
+<script>
+(function() {
+
+    function getWrapperOption($, that) {
+        var option1 = $(that).closest('form').find('.inline-field-wrapper');
+        var option2 = $(that).closest('form').find('.selector-wrapper');
+        var option3 = $(that).closest('form').find('.radio-wrapper');
+        var option4 = $(that).closest('form').find('.product-form__item');
+
+        if(option1.length) return [option1.find("select"), "select"];
+        if(option2.length) return [option2.find("select"), "select"];
+        if(option3.length) return [option3.find("fieldset"), "fieldset"];
+        if(option4.length) return [option4.find("select"), "select"];
+
+        return [false];
+    }
+
+    function triggerEvent(el, type){
+       if ('createEvent' in document) {
+            // modern browsers, IE9+
+            var e = document.createEvent('HTMLEvents');
+            e.initEvent(type, false, true);
+            el.dispatchEvent(e);
+        } else {
+            // IE 8
+            var e = document.createEventObject();
+            e.eventType = type;
+            el.fireEvent('on'+e.eventType, e);
+        }
+    }
+
+{% if panda-swatch == "product" %}
+
+  var myAppJavaScript = function($) {
+
+    var postData = {
+        "controller":  "sellers",
+        "action": 	   "checkStatus",
+        "seller_id":   Shopify.shop
+    };
+
+    checkConnection(postData, $);
+
+    $(".panda-swatches-cont .panda-swatch").click(function() {
+
+      varWrapper = getWrapperOption($, this);
+
+      var swatchName = $(this).data("value");
+      var optionIndex = $(this).closest(".panda-swatches-cont").data("optionIndex");
+
+      $(this).closest(".panda-swatches-cont").find(".panda-swatch.ps-selected").removeClass("ps-selected");
+      $(this).addClass("ps-selected");
+
+      if(varWrapper[0]) {
+        switch(varWrapper[1]) {
+          case "select":
+            $(varWrapper[0][optionIndex]).val(swatchName).trigger('change');
+            triggerEvent(varWrapper[0][optionIndex], "change");
+            break;
+
+          case "fieldset":
+            $(varWrapper[0][optionIndex]).find('input[value="' + swatchName + '"]').trigger('click');
+            break;
+
+          default:
+            console.log("Swatchify Didn't found warapper.", varWrapper);
+            break;
+      	}
+      } else {
+      	console.log("Swatchify Didn't found warapper.", varWrapper);
+      }
+    });
+  	//console.log($.fn.jquery);
+  }
+
+{% else %}
+
+  var myAppJavaScript = function($) {
+    var postData = {
+        "controller":  "sellers",
+        "action": 	   "checkStatus",
+        "seller_id":   Shopify.shop
+    };
+
+    checkConnection(postData, $);
+
+    $(".panda-swatches-coll-cont .panda-swatch-coll.ps-have-image").click(function(e) {
+        var productWrapper = $(this).closest(".product-wrapper");
+        var productWrapper2 = $(this).closest(".grid-product");
+        var productWrapper3 = $(this).closest(".grid-item");
+        var productWrapper4 = $(this).closest(".grid__item");
+        var productWrapper5 = $(this).closest(".product");
+        var productWrapper6 = $(this).closest(".product-item");
+        var productWrapper7 = $(this).closest(".main_box");
+        var productWrapper8 = $(this).closest(".thumbnail");
+        var imgSrc = $(this).data("src");
+        var imgAspect = 1 / $(this).data("aspectratio") * 100;
+
+        if(productWrapper.length) {
+          productWrapper = productWrapper;
+        } else if(productWrapper2.length) {
+          productWrapper = productWrapper2;
+        } else if(productWrapper3.length) {
+          productWrapper = productWrapper3;
+        } else if(productWrapper4.length) {
+          productWrapper = productWrapper4;
+        } else if(productWrapper5.length) {
+          productWrapper = productWrapper5;
+        } else if(productWrapper6.length) {
+          productWrapper = productWrapper6;
+        } else if(productWrapper7.length) {
+          productWrapper = productWrapper7;
+        } else if(productWrapper8.length) {
+          productWrapper = productWrapper8;
+        }
+
+        var imageCont = productWrapper.find("img:not(.ps-image)");
+
+        if({{ collection_switch_images }} == 1 && imgSrc && productWrapper.length > 0 && imageCont.attr("src") != imgSrc) {
+          imageCont.attr("src", imgSrc);
+
+          if(imageCont.hasClass("lazyautosizes")) {
+            imageCont.attr("data-src", imgSrc.replace("_large", "_{width}x")).attr("data-aspectratio", $(this).data("aspectratio")).addClass("lazyload");
+            imageCont.parent().css("padding-top", imgAspect + "%");
+          }
+
+          e.stopPropagation();
+          e.preventDefault();
+        }
+
+        if(productWrapper.find("img:not(.ps-image)").parent().prop("tagName") == "FIGURE" ) {
+            productWrapper.find("img:not(.ps-image)").parent().animate({opacity: 0}, 100, function() {
+            $(this).css("background-image", "url('" + imgSrc + "')").animate({opacity: 1}, 100)
+          })
+        }
+
+    });
+
+    $(".panda-swatches-coll-cont .ps-have-more").click(function() {
+      var src = $(this).data("src");
+
+      document.location.href = src;
+    });
+  }
+{% endif %}
+
+  var loadScript = function(url, callback) {
+
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+
+    // If the browser is Internet Explorer.
+    if (script.readyState) {
+      script.onreadystatechange = function(){
+        if (script.readyState == "loaded" || script.readyState == "complete"){
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    // For any other browser.
+    } else {
+      script.onload = function(){
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName("head")[0].appendChild(script);
+
+  };
+
+  if ((typeof jQuery === 'undefined') || (parseInt(jQuery.fn.jquery) === 1 && parseFloat(jQuery.fn.jquery.replace(/^1\./,'')) < 6.4)) {
+      loadScript('//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js', function(){
+        jQuery64 = jQuery.noConflict(true);
+        myAppJavaScript(jQuery64);
+      });
+    } else {
+      myAppJavaScript(jQuery);
+    }
+
+})()
+</script>

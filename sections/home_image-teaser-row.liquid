@@ -1,0 +1,779 @@
+{% include 'block__assign-image-size' %}
+<div class="row {{section.settings.gutter}}">
+
+    {% if section.settings.wrapper == true %}
+    <div class="section-wrapper flex-width-{{ section.settings.section-wrapper-size }} {{section.settings.gutter}}">
+        {% endif %}
+
+        {% for block in section.blocks %}
+
+        {% assign block_width = 'col-xs-12' %}
+        {% include 'block__assign-image-size' %}
+        {% include 'block__assign-block-width' %}
+
+        <div class="{{ block_width }}">
+            <div class="section__item__image block__item__image image-teaser__item-inner{% if block.settings.innner_alignment %} align--{{ block.settings.innner_alignment }}{% endif %}{% if block.settings.jsrenderheight-mobile %} jsrenderheight-mobile{% else %} no-mobile-js-height{% endif %}{% if block.settings.jsrenderheight %} renderheight{% else %} noheight{% endif %}{% if block.settings.jsrenderheight == false and block.settings.jsrenderheight-mobile == false %} noheight{% endif %}{% if block.settings.mobile-two == true %} mobile-two{% else %} notmobiletwo{% endif %}{% if block.settings.boss == true %} boss{% else %} notboss{% endif %}"
+                 style="{% if block.settings.background-color %}background-color: {{ block.settings.background-color }}{% endif %}; width:{{ block.settings.inner__width }}%; {% if block.settings.margin_left != 0 %}margin-left:{{ block.settings.margin_left }}%;{% endif %} {% if block.settings.margin_top != 0 %}margin-top:{{ block.settings.margin_top }}%;{% endif %} ">
+                <div class="row {{section.settings.gutter}}">
+
+                    {% if block.settings.image-mobile != blank %}
+                    <div class="desktop-view-600">
+                        {% endif %}
+                        {% if block.settings.image != blank and block.settings.image-two != blank %}
+                        <div class="col-12 col-xsm-6">
+                            {% endif %}
+                            {% if block.settings.image != blank %}
+                            {% if block.settings.teaser_link != blank %}
+                            <a href="{{ block.settings.teaser_link }}" class="wrapper-link">
+                                {% endif %}
+                                {% assign image_alt = block.settings.image.alt %}
+                                {% assign  image_url = block.settings.image | img_url: image_size %}
+                                {% assign  image_url_small = block.settings.image | img_url: '60x' %}
+                                {% assign  image_url_210 = block.settings.image | img_url: '210x' %}
+                                {% assign  image_url_420 = block.settings.image | img_url: '420x' %}
+                                {% assign  image_url_730 = block.settings.image | img_url: '730x' %}
+                                {% assign  image_url_1270 = block.settings.image | img_url: '1270x' %}
+                                {% assign  image_url_1650 = block.settings.image | img_url: '1650x' %}
+                                {% assign  image_url_2000 = block.settings.image | img_url: '2000x' %}
+                                <img  src="{{image_url_small}}"
+                                      data-srcset="{{ image_url_210 }} 210w, {{ image_url_420 }} 420w, {{ image_url_730 }} 730w, {{ image_url_1270 }} 1270w, {{ image_url_1650 }} 1650w,  {{ image_url_2000 }} 2000w,"
+                                      data-sizes="100vw"  alt="{{image_alt}}"
+                                      class="lazy block_img_link_img {% if block.settings.jsrenderheight %} centered{% endif %}{% if block.settings.jsrenderheight-mobile %} centered-mobile{% endif %}{% if block.settings.jsrenderheight == false and block.settings.jsrenderheight-mobile == false %} notcentred{% endif %}"
+                                />
+
+                                {% if block.settings.teaser_link != blank %}
+                            </a>
+                            {% endif %}
+                            {% endif %}
+                            {% if block.settings.image != blank and block.settings.image-two != blank %}
+                            <div class="mobile-view-600">
+                                {% endif %}
+                                <div class="text-wrapper eins center{% if block.settings.mobile-text-position == true %} ontop{% endif %}{% if block.settings.image == blank %} single{% endif %}" style="background-color:{{block.settings.text-background-color}}">
+                                    {% if block.settings.image-teaser-text != blank %}
+                                    <div class="image-teaser-text  {{block.settings.image-text-mobile-font-size}}" style="color:{{ block.settings.text_color }}; font-size:{{block.settings.image-text-font-size}}px; font-weight:{{block.settings.font-weight}}">
+                                        {% if block.settings.teaser_link != blank %}
+                                        <a href="{{ block.settings.teaser_link }}">
+                                            {% endif %}
+                                            {{ block.settings.image-teaser-text }}
+                                            {% if block.settings.teaser_link != blank %}
+                                        </a>
+                                        {% endif %}
+                                    </div>
+                                    {% endif %}
+
+                                    {% if block.settings.button-position == false %}
+                                    {% if block.settings.teaser-image-text != blank or  block.settings.teaser-image-text-two != blank %}
+                                    <div class="teaser-text inside{% if block.settings.mobile-text-position == true %} ontop{% endif %}{% if block.settings.text-alignment %} align--{{block.settings.text-alignment}}{% endif %}">
+
+                                        {% if block.settings.teaser-image-text != blank %}
+                                        <div class="teaser-link-wrapper">
+
+                                            {% if block.settings.teaser_link != blank %}
+                                            <a class="{{block.settings.link-style}}" style="color:{{block.settings.link-text-color}}; {% if block.settings.link-style != 'button--link' %} background-color:{{block.settings.button-color}}{% endif %}" href="{{ block.settings.teaser_link }}" class="wrapper-link">
+                                                {% endif %}
+                                                <span style="{% if block.settings.link-text-color != blank %}color:{{block.settings.link-text-color}};{% endif %} font-size:{{block.settings.cta-text-font-size}}px">{{block.settings.teaser-image-text}}</span>
+                                                {% if block.settings.teaser_link != blank %}
+                                            </a>
+                                            {% endif %}
+                                        </div>
+                                        {% endif %}
+
+                                        {% if block.settings.teaser-image-text != blank or  block.settings.teaser-image-text-two != blank %}
+                                        <div class="teaser-text inside{% if block.settings.mobile-text-position == true %} ontop{% endif %}{% if block.settings.text-alignment %} align--{{block.settings.text-alignment}}{% endif %}">
+                                            {% if block.settings.teaser-image-text-two != blank %}
+                                            <div class="teaser-link-wrapper">
+                                                {% if block.settings.teaser_link-two != blank %}
+                                                <a class="{{block.settings.link-style-two}}" style="color:{{block.settings.link-text-color-two}};{% if block.settings.link-style-two != 'button--link' %} background-color:{{block.settings.button-color-two}}{% endif %}" href="{{ block.settings.teaser_link-two }}" class="wrapper-link">
+                                                    {% endif %}
+                                                    <span style="{% if block.settings.link-text-color-two != blank %}color:{{block.settings.link-text-color-two}};{% endif %} font-size:{{block.settings.cta-text-font-size}}px">{{block.settings.teaser-image-text-two}}</span>
+                                                    {% if block.settings.teaser_link-two != blank %}
+                                                </a>
+                                                {% endif %}
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                        {% endif %}
+
+                                    </div>
+                                    {% endif %}
+                                    {% endif %}
+                                </div>
+                                {% if block.settings.image != blank and block.settings.image-two != blank %}
+                            </div>
+                            {% endif %}
+
+                            {% if block.settings.image != blank and block.settings.image-two != blank %}
+                        </div>
+                        {% endif %}
+                        {% if block.settings.image-mobile != blank %}
+                    </div>
+                    {% endif %}
+
+                    {% if block.settings.image-mobile != blank %}
+                    <div class="desktop-view-600">
+                        {% endif %}
+
+                        {% if block.settings.image-two != blank %}
+                        <div class="col-12 col-xsm-6">
+                            {% if block.settings.image-two != blank %}
+                            {% if block.settings.teaser_link != blank %}
+                            <a href="{{ block.settings.teaser_link-two }}" class="wrapper-link">
+                                {% endif %}
+                                {% assign image_alt = block.settings.image-two.alt %}
+                                {% assign  image_url = block.settings.image-two | img_url: image_size %}
+                                {% assign  image_url_small = block.settings.image-two | img_url: '60x' %}
+                                {% assign  image_url_210 = block.settings.image-two | img_url: '210x' %}
+                                {% assign  image_url_420 = block.settings.image-two | img_url: '420x' %}
+                                {% assign  image_url_730 = block.settings.image-two | img_url: '730x' %}
+                                {% assign  image_url_1270 = block.settings.image-two | img_url: '1270x' %}
+                                {% assign  image_url_1650 = block.settings.image-two | img_url: '1650x' %}
+                                {% assign  image_url_2000 = block.settings.image-two | img_url: '2000x' %}
+                                <img  src="{{image_url_small}}"
+                                      data-srcset="{{ image_url_210 }} 210w, {{ image_url_420 }} 420w, {{ image_url_730 }} 730w, {{ image_url_1270 }} 1270w, {{ image_url_1650 }} 1650w,  {{ image_url_2000 }} 2000w,"
+                                      data-sizes="100vw"  alt="{{image_alt}}"
+                                      class="lazy block_img_link_img {% if block.settings.jsrenderheight %} centered{% endif %}{% if block.settings.jsrenderheight-mobile %} centered-mobile{% endif %}{% if block.settings.jsrenderheight == false and block.settings.jsrenderheight-mobile == false %} notcentred{% endif %}"
+                                />
+                                {% if block.settings.teaser_link != blank %}
+                            </a>
+                            {% endif %}
+                            {% endif %}
+                            {% if block.settings.image != blank and block.settings.image-two != blank %}
+                            <div class="mobile-view-600">
+                                <div class="text-wrapper zwei center{% if block.settings.mobile-text-position == true %} ontop{% endif %}{% if block.settings.image == blank %} single{% endif %}" style="background-color:{{block.settings.text-background-color}}">
+                                    <div class="image-teaser-text  {{block.settings.image-text-mobile-font-size}}" style="color:{{ block.settings.text_color }}; font-size:{{block.settings.image-text-font-size}}px; font-weight:{{block.settings.font-weight}}">
+                                        {% if block.settings.teaser_link != blank %}
+                                        <a href="{{ block.settings.teaser_link }}">
+                                            {% endif %}
+                                            {{ block.settings.image-teaser-text }}
+                                            {% if block.settings.teaser_link != blank %}
+                                        </a>
+                                        {% endif %}
+                                    </div>
+
+                                    {% if block.settings.button-position == false %}
+                                    {% if block.settings.teaser-image-text != blank or  block.settings.teaser-image-text-two != blank %}
+                                    <div class="teaser-text inside{% if block.settings.mobile-text-position == true %} ontop{% endif %}{% if block.settings.text-alignment %} align--{{block.settings.text-alignment}}{% endif %}">
+                                        {% if block.settings.teaser-image-text-two != blank %}
+                                        <div class="teaser-link-wrapper">
+                                            {% if block.settings.teaser_link-two != blank %}
+                                            <a class="{{block.settings.link-style-two}}" style="color:{{block.settings.link-text-color-two}};{% if block.settings.link-style-two != 'button--link' %} background-color:{{block.settings.button-color-two}}{% endif %}" href="{{ block.settings.teaser_link-two }}" class="wrapper-link">
+                                                {% endif %}
+                                                <span style="{% if block.settings.link-text-color-two != blank %}color:{{block.settings.link-text-color-two}};{% endif %} font-size:{{block.settings.cta-text-font-size}}px">{{block.settings.teaser-image-text-two}}</span>
+                                                {% if block.settings.teaser_link-two != blank %}
+                                            </a>
+                                            {% endif %}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                        {% if block.settings.image-mobile != blank %}
+                    </div>
+                    {% endif %}
+
+                    {% if block.settings.image != blank and block.settings.image-two != blank %}
+                    <div class="desktop-view-600">
+
+                        {% if block.settings.image-teaser-text != blank %}
+                        <div class="text-wrapper drei center{% if block.settings.mobile-text-position == true %} ontop{% endif %}{% if block.settings.image == blank %} single{% endif %}" style="background-color:{{block.settings.text-background-color}}">
+                            <div class="image-teaser-text  {{block.settings.image-text-mobile-font-size}}" style="color:{{ block.settings.text_color }}; font-size:{{block.settings.image-text-font-size}}px; font-weight:{{block.settings.font-weight}}">
+                                {% if block.settings.teaser_link != blank %}
+                                <a href="{{ block.settings.teaser_link }}">
+                                    {% endif %}
+                                    {{ block.settings.image-teaser-text }}
+                                    {% if block.settings.teaser_link != blank %}
+                                </a>
+                                {% endif %}
+                            </div>
+
+                            {% if block.settings.button-position == false %}
+                            {% if block.settings.teaser-image-text != blank or  block.settings.teaser-image-text-two != blank %}
+                            <div class="teaser-text inside{% if block.settings.mobile-text-position == true %} ontop{% endif %}{% if block.settings.text-alignment %} align--{{block.settings.text-alignment}}{% endif %}">
+
+                                {% if block.settings.teaser-image-text != blank %}
+                                <div class="teaser-link-wrapper">
+
+                                    {% if block.settings.teaser_link != blank %}
+                                    <a class="{{block.settings.link-style}}" style="color:{{block.settings.link-text-color}};{% if block.settings.link-style != 'button--link' %} background-color:{{block.settings.button-color}}{% endif %}" href="{{ block.settings.teaser_link }}" class="wrapper-link">
+                                        {% endif %}
+                                        <span style="{% if block.settings.link-text-color != blank %}color:{{block.settings.link-text-color}};{% endif %} font-size:{{block.settings.cta-text-font-size}}px">{{block.settings.teaser-image-text}}</span>
+                                        {% if block.settings.teaser_link != blank %}
+                                    </a>
+                                    {% endif %}
+
+                                    {% if block.settings.teaser_link-two != blank %}
+                                    <a class="{{block.settings.link-style-two}}" style="color:{{block.settings.link-text-color-two}};{% if block.settings.link-style-two != 'button--link' %} background-color:{{block.settings.button-color-two}}{% endif %}" href="{{ block.settings.teaser_link-two }}" class="wrapper-link">
+                                        {% endif %}
+                                        <span style="{% if block.settings.link-text-color-two != blank %}color:{{block.settings.link-text-color-two}};{% endif %} font-size:{{block.settings.cta-text-font-size}}px">{{block.settings.teaser-image-text-two}}</span>
+                                        {% if block.settings.teaser_link-two != blank %}
+                                    </a>
+                                    {% endif %}
+                                </div>
+                                {% endif %}
+
+
+                            </div>
+                            {% endif %}
+
+
+                            {% endif %}
+
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+
+                    {% if block.settings.image-mobile != blank %}
+                    <div class="mobile-view-600">
+
+                        <div class="col-12">
+                            {% if block.settings.image-mobile != blank %}
+                            {% if block.settings.teaser_link != blank %}
+                            <a href="{{ block.settings.teaser_link }}" class="wrapper-link">
+                                {% endif %}
+                                {% assign image_alt = block.settings.image-mobile.alt %}
+                                {% assign  image_url = block.settings.image-mobile | img_url: image_size %}
+                                {% assign  image_url_small = block.settings.image-mobile | img_url: '60x' %}
+                                {% assign  image_url_210 = block.settings.image-mobile | img_url: '210x' %}
+                                {% assign  image_url_420 = block.settings.image-mobile | img_url: '420x' %}
+                                {% assign  image_url_730 = block.settings.image-mobile | img_url: '730x' %}
+                                {% assign  image_url_1270 = block.settings.image-mobile | img_url: '1270x' %}
+                                {% assign  image_url_1650 = block.settings.image-mobile | img_url: '1650x' %}
+                                {% assign  image_url_2000 = block.settings.image-mobile | img_url: '2000x' %}
+                                <img  src="{{image_url_small}}"
+                                      data-srcset="{{ image_url_210 }} 210w, {{ image_url_420 }} 420w, {{ image_url_730 }} 730w, {{ image_url_1270 }} 1270w, {{ image_url_1650 }} 1650w,  {{ image_url_2000 }} 2000w,"
+                                      data-sizes="100vw"  alt="{{image_alt}}"
+                                      class="lazy block_img_link_img {% if block.settings.jsrenderheight %} centered{% endif %}{% if block.settings.jsrenderheight-mobile %} centered-mobile{% endif %}{% if block.settings.jsrenderheight == false and block.settings.jsrenderheight-mobile == false %} notcentred{% endif %}"
+                                />
+
+                                {% if block.settings.teaser_link != blank %}
+                            </a>
+                            {% endif %}
+                            {% endif %}
+                            {% if block.settings.image != blank and block.settings.image-two != blank %}
+                            <div class="mobile-view-600">
+                                {% endif %}
+                                <div class="text-wrapper vier center{% if block.settings.mobile-text-position == true %} ontop{% endif %}{% if block.settings.image == blank %} single{% endif %}" style="background-color:{{block.settings.text-background-color}}">
+                                    <div class="image-teaser-text  {{block.settings.image-text-mobile-font-size}}" style="color:{{ block.settings.text_color }}; font-size:{{block.settings.image-text-font-size}}px; font-weight:{{block.settings.font-weight}}">
+                                        {% if block.settings.teaser_link != blank %}
+                                        <a href="{{ block.settings.teaser_link }}">
+                                            {% endif %}
+                                            {{ block.settings.image-teaser-text }}
+                                            {% if block.settings.teaser_link != blank %}
+                                        </a>
+                                        {% endif %}
+                                    </div>
+
+                                    {% if block.settings.button-position == false %}
+                                    {% if block.settings.teaser-image-text != blank or  block.settings.teaser-image-text-two != blank %}
+                                    <div class="teaser-text inside{% if block.settings.mobile-text-position == true %} ontop{% endif %}{% if block.settings.text-alignment %} align--{{block.settings.text-alignment}}{% endif %}">
+                                        {% if block.settings.teaser-image-text != blank %}
+                                        <div class="teaser-link-wrapper">
+                                            {% if block.settings.teaser_link-mobile != blank %}
+                                            <a class="{{block.settings.link-style}}" style="color:{{block.settings.link-text-color}};{% if block.settings.link-style != 'button--link' %} background-color:{{block.settings.button-color}}{% endif %}" href="{{ block.settings.teaser_link-mobile }}" class="wrapper-link">
+                                                {% endif %}
+                                                <span style="{% if block.settings.link-text-color != blank %}color:{{block.settings.link-text-color}};{% endif %} font-size:{{block.settings.cta-text-font-size}}px">{{block.settings.teaser-image-text-mobile}}</span>
+                                                {% if block.settings.teaser_link != blank %}
+                                            </a>
+                                            {% endif %}
+                                            {% if block.settings.teaser_link-two != blank and block.settings.mobile-one-two-cta %}
+                                            <a class="{{block.settings.link-style-two}}" style="color:{{block.settings.link-text-color-two}};{% if block.settings.link-style-two != 'button--link' %} background-color:{{block.settings.button-color-two}}{% endif %}" href="{{ block.settings.teaser_link-two }}" class="wrapper-link">
+                                                <span style="{% if block.settings.link-text-color-two != blank %}color:{{block.settings.link-text-color-two}};{% endif %} font-size:{{block.settings.cta-text-font-size}}px">{{block.settings.teaser-image-text-two}}</span>
+                                            </a>
+                                            {% endif %}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+
+                    {% if block.settings.button-position == true %}
+                    {% if block.settings.teaser-image-text != blank or  block.settings.teaser-image-text-two != blank %}
+                    <div class="teaser-text outside{% if block.settings.mobile-text-position == true %} ontop{% endif %}{% if block.settings.text-alignment %} align--{{block.settings.text-alignment}}{% endif %}">
+
+                        {% if block.settings.teaser-image-text != blank %}
+                        <div class="teaser-link-wrapper">
+                            {% if block.settings.teaser_link != blank %}
+                            <a class="{{block.settings.link-style}}" style="color:{{block.settings.link-text-color}};{% if block.settings.link-style != 'button--link' %} background-color:{{block.settings.button-color}}{% endif %}" href="{{ block.settings.teaser_link }}" class="wrapper-link">
+                                {% endif %}
+                                <span style="{% if block.settings.link-text-color != blank %}color:{{block.settings.link-text-color}};{% endif %} font-size:{{block.settings.cta-text-font-size}}px">{{block.settings.teaser-image-text}}</span>
+                                {% if block.settings.teaser_link != blank %}
+                            </a>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                        {% if block.settings.teaser-image-text-two != blank %}
+                        <div class="teaser-link-wrapper">
+                            {% if block.settings.teaser_link-two != blank %}
+                            <a class="{{block.settings.link-style-two}}" style="color:{{block.settings.link-text-color-two}};{% if block.settings.link-style-two != 'button--link' %} background-color:{{block.settings.button-color-two}}{% endif %}" href="{{ block.settings.teaser_link-two }}" class="wrapper-link">
+                                {% endif %}
+                                <span style="{% if block.settings.link-text-color-two != blank %}color:{{block.settings.link-text-color-two}};{% endif %} font-size:{{block.settings.cta-text-font-size}}px">{{block.settings.teaser-image-text-two}}</span>
+                                {% if block.settings.teaser_link-two != blank %}
+                            </a>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+        {% if section.settings.wrapper == true %}
+    </div>
+    {% endif %}
+
+</div>
+
+
+
+{% schema %}
+
+
+
+{
+  "name": "Image Teaser Row",
+  "class": "section__image-teaser-row",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "wrapper",
+      "label": "Wrapper",
+      "default":   false,
+      "info":      "Create a 100% Wrapper"
+    },
+    {
+      "type":      "range",
+      "id":        "section-wrapper-size",
+      "min":        25,
+      "max":        100,
+      "step":       5,
+      "unit":       "%",
+      "label":     "Wrapper Size",
+      "default":   100
+    },
+    {
+      "type": "select",
+      "id": "gutter",
+      "label": "Space between objects",
+      "options": [
+        {
+          "value": "no-padding",
+          "label": "no space"
+        },
+        {
+          "value": "small-padding",
+          "label": "small space"
+        },
+        {
+          "value": "regular-padding",
+          "label": "regular padding"
+        },
+        {
+          "value": "big-padding",
+          "label": "big space"
+        }
+      ],
+      "default": "regular-padding"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "Image-Block",
+      "name": "Image Block",
+      "settings": [
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Container width",
+          "default": "50%",
+          "options": [
+            {
+              "value": "25%",
+              "label": "25%"
+            },
+            {
+              "value": "33%",
+              "label": "33%"
+            },
+            {
+              "value": "50%",
+              "label": "50%"
+            },
+
+            {
+              "value": "66%",
+              "label": "66%"
+            },
+            {
+
+              "value": "75%",
+              "label": "75%"
+            },
+            {
+              "value": "100%",
+              "label": "100%"
+            }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "teaser_link",
+          "label": "Teaser link"
+        },
+        {
+          "type": "image_picker",
+          "id": "image-two",
+          "label": "Image Zwei"
+        },
+        {
+          "type": "url",
+          "id": "teaser_link-two",
+          "label": "Teaser link zwei"
+        },
+        {
+          "type": "image_picker",
+          "id": "image-mobile",
+          "label": "Image Mobile"
+        },
+        {
+          "type": "url",
+          "id": "teaser_link-mobile",
+          "label": "Teaser link mobile"
+        },
+        {
+          "type": "richtext",
+          "id": "teaser-image-text-mobile",
+          "label": "CTA Text Mobile"
+        },
+        {
+          "type": "checkbox",
+          "id": "mobile-one-two-cta",
+          "label": "mobile two cta"
+        },
+        {
+          "type": "color",
+          "id": "background-color",
+          "label": "Background Color",
+          "default": "#ffffff"
+        },
+
+        {
+          "type": "checkbox",
+          "id": "jsrenderheight",
+          "label": "render height",
+          "default": false,
+          "info": "Berechnet die Teaser Höhe mit eingestellter Ratio"
+        },
+        {
+          "type": "checkbox",
+          "id": "jsrenderheight-mobile",
+          "label": "render height mobile",
+          "default": false,
+          "info": "Berechnet die Teaser Höhe mit eingestellter Ratio"
+        },
+        {
+          "type": "checkbox",
+          "id": "boss",
+          "label": "Big on small screens",
+          "default": true,
+          "info": "Big on small screens"
+        },
+        {
+          "type": "checkbox",
+          "id": "mobile-two",
+          "label": "mobile two images",
+          "default": false
+        },
+
+        {
+          "type":      "range",
+          "id":        "inner__width",
+          "min":        25,
+          "max":        100,
+          "step":       1,
+          "unit":       "%",
+          "label":     "Inner Width",
+          "default":   100
+        },
+        {
+          "type": "select",
+          "id": "innner_alignment",
+          "label": "Inner alignment",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "left"
+            },
+            {
+              "value": "center",
+              "label": "center"
+            },
+            {
+              "value": "right",
+              "label": "right"
+            }
+          ]
+        },
+        {
+          "type":      "range",
+          "id":        "margin_top",
+          "min":        0,
+          "max":        100,
+          "step":       1,
+          "unit":       "%",
+          "label":     "Margin top",
+          "default":   0
+        },
+        {
+          "type":      "range",
+          "id":        "margin_left",
+          "min":        0,
+          "max":        100,
+          "step":       1,
+          "unit":       "%",
+          "label":     "Margin Left",
+          "default":   0
+        },
+        {
+          "type":      "range",
+          "id":        "cta-text-font-size",
+          "min":        14,
+          "max":        80,
+          "step":       1,
+          "unit":       "px",
+          "label":     "Text Font Size",
+          "default":   15
+        },
+        {
+          "type": "richtext",
+          "id": "teaser-image-text",
+          "label": "CTA Text"
+        },
+        {
+          "type": "select",
+          "id": "link-style",
+          "label": "CTA",
+          "default": "button",
+          "options": [
+            {
+              "value": "button",
+              "label": "Button"
+            },
+            {
+              "value": "button--link",
+              "label": "Link"
+            },
+            {
+              "value": "button button--transparent",
+              "label": "Transparent"
+            }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "link-text-color",
+          "label": "CTA Text Color",
+          "default": "#333333"
+        },
+        {
+          "type": "color",
+          "id": "button-color",
+          "label": "Button Background Color",
+          "default": "#ffffff"
+        },
+
+        {
+          "type": "richtext",
+          "id": "teaser-image-text-two",
+          "label": "CTA Text Zwei"
+        },
+        {
+          "type": "select",
+          "id": "link-style-two",
+          "label": "CTA Zwei",
+          "default": "button",
+          "options": [
+            {
+              "value": "button",
+              "label": "Button"
+            },
+            {
+              "value": "button--link",
+              "label": "Link"
+            },
+            {
+              "value": "button button--transparent",
+              "label": "Transparent"
+            }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "link-text-color-two",
+          "label": "CTA Text Color Zwei",
+          "default": "#333333"
+        },
+        {
+          "type": "color",
+          "id": "button-color-two",
+          "label": "Button Background Color Zwei",
+          "default": "#ffffff"
+        },
+        {
+          "type": "checkbox",
+          "id": "button-position",
+          "label": "CTA on Bottom ",
+          "default": true,
+          "info": "Button/Link unter Text oder unten im Bild"
+        },
+        {
+          "type": "select",
+          "id": "text-alignment",
+          "label": "Link Alignment",
+          "default": "bottom-center",
+          "options": [
+            {
+              "value": "bottom-center",
+              "label": "Bottom Center"
+            },
+            {
+              "value": "bottom-left",
+              "label": "Bottom Left"
+            },
+            {
+              "value": "bottom-right",
+              "label": "Bottom Right"
+            },
+            {
+              "value": "top-center",
+              "label": "Top Center"
+            },
+            {
+              "value": "top-left",
+              "label": "Top Left"
+            },
+            {
+              "value": "top-right",
+              "label": "Top Right"
+            },
+            {
+              "value": "under",
+              "label": "Under"
+            },
+            {
+              "value": "under-center",
+              "label": "Under Center"
+            }
+          ]
+        },
+        {
+          "type": "richtext",
+          "id": "image-teaser-text",
+          "label": "Teaser Text"
+        },
+        {
+          "type":      "range",
+          "id":        "image-text-font-size",
+          "min":        14,
+          "max":        100,
+          "step":       1,
+          "unit":       "px",
+          "label":     "Text Font Size",
+          "default":   15
+        },
+        {
+          "type": "select",
+          "id": "image-text-mobile-font-size",
+          "label": "Mobile Text Font Size",
+          "default": "middle",
+          "options": [
+            {
+              "value": "big",
+              "label": "big"
+            },
+            {
+              "value": "middle",
+              "label": "middle"
+            },
+            {
+              "value": "small",
+              "label": "small"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "font-weight",
+          "label": "Teaser Text Font Weight",
+          "default": "700",
+          "options": [
+            {
+              "value": "700",
+              "label": "700"
+            },
+            {
+              "value": "500",
+              "label": "500"
+            },
+            {
+              "value": "400",
+              "label": "400"
+            },
+            {
+              "value": "300",
+              "label": "300"
+            }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "text-background-color",
+          "label": "Text Background Color",
+          "default": "transparent"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Font Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "checkbox",
+          "id": "mobile-text-position",
+          "label": "Mobile on top of image",
+          "default": true,
+          "info": "Mobile on top of image or below"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Image",
+      "name": "Image Teaser Row"
+    }
+  ]
+}
+
+{% endschema %}

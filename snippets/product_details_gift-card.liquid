@@ -1,0 +1,162 @@
+
+{% case section.settings.showcase_size %}
+{% when 'small' %}
+{% assign product_showcase_grid_class = '2/5--lap-and-up' %}
+{% assign product_info_grid_class = '3/5--lap-and-up' %}
+
+{% when 'normal' %}
+{% assign product_showcase_grid_class = '1/2--lap-and-up' %}
+{% assign product_info_grid_class = '1/2--lap-and-up' %}
+
+{% when 'big' %}
+{% assign product_showcase_grid_class = '3/5--lap-and-up' %}
+{% assign product_info_grid_class = '2/5--lap-and-up' %}
+{% endcase %}
+
+<div class="product__details">
+    <div class="inner">
+
+        {% comment %}{% include 'product_meta', show_vendor: section.settings.show_vendor, for_mobile: true %}{% endcomment %}
+
+        <div class="grid">
+            {% include 'product_slideshow' %}
+
+            <div class="product__info grid__cell {{ product_info_grid_class }}">
+                {% include 'product_meta', show_vendor: section.settings.show_vendor, for_mobile: false %}
+
+
+
+                {% if section.settings.always_show_description %}
+
+                <div class="product__description">
+
+                    <div class="product-item__icons">
+                        {% for tag in product.tags %}
+                        {% if tag contains '__icon:' %}
+                        <span class="product-item__icon">
+                      {% assign icon_tag = tag | split: '__icon:' | last %}
+                      {% case icon_tag %}
+                        {% when 'artist' %}
+                          <a data-tooltip="Our Artist Series" >
+                            <img  class="product-detail__icon" src="{{ 'rotholz-artist-series.svg' | asset_url }}" />
+                          </a>
+                        {% when 'fair-trade' %}
+                          <a data-tooltip="Fair" >
+                            <img class="product-detail__icon" src="{{ 'rotholz-fair-trade.svg' | asset_url }}" />
+                          </a>
+                        {% when 'limited' %}
+                          <a data-tooltip="Limited" >
+                             <img class="product-detail__icon" src="{{ 'rotholz-limited.svg' | asset_url }}" />
+                          </a>
+                        {% when 'europe' %}
+                          <a data-tooltip="Made in Europe" >
+                            <img class="product-detail__icon" src="{{ 'rotholz-made-in-europe.svg' | asset_url }}" />
+                          </a>
+                        {% when 'germany' %}
+                          <a data-tooltip="Made in Germany" >
+                            <img class="product-detail__icon" src="{{ 'rotholz-made-in-germany.svg' | asset_url }}" />
+                          </a>
+                        {% when 'organic-cutton' %}
+                          <a data-tooltip="Organic Cotton" >
+                              <img class="product-detail__icon" src="{{ 'rotholz-organic-cotton.svg' | asset_url }}" />
+                          </a>
+                        {% when 'vegan' %}
+                          <a data-tooltip="Vegan" >
+                              <img class="product-detail__icon" src="{{ 'rotholz-vegan.svg' | asset_url }}" />
+                          </a>
+                        {% when 'water-based-print' %}
+                          <a data-tooltip="Water based Print" >
+                            <img class="product-detail__icon" src="{{ 'rotholz-water-based-print.svg' | asset_url }}" />
+                          </a>
+                        {% when 'wool' %}
+                          <a data-tooltip="Wool" >
+                              <img class="product-detail__icon" src="{{ 'rotholz-wool.svg' | asset_url }}" />
+                           </a>
+                      {% when 'co2-neutral' %}
+                          <a data-tooltip="Low CO2 emission" >
+                              <img class="product-detail__icon" src="{{ 'rotholz-co2-neutral.svg' | asset_url }}" />
+                           </a>
+                      {% endcase %}
+                    </span>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    {% if section.settings.form_position == 'before_description' %}
+                    {% include 'product_form' %}
+                    {% endif %}
+
+                    {% comment %}
+                    <div class="tabbed">
+                        <input checked="checked" id="tab1" type="radio" name="tabs" />
+                        <input id="tab2" type="radio" name="tabs" />
+                        <input id="tab3" type="radio" name="tabs" />
+                        <input id="tab4" type="radio" name="tabs" />
+
+                        <nav>
+                            <label for="tab1"><span><h3>Details</h3></span></label>
+                            <label for="tab2"><h3>Produktionsdetails</h3></label>
+                            <label for="tab3"><h3>Pflegehinweis</h3></label>
+                            <label for="tab4"><h3>Versand & Rückgabe</h3></label>
+                        </nav>
+
+                        <figure>
+                            <div class="tab1"><div class="product-description-text">{{ product.description }}</div></div>
+                            <div class="tab2">{% if product.metafields.custom_fields["custom_fields_produktionsdetai"] != blank %}{{ product.metafields.custom_fields["custom_fields_produktionsdetai"] }}{% endif %}</div>
+                            <div class="tab3">{% if product.metafields.custom_fields["pflegehinweis"] != blank %}{{ product.metafields.custom_fields["pflegehinweis"] }}{% endif %}</div>
+                            <div class="tab4">{% include 'shipping_cost'%}</div>
+                        </figure>
+                    </div>
+                    {% endcomment %}
+
+
+                    <div class="product-description-text">{{ product.description }}</div>
+
+                    {% comment %}
+                    <div id="delivery" class="delivery-notice">
+                        {{ product.metafields.product.delivery-time }}
+                    </div>
+                    {% endcomment %}
+
+
+
+                    {% if product.metafields.c_f.sizeguide %}
+                    <div id="sizeguide" class="sizeguide" style="display:none;">
+                        {% assign sizeguideimage = product.metafields.c_f.sizeguide %}
+                        <img src="{{ sizeguideimage }}"/>
+                        {% comment %}{{ pages.sizeguide.content }}{% endcomment %}
+                    </div>
+
+                    <div class="size-guide-warpper">
+                        <a class="strong link underline" href="#sizeguide" rel="modal:open">Size guide</a>
+                    </div>
+
+                    {% comment %}<a class="strong link underline" href="{{ sizeguideimage }}" rel="shadowbox[size-guide]">Size guid</a>{% endcomment %}
+                    {% endif %}
+
+
+                </div>
+                {% endif %}
+
+
+
+                {% if section.settings.form_position == 'after_description' %}
+                {% include 'product_form' %}
+                {% endif %}
+
+                {% comment %}
+                <p class="payment-icons-detail-page">
+                    <img class="payment__icon" src="{{ 'logoleiste-neu.png' | asset_url }}" />
+                </p>
+                {% endcomment %}
+
+                {% comment %}
+                <div class="product__share">
+                    {% include 'share_buttons' %}
+                </div>
+                {% endcomment %}
+
+            </div>
+        </div>
+    </div>
+</div>

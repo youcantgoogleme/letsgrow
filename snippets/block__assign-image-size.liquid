@@ -1,0 +1,48 @@
+{% comment %}
+********* multiplikation der Image Size führt zu Rundungsfehlern
+
+{% case block.settings.width %}
+{% when '25%' %}
+{% assign image_size = '635x'   %}
+{% when '33%' %}
+{% assign image_size = '880x'  %}
+{% when '50%' %}
+{% assign image_size = '1270x'  %}
+{% when '66%' %}
+{% assign image_size = '1270x'  %}
+{% when '75%' %}
+{% assign image_size = '1270x'  %}
+{% when '100%' %}
+{% assign image_size = '1270x'  %}
+{% endcase %}
+
+{% endcomment %}
+
+
+{% assign image_size_adjust = 1 %}
+{% if block.settings.inner__width != blank %}
+{% assign image_size_adjust = block.settings.inner__width | divided_by: 100.00 %}
+{% endif %}
+
+{% case block.settings.width %}
+{% when '25%' %}
+{% assign image_size = '635x' | times:image_size_adjust | floor  %}
+{% assign viewport_size = '25vw'%}
+{% when '33%' %}
+{% assign image_size = '880x'| times:image_size_adjust | floor  %}
+{% assign viewport_size = '33vw'%}
+{% when '50%' %}
+{% assign image_size = '1270x' | times:image_size_adjust | floor %}
+{% assign viewport_size = '50vw'%}
+{% when '66%' %}
+{% assign image_size = '1270x' | times:image_size_adjust | floor %}
+{% assign viewport_size = '66vw'%}
+{% when '75%' %}
+{% assign image_size = '1270x' | times:image_size_adjust | floor %}
+{% assign viewport_size = '75vw'%}
+{% when '100%' %}
+{% assign image_size = '1270x' | times:image_size_adjust | floor %}
+{% assign viewport_size = '100vw'%}
+{% endcase %}
+
+

@@ -1,0 +1,374 @@
+
+{% include 'breadcrumb' %}
+
+<div class="container-fluid {{settings.collection-widht-padding}} {{settings.collection-object-padding}}">
+
+{% comment %} 
+<header class="page__header page__header--no-border">
+
+  <div class="page__header-wrapper">            
+    <h1 class="page__title">{{ collection.title }}</h1>
+  </div>
+
+  {% if collection.metafields.custom_fields["collection_teaser"] != blank %}
+  <div class="custom-field custom-field__collection-teaser custom-field__type--html">
+    {{ collection.metafields.custom_fields["collection_teaser"] }}
+  </div>
+  {% endif %}
+</header>
+{% endcomment %}
+
+{% if collection.all_products_count == 0 %}
+<div class="page__description page__description--centered">
+  {{ collection.description }}
+  <p>{{ 'collection.general.empty' | t }}</p>
+
+  <div class="page__header-actions">
+    <a href="{{ shop.url }}" class="button button--primary">Let's shop!</a>
+  </div>
+</div>
+{% endif %}
+
+{% if collection.template_suffix == 'collage' %}
+{% assign layout_mode = 'collage' %}
+{% elsif collection.template_suffix == 'grid' %}
+{% assign layout_mode = 'grid' %}
+{% elsif collection.template_suffix == 'onegrid' %}
+{% assign layout_mode = 'onegrid' %}
+{% elsif collection.template_suffix == 'fivegrid' %}
+{% assign layout_mode = 'fivegrid' %}
+
+
+{% elsif section.settings.layout_mode == 'collage' %}
+{% assign layout_mode = 'collage' %}
+{% elsif section.settings.layout_mode == 'modular-grid' %}
+{% assign layout_mode = 'modular-grid' %}
+{% else %}
+{% assign layout_mode = 'grid' %}
+
+{% endif %}
+
+{% if layout_mode == 'collage' %}
+{% assign products_per_page = 20 %}
+{% else %}
+{% assign grid_items_per_row = section.settings.grid_items_per_row %}
+{% assign products_per_page = grid_items_per_row | times: section.settings.number_of_rows %}
+{% endif %}
+
+{% if collection.all_products_count > 0 %}
+{% paginate collection.products by products_per_page %}
+
+{% if layout_mode == 'fivegrid' %}
+<section {% unless section.settings.grid_remove_spacing %}class="inner big"{% endunless %}>
+  {% else %}
+  <section {% unless section.settings.grid_remove_spacing %}class="inner"{% endunless %}>
+    {% endif %}
+    {% if layout_mode == 'collage' %}
+    <div class="collection collection--collage ftg" {% if section.settings.pagination_mode == 'infinite_scrolling' %}data-infinite-scroll-url="{{ paginate.next.url }}&view=infinite-scroll"{% endif %}>
+
+      <div class="ftg-items">
+        {% for product in collection.products %}
+        {% include 'product_collage_item', show_vendor: section.settings.show_vendor, show_quick_shop: section.settings.show_quick_shop %}
+        {% endfor %}
+      </div>
+    </div>
+    {% elsif layout_mode == 'onegrid' %}
+    <div class="container">
+      <div class="collection collection--grid grid {% if section.settings.grid_remove_spacing %}grid--flush{% else %}grid--gallery grid--middle{% endif %}">
+        {% for product in collection.products %}
+        {% include 'product_grid_one_item', show_vendor: section.settings.show_vendor, show_quick_shop: section.settings.show_quick_shop %}
+        {% endfor %}
+      </div>
+    </div>
+    {% elsif layout_mode == 'fivegrid' %}
+    <div class="collection collection--grid grid {% if section.settings.grid_remove_spacing %}grid--flush{% else %}grid--gallery grid--middle{% endif %}">
+      {% for product in collection.products %}
+      {% include 'product_grid_five_item', show_vendor: section.settings.show_vendor, show_quick_shop: section.settings.show_quick_shop %}
+      {% endfor %}
+    </div>
+    {% elsif layout_mode == 'modular-grid' %}
+    <div class="row">
+      <div class="collection">
+        {% for product in collection.products %}
+        {% include 'product_grid_item_bootstrap', show_vendor: section.settings.show_vendor, show_quick_shop: section.settings.show_quick_shop %}
+        {% endfor %}
+      </div>
+
+     
+    </div>
+    {% else %}
+    <div class="collection collection--grid grid {% if section.settings.grid_remove_spacing %}grid--flush{% else %}grid--gallery grid--middle{% endif %}">
+      {% for product in collection.products %}
+      {% include 'product_grid_item', show_vendor: section.settings.show_vendor, show_quick_shop: section.settings.show_quick_shop %}
+      {% endfor %}
+    </div>
+
+    {% endif %}
+  </section>
+
+  {% if section.settings.pagination_mode == 'pagination' %}
+  {% include 'pagination' %}
+  {% elsif paginate.pages > 1 %}
+  <div class="collection__loader spinner-container" data-next-page="{{ paginate.next.url }}&view=infinite-scroll">
+    <div class="spinner spinner--circle"></div>
+  </div>
+  {% endif %}
+  {% endpaginate %}
+  {% endif %}
+
+  {% if collection.description != blank and collection.all_products_count > 0 %}
+
+  <div class="page__description">
+    {{ collection.description }}
+  </div>
+  {% endif %}
+  
+  </div>
+
+
+
+  {% comment %}           
+  <!-- MM extra Navigation Edit not done yet works with superfields adds extrafields with collection links -->  
+  {% if layout_mode == 'fivegrid' %}
+  <section {% unless section.settings.grid_remove_spacing %}class="inner big"{% endunless %}>
+    {% else %}
+    <section {% unless section.settings.grid_remove_spacing %}class="inner"{% endunless %}>
+      {% endif %}
+
+      {% assign my_collection = collections[collection.metafields.sf_collections.related_collection_image] %}
+      {% assign my_collection_two = collections[collection.metafields.sf_collections.add_a_collection] %}
+      {% assign my_collection_three = collections[collection.metafields.sf_collections.related_collection_three] %}  
+
+      {% unless my_collection.empty? %}
+      <div class="grid {% if section.settings.grid_remove_spacing %}grid--flush{% else %}grid--gallery grid--middle{% endif %}">
+        <h3 class="section__title">Other Products</h3>
+
+        <div class="collection__item product-item grid__cell 1/{{ settings.mobile_grid_items_per_row }} 1/{{ settings.tablet_grid_items_per_row }}--handheld 1/{{ grid_items_per_row }}--lap-and-up">
+          <a href="{{  my_collection.url }}">
+
+            {% if my_collection.image %}
+            <img src="{{ my_collection | img_url: 'large' }}"  alt="{{ my_collection.title | escape }}"  />
+            {% else %}
+            <img src="{{ my_collection.products.first | img_url: 'large' }}"  alt="{{ my_collection.title | escape }}" />
+            {% endif %}
+            <div class="product-item__info">
+              <h2 class="product-item__title" >
+                {{ my_collection.title | escape }}
+              </h2>
+            </div>
+          </a>
+        </div>
+
+        {% unless my_collection_two.empty? %}
+        <div class="collection__item product-item grid__cell 1/{{ settings.mobile_grid_items_per_row }} 1/{{ settings.tablet_grid_items_per_row }}--handheld 1/{{ grid_items_per_row }}--lap-and-up">
+          <a href="{{  my_collection_two.url }}">
+
+            {% if my_collection_two.image %}
+            <img src="{{ my_collection_two | img_url: 'large' }}"  alt="{{ my_collection_two.title | escape }}"  />
+            {% else %}
+            <img src="{{ my_collection_two.products.first | img_url: 'large' }}"  alt="{{ my_collection_two.title | escape }}" />
+            {% endif %}
+
+            <div class="product-item__info">
+              <h2 class="product-item__title" >
+                {{ my_collection_two.title | escape }}
+              </h2>
+            </div>
+
+          </a>
+        </div>            
+        {% endunless %}
+
+        {% unless my_collection_three.empty? %}
+        <div class="collection__item product-item grid__cell 1/{{ settings.mobile_grid_items_per_row }} 1/{{ settings.tablet_grid_items_per_row }}--handheld 1/{{ grid_items_per_row }}--lap-and-up">
+          <a href="{{  my_collection_three.url }}">
+
+            {% if my_collection_three.image %}
+            <img src="{{ my_collection_three | img_url: 'large' }}"  alt="{{ my_collection_three.title | escape }}"  />
+            {% else %}
+            <img src="{{ my_collection_three.products.first | img_url: 'large' }}"  alt="{{ my_collection_three.title | escape }}" />
+            {% endif %}
+            <div class="product-item__info">
+              <h2 class="product-item__title" >
+                {{ my_collection_three.title | escape }}
+              </h2>
+            </div>
+          </a>
+        </div>
+        {% endunless %}
+
+      </div>
+      {% endunless %}
+
+
+    </section>
+
+    <!-- MM extra Navigation Edit ///////  END  ///////// --> 
+
+    {% endcomment %}
+
+
+
+    {% schema %}
+    {
+    "name": "Collection",
+    "settings": [
+    {
+    "type": "select",
+    "id": "layout_mode",
+    "label": "Layout mode",
+    "options": [
+    {
+    "value": "collage",
+    "label": "Collage"
+    },
+    {
+    "value": "grid",
+    "label": "Grid"
+    },
+    {
+    "value": "modular-grid",
+    "label": "Modular-Grid"
+    }
+
+    ],
+    "default": "grid"
+    },
+    {
+    "type": "radio",
+    "id": "pagination_mode",
+    "label": "Pagination mode",
+    "options": [
+    {
+    "value": "pagination",
+    "label": "Standard pagination"
+    },
+    {
+    "value": "infinite_scrolling",
+    "label": "Infinite scrolling"
+    }
+    ],
+    "default": "pagination"
+    },
+    {
+    "type": "checkbox",
+    "id": "enable_tag_filters",
+    "label": "Enable filtering by product tag",
+    "default": true
+    },
+    {
+    "type": "checkbox",
+    "id": "enable_sort_by",
+    "label": "Enable collection sorting",
+    "default": true
+    },
+    {
+    "type": "checkbox",
+    "id": "enable_type_filters",
+    "label": "Enable filtering by product type",
+    "default": true
+    },
+    {
+    "type": "checkbox",
+    "id": "enable_vendor_filters",
+    "label": "Enable filtering by product vendor",
+    "default": true
+    },
+    {
+    "type": "checkbox",
+    "id": "show_vendor",
+    "label": "Show vendor",
+    "default": true
+    },
+    {
+    "type": "checkbox",
+    "id": "show_quick_shop",
+    "label": "Show quick shop",
+    "default": true
+    },
+    {
+    "type": "header",
+    "content": "Grid",
+    "info": "Those settings are only used if the grid layout is selected."
+    },
+    {
+    "type": "checkbox",
+    "id": "grid_remove_spacing",
+    "label": "Remove spacing between grid items",
+    "default": false
+    },
+    {
+    "type": "select",
+    "id": "grid_items_per_row",
+    "label": "Items per row",
+    "options": [
+    {
+    "value": "1",
+    "label": "1"
+    },
+    {
+    "value": "2",
+    "label": "2"
+    },
+    {
+    "value": "3",
+    "label": "3"
+    },
+    {
+    "value": "4",
+    "label": "4"
+    },
+    {
+    "value": "5",
+    "label": "5"
+    },
+    {
+    "value": "6",
+    "label": "6"
+    }
+    ],
+    "default": "4"
+    },
+    {
+    "type": "select",
+    "id": "number_of_rows",
+    "label": "Number of rows",
+    "options": [
+    {
+    "value": "1",
+    "label": "1"
+    },
+    {
+    "value": "2",
+    "label": "2"
+    },
+    {
+    "value": "3",
+    "label": "3"
+    },
+    {
+    "value": "4",
+    "label": "4"
+    },
+    {
+    "value": "5",
+    "label": "5"
+    },
+    {
+    "value": "6",
+    "label": "6"
+    },
+    {
+    "value": "7",
+    "label": "7"
+    },
+    {
+    "value": "8",
+    "label": "8"
+    }
+    ],
+    "default": "3"
+    }
+    ]
+    }
+    {% endschema %}

@@ -1,0 +1,452 @@
+
+<div class="navigation_top_mega_mm">
+  <ul class="top-mega-nav-link-list-mm level-0">
+
+    {% for link in linklists.page-new.links %}
+    <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-0">
+      <a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-0" href="{{ link.url }}"><span>{{ link.title }}</span></a>
+      {% comment %}
+      <div class="mega-nav-submenu-wrapper" style="" id="mega-menu-new">
+        <div class="nav-border-top"></div>
+        <div class="mega-nav-catalog-nav-lists-wrapper">
+          {% if linklists.new-nav-one.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{ linklists.new-nav-one.handle }}">
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.new-nav-one.title }}</li>
+            {% for link in linklists.new-nav-one.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if linklists.new-nav-two.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{ linklists.new-nav-two.handle }}">
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.new-nav-two.title }}</li>
+            {% for link in linklists.new-nav-two.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if linklists.new-nav-three.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{ linklists.new-nav-three.handle }}">
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.new-nav-three.title }}</li>
+            {% for link in linklists.new-nav-three.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if linklists.woman-nav-four.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{linklists.woman-nav-four.handle}}">
+            {% for link in linklists.woman-nav-four.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+
+        {% if linklists.featured-collections-new.level != '' %}
+        <ul class="top-mega-nav-link-list-mm level-1" id="top-mega-nav-link-list-one">
+          {% for link in linklists.featured-collections-new.links %}
+          <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if linklists.feature-block-right.level != '' %}
+        <ul class="top-mega-nav-link-list-mm level-1" id="top-mega-nav-link-list-right">
+          <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.feature-block-right.title }}</li>
+          {% for link in linklists.feature-block-right.links %}
+          <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        <ul class="top-mega-nav-link-image-mm level-1 top-mega-nav-link-image-right">
+          <li class="top-mega-nav-link_mm_li image__link {% if link.active %}active{% endif %} level-1">
+            <a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="https://givnberlin.com/collections/women-sweater-strick">
+              <div class="menu-image-teaser-link-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0445/7650/6006/files/Givn_Sweater-Crush-Women-Clean.jpg?v=1611585131" />
+                <div class="top-mega-nav-link-image-right-text">SWEATER CRUSH<span>Women</span></div>
+              </div>
+            </a>
+        </ul>
+      </div>
+      {% endcomment %}
+    </li>
+    {% endfor %}
+
+    {% for link in linklists.page-oben.links %}
+    <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-0">
+      <a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-0" href="{{ link.url }}"><span>{{ link.title }}</span></a>
+      <!-- <div class="mega-nav-submenu-wrapper container-fluid" id="mega-menu-oben" style="display: block !important"> --> 
+        <div class="mega-nav-submenu-wrapper container-fluid" id="mega-menu-oben">
+        <div class="nav-border-top"></div>
+        <div class="mega-nav-catalog-nav-lists-wrapper regular-padding" >
+          {% if linklists.oben-nav-one.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{ linklists.oben-nav-one.handle }}">
+            
+            {% comment %}<li class="top-mega-nav-link_mm_li{% if link.active %} active{% endif %} level-1 menu-title">{{ linklists.oben-nav-one.title }}</li>{% endcomment %}
+            {% for link in linklists.oben-nav-one.links %}  
+            <li class="top-mega-nav-link_mm_li{% if link.active %} active{% endif %}{% if link.object.image %} col-3 col-md-2 nav-image-link{% endif %} level-1">
+              <a  class="top-mega-nav-link_mm{% if link.active %} active{% endif %} level-1" href="{{ link.url }}">
+                {% if link.object.image %}
+                <span class="menu-img-wrapper"><img class="menu-image" src="{{ link.object.image | collection_img_url: '180x' }}"></span>
+                {% endif %}
+                <span>{{ link.title }}</span>
+              </a>
+            </li>
+            {% endfor %}
+            
+            {% if linklists.oben-nav-two.handle != '' %}
+
+            <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list col-3 col-md-2 more-menu-block" id="{{ linklists.oben-nav-two.handle }}">
+            {% comment %}<li class="top-mega-nav-link_mm_li{% if link.active %} active{% endif %} level-1 menu-title">{{ linklists.oben-nav-two.title }}</li>{% endcomment %}
+            {% for link in linklists.oben-nav-two.links %}
+            <li class="top-mega-nav-link_mm_li{% if link.active %} active{% endif %} level-1">
+              <a  class="top-mega-nav-link_mm{% if link.active %} active{% endif %} level-1" href="{{ link.url }}">
+                {% if link.object.image %}
+                <span class="menu-img-wrapper"><img class="menu-image" src="{{ link.object.image | collection_img_url: '180x' }}"></span>
+                {% endif %}
+                <span>{{ link.title }}</span>
+              </a>
+            </li>
+            {% endfor %}
+            </ul>
+            
+           
+            {% endif %}
+          </ul>
+          {% endif %}
+
+          {% if linklists.oben-nav-three.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="top-mega-nav-link-list-featured">
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.oben-nav-three.title }}</li>
+            {% for link in linklists.oben-nav-three.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if linklists.oben-nav-four.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{ linklists.oben-nav-four.handle }}">
+            {% for link in linklists.oben-nav-four.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+
+        {% if linklists.featured-collections-oben.level != '' %}
+        <ul class="top-mega-nav-link-list-mm level-1" id="top-mega-nav-link-list-one">
+          {% for link in linklists.featured-collections-oben.links %}
+          <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {% if linklists.feature-block-right.level != '' %}
+        <ul class="top-mega-nav-link-list-mm level-1" id="top-mega-nav-link-list-right">
+          {% for link in linklists.feature-block-right.links %}
+          <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% comment %}
+        <ul class="top-mega-nav-link-image-mm level-1 top-mega-nav-link-image-right">
+          <li class="top-mega-nav-link_mm_li image__link {% if link.active %}active{% endif %} level-1">
+            <a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="https://givnberlin.com/collections/men-sweater-strick">
+              <div class="menu-image-teaser-link-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0445/7650/6006/files/Givn_Sweater-Crush-Men-Clean.jpg?v=1611585131" />
+                <div class="top-mega-nav-link-image-right-text">SWEATER CRUSH<span>Men</span></div>
+              </div>
+            </a>
+        </ul>
+        {% endcomment %}
+
+      </div>
+
+
+    </li>
+    {% endfor %}
+
+    {% for link in linklists.page-unten.links %}
+    <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-0">
+      <a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-0" href="{{ link.url }}"><span>{{ link.title }}</span></a>
+
+      <div class="mega-nav-submenu-wrapper" id="mega-menu-unten">
+        <div class="nav-border-top"></div>
+        <div class="mega-nav-catalog-nav-lists-wrapper">
+          {% if linklists.unten-nav-one.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{ linklists.unten-nav-one.handle }}">
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.unten-nav-one.title }}</li>
+            {% for link in linklists.unten-nav-one.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if linklists.unten-nav-two.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{ linklists.unten-nav-two.handle }}">
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.unten-nav-two.title }}</li>
+            {% for link in linklists.unten-nav-two.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if linklists.unten-nav-three.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="top-mega-nav-link-list-featured">
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.unten-nav-three.title }}</li>
+            {% for link in linklists.unten-nav-three.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if linklists.unten-nav-four.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{ linklists.unten-nav-four.handle }}">
+            {% for link in linklists.unten-nav-four.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+
+        {% if linklists.featured-collections-unten.level != '' %}
+        <ul class="top-mega-nav-link-list-mm level-1" id="top-mega-nav-link-list-one">
+          {% for link in linklists.featured-collections-unten.links %}
+          <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {% if linklists.feature-block-right.level != '' %}
+        <ul class="top-mega-nav-link-list-mm level-1" id="top-mega-nav-link-list-right">
+          {% for link in linklists.feature-block-right.links %}
+          <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        <ul class="top-mega-nav-link-image-mm level-1 top-mega-nav-link-image-right">
+          <li class="top-mega-nav-link_mm_li image__link {% if link.active %}active{% endif %} level-1">
+            <a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="https://givnberlin.com/collections/men-sweater-strick">
+              <div class="menu-image-teaser-link-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0445/7650/6006/files/Givn_Sweater-Crush-Men-Clean.jpg?v=1611585131" />
+                <div class="top-mega-nav-link-image-right-text">SWEATER CRUSH<span>Men</span></div>
+              </div>
+            </a>
+        </ul>
+
+      </div>
+    </li>
+    {% endfor %}
+
+    {% for link in linklists.page-accessoires.links %}
+    <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-0">
+      <a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-0" href="{{ link.url }}"><span>{{ link.title }}</span></a>
+      <div class="mega-nav-submenu-wrapper" style="" id="mega-menu-accessoires">
+        <div class="nav-border-top"></div>
+        <div class="mega-nav-catalog-nav-lists-wrapper">
+          {% if linklists.accessoires-nav-one.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{ linklists.accessoires-nav-one.handle }}">
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.accessoires-nav-one.title }}</li>
+            {% for link in linklists.accessoires-nav-one.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if linklists.accessoires-nav-two.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{ linklists.accessoires-nav-two.handle }}">
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.accessoires-nav-two.title }}</li>
+            {% for link in linklists.accessoires-nav-two.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if linklists.accessoires-nav-three.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{ linklists.accessoires-nav-three.handle }}">
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.accessoires-nav-three.title }}</li>
+            {% for link in linklists.accessoires-nav-three.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if linklists.woman-nav-four.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{linklists.woman-nav-four.handle}}">
+            {% for link in linklists.woman-nav-four.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+
+        {% if linklists.featured-collections-accessoires.level != '' %}
+        <ul class="top-mega-nav-link-list-mm level-1" id="top-mega-nav-link-list-one">
+          {% for link in linklists.featured-collections-accessoires.links %}
+          <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if linklists.feature-block-right.level != '' %}
+        <ul class="top-mega-nav-link-list-mm level-1" id="top-mega-nav-link-list-right">
+          <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.feature-block-right.title }}</li>
+          {% for link in linklists.feature-block-right.links %}
+          <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        <ul class="top-mega-nav-link-image-mm level-1 top-mega-nav-link-image-right">
+          <li class="top-mega-nav-link_mm_li image__link {% if link.active %}active{% endif %} level-1">
+            <a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="https://givnberlin.com/collections/women-sweater-strick">
+              <div class="menu-image-teaser-link-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0445/7650/6006/files/Givn_Sweater-Crush-Women-Clean.jpg?v=1611585131" />
+                <div class="top-mega-nav-link-image-right-text">SWEATER CRUSH<span>Women</span></div>
+              </div>
+            </a>
+        </ul>
+      </div>
+    </li>
+    {% endfor %}
+    {% comment %}
+    {% for link in linklists.page-looks.links %}
+    <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-0">
+      <a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-0" href="{{ link.url }}"><span>{{ link.title }}</span></a>
+      {% comment %}
+      <div class="mega-nav-submenu-wrapper" style="" id="mega-menu-looks">
+        <div class="nav-border-top"></div>
+        <div class="mega-nav-catalog-nav-lists-wrapper">
+          {% if linklists.looks-nav-one.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{ linklists.looks-nav-one.handle }}">
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.looks-nav-one.title }}</li>
+            {% for link in linklists.looks-nav-one.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if linklists.looks-nav-two.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{ linklists.looks-nav-two.handle }}">
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.looks-nav-two.title }}</li>
+            {% for link in linklists.looks-nav-two.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if linklists.looks-nav-three.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{ linklists.looks-nav-three.handle }}">
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.looks-nav-three.title }}</li>
+            {% for link in linklists.looks-nav-three.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if linklists.woman-nav-four.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{linklists.woman-nav-four.handle}}">
+            {% for link in linklists.woman-nav-four.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+
+        {% if linklists.featured-collections-looks.level != '' %}
+        <ul class="top-mega-nav-link-list-mm level-1" id="top-mega-nav-link-list-one">
+          {% for link in linklists.featured-collections-looks.links %}
+          <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if linklists.feature-block-right.level != '' %}
+        <ul class="top-mega-nav-link-list-mm level-1" id="top-mega-nav-link-list-right">
+          <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.feature-block-right.title }}</li>
+          {% for link in linklists.feature-block-right.links %}
+          <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        <ul class="top-mega-nav-link-image-mm level-1 top-mega-nav-link-image-right">
+          <li class="top-mega-nav-link_mm_li image__link {% if link.active %}active{% endif %} level-1">
+            <a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="https://givnberlin.com/collections/women-sweater-strick">
+              <div class="menu-image-teaser-link-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0445/7650/6006/files/Givn_Sweater-Crush-Women-Clean.jpg?v=1611585131" />
+                <div class="top-mega-nav-link-image-right-text">SWEATER CRUSH<span>Women</span></div>
+              </div>
+            </a>
+        </ul>
+      </div>
+      {% endcomment %}
+    </li>
+    {% endfor %}
+    {% endcomment %}
+
+
+    {% comment %}
+    {% for link in linklists.page-sale.links %}
+    <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-0">
+      <a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-0" href="{{ link.url }}"><span>{{ link.title }}</span></a>
+      <div class="mega-nav-submenu-wrapper" style="" id="mega-menu-sale">
+        <div class="nav-border-top"></div>
+        <div class="mega-nav-catalog-nav-lists-wrapper">
+          {% if linklists.sale-nav-one.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{ linklists.sale-nav-one.handle }}">
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.sale-nav-one.title }}</li>
+            {% for link in linklists.sale-nav-one.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if linklists.sale-nav-two.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{ linklists.sale-nav-two.handle }}">
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.sale-nav-two.title }}</li>
+            {% for link in linklists.sale-nav-two.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if linklists.sale-nav-three.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{ linklists.sale-nav-three.handle }}">
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.sale-nav-three.title }}</li>
+            {% for link in linklists.sale-nav-three.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if linklists.woman-nav-four.handle != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="{{linklists.woman-nav-four.handle}}">
+            {% for link in linklists.woman-nav-four.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+
+        {% if linklists.featured-collections-sale.level != '' %}
+        <ul class="top-mega-nav-link-list-mm level-1" id="top-mega-nav-link-list-one">
+          {% for link in linklists.featured-collections-sale.links %}
+          <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if linklists.feature-block-right.level != '' %}
+        <ul class="top-mega-nav-link-list-mm level-1" id="top-mega-nav-link-list-right">
+          <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.feature-block-right.title }}</li>
+          {% for link in linklists.feature-block-right.links %}
+          <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        <ul class="top-mega-nav-link-image-mm level-1 top-mega-nav-link-image-right">
+          <li class="top-mega-nav-link_mm_li image__link {% if link.active %}active{% endif %} level-1">
+            <a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="https://givnberlin.com/collections/women-sweater-strick">
+              <div class="menu-image-teaser-link-wrapper">
+                <img src="https://cdn.shopify.com/s/files/1/0445/7650/6006/files/Givn_Sweater-Crush-Women-Clean.jpg?v=1611585131" />
+                <div class="top-mega-nav-link-image-right-text">SWEATER CRUSH<span>Women</span></div>
+              </div>
+            </a>
+        </ul>
+      </div>
+    </li>
+    {% endfor %}
+    {% endcomment %}
+
+
+  </ul>
+
+  {% comment %}
+  {% include 'product_filter_custom_mm' %}
+  {% endcomment %}
+</div>

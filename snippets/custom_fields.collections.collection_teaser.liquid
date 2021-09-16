@@ -1,0 +1,10 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/rotholz-store.myshopify.com/collections/edit-field/37732
+{% endcomment %}
+{% if collection.metafields.custom_fields["collection_teaser"] != blank %}
+  <div class="custom-field custom-field__collection-teaser custom-field__type--html">
+      {{ collection.metafields.custom_fields["collection_teaser"] }}
+  </div>
+{% endif %}

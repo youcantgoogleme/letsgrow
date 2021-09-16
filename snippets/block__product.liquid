@@ -1,0 +1,23 @@
+    {% assign product = all_products[block.settings.product] %}
+    {% if product.title.size > 0 %}
+        {% include 'product_item_feature-row', grid_image_width: image_size %}
+      {% else %}
+      
+      {% comment %}
+        No product yet. Show onboarding one.
+      {% endcomment %}
+
+      <div class="grid-view-item">
+        <a class="grid-view-item__link" href="#">
+          <div class="grid-view-item__image">
+            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+            {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+          <div class="h4 grid-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+          <div class="grid-view-item__meta">
+            {{ 1999 | money }}
+          </div>
+        </a>
+      </div>
+
+    {% endif %}

@@ -1,0 +1,38 @@
+
+<section class="clear home_section home__html">
+
+
+  <div class="{{settings.gutter}} {{settings.container}}">
+    <div class="row">
+  		<div class="home-content-wrapper clear">
+    		<div class="col-xs-12">
+        		<div class="html-text">{{ section.settings.html_area }}</div> 
+    		</div>
+    		
+  		</div>
+  		
+    </div>
+  </div>
+  
+</section> 
+
+{% schema %}
+{
+  "name": "HTML",
+  "class": "section__home__html",
+  "settings": [
+    {
+       "type": "html",
+       "id": "html_area",
+       "label": "Custom HTML",
+       "default": "<div><p>Some HTML content</p></div>"
+    }
+  ],
+  "presets": [
+    {
+      "category": "HTML",
+      "name": "HTML Section"
+    }
+  ]
+}
+{% endschema %}

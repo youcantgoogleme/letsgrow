@@ -1,0 +1,37 @@
+<div class="block__image-teaser teaser-block__item custom__section custom_-section__image-teaser clear">
+  <div class="block__image-teaser__item-inner clear {% if block.settings.inner-alignment != blank %} align-{{block.settings.inner-alignment}}{% endif %} ">
+        {% if block.settings.teaser_link != blank %}
+          <a href="{{ block.settings.teaser_link }}" class="wrapper-link">
+        {% endif %}
+          {% if block.settings.image != blank %}
+            
+            {% assign image_alt = block.settings.image.alt %}
+            {% assign  image_url = block.settings.image | img_url: image_size %}
+            {% assign  image_url_small = block.settings.image | img_url: '80x' %}
+            {% assign  image_url_400 = block.settings.image | img_url: '400x' %}
+            {% assign  image_url_600 = block.settings.image | img_url: '600x' %}
+
+			<img src="{{image_url_small}}" data-srcset="{{ image_url_400 }} 400w, {{ image_url_600 }} 600w, {{ image_url }} 800w," data-sizes="(min-width: 600px) 50vw, 100vw" class="lazy block_img_teaser_img" alt="{{image_alt}}" >
+            
+            
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+        {% if block.settings.teaser_link != blank %}
+          </a>
+        {% endif %}
+        {% if block.settings.teaser-image-text != blank %}
+          <div class="link-text">
+            {% if block.settings.teaser_link != blank %}
+              <a class="teaser-block-link" href="{{ block.settings.teaser_link }}" class="wrapper-link">
+            {% endif %}
+            {{block.settings.teaser-image-text}}
+            {% if block.settings.teaser_link != blank %}
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+
+  </div>
+</div>
+                            

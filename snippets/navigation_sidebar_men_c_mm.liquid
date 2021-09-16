@@ -1,0 +1,11 @@
+<div class="navigation_sidebar_custom_mm">
+{% comment %}
+  <div class="sidbar-nav-linklisttitle_mm" id="link-list-titel-men">{{ linklists.men.title }}</div>
+{% endcomment %}
+  <ul class="sidebar-nav-link-list-mm" id="sidebar-nav-link-list-mm-men">
+    {% for link in linklists.men.links %}
+    <li><a  class="sidbar-nav-link_mm {% if link.active %}active{% endif %}" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+    {% endfor %}
+  </ul>
+  {% include 'product_filter_custom_mm' %}
+</div>

@@ -1,0 +1,40 @@
+
+
+
+<a href="#" id="shipping-toggler" class="flip"><span class="switch">Versanddetails</span><svg class="icon icon-dropdown-arrow"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-dropdown-arrow"></use></svg></a>
+
+
+<div id="delivery" class="delivery-notice" style="display:none;">
+
+  <strong>Versand mit DHL Go Green (klimaneutral)<br></strong>
+  DEUTSCHLAND / ÖSTERREICH / BELGIEN / NIEDERLANDE (EUROPÄISCHE GEBIETE) / LUXEMBURG<br>
+  4,95 € – Innerhalb von 3 - 5 Werktagen.<br>
+  <b>Versandkostenfrei ab 150€</b><br>
+  RESTLICHE EU UND SCHWEIZ<br>
+  14,95 € – Innerhalb von 7-10 Werktagen.<br>
+  WELT<br>
+  39,95 € – Innerhalb von 10-15 Werktagen.<br>
+  <p>Detailierte Versandinformationen finden Sie <a href="/pages/versand-retoure"> hier. </a></p>
+  {% comment %}<a class="shipping-more-info link" href="#shippingandreturns" rel="modal:open">Info</a>{% endcomment %}
+
+</div>
+
+<div id="shippingandreturns" class="deliveryguide" style="display:none;">
+
+  <div class="shipping-info-short-headline">
+      {%comment%}<span class="shipping-alert">In der Zeit vom 24.12.2021 bis 3.1.2021 kann sich die Lieferzeit verzögern.
+    Bestellungen in diesem Zeitraum werden spätestens am 3.1.2018 versendet.</span><br>{%endcomment%}
+    Der Versand innerhalb Deutschlands dauert 1 bis 3 Werktage.<br>
+    Der Versand in das EU-Ausland dauert 2 bis 4 Werktage.
+  </div>
+  
+  Deutschland: 4,95 € | <b>Versandkostenfrei ab 150€</b>b><br />
+  International: 10 €<br />
+  Artikel können innerhalb von 14 Tagen kostenlos zurückgeschickt werden.<br />
+  <p>Detailierte Versandinformationen finden Sie <a href="/pages/versand-retoure"> hier. </a></p>
+  
+
+  {%comment%}{{ pages.shipping-returns.content }}{%endcomment%}
+
+</div>
+

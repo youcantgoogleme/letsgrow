@@ -1,0 +1,27 @@
+{% case section.settings.width %}
+
+  {% when '25%' %}
+    {% assign block_width = 'col-xs-12 col-xsm-6 col-sm-3' %}
+    {% assign image_size = '320x' %}
+
+  {% when '33%' %}
+    {% assign block_width = 'col-xs-12 col-xsm-6 col-sm-4' %}
+    {% assign image_size = '880x' %}
+
+  {% when '50%' %}
+    {% assign block_width = 'col-xs-12 col-xsm-6' %}
+    {% assign image_size = '880x' -%}
+
+  {% when '66%' %}
+    {% assign block_width = 'col-xs-12 col-xsm-8' %}
+    {% assign image_size = '1500x' -%}
+
+  {% when '75%' %}
+    {% assign block_width = 'col-xs-12 col-xsm-10' %}
+    {% assign image_size = '1500x' -%}
+
+  {% when '100%' %}
+    {% assign block_width = 'col-xs-12 col-xsm-12' %}
+    {% assign image_size = '1500x' -%}
+    
+{% endcase %}

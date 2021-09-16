@@ -1,0 +1,9 @@
+
+<div class="block__text-teaser {% if block.settings.align_text != blank %} align-{{ block.settings.align_text }} {% endif %} " style="width:{{ block.settings.inner__width}}%;">
+  {% if block.settings.title != blank %}
+    <h2 class="section__title">{{ block.settings.title | escape }}</h2>
+  {% endif %}
+  {% if block.settings.text != blank %}
+    <h2 class="main-text">{{ block.settings.text }}</h2>
+  {% endif %}
+</div>

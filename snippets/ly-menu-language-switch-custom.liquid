@@ -1,0 +1,25 @@
+{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign currentLanguageId = language %}
+{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% assign currentLanguageId = language %}
+{% assign currentLanguageValue = 'LANGUAGE' %}
+{% for language in shop.metafields.languages %}
+{% assign key = language | first %}
+{% if key == currentLanguageId %}
+{% assign currentLanguageValue = language | last %}
+{% endif %}
+{% endfor %}
+{% assign currentLanguageIdForImage = currentLanguageId | split: 'ly' | last %}
+{% assign currentLanguageImage = 'ly-icon-' | append: currentLanguageIdForImage | append:'.png' %}
+
+<div class="menu-language-switch ly-languages-links-switcher{% if uppercase == 'true' %} ly-is-uppercase{% endif %}">
+  {% for language in shop.metafields.languages %}
+  {% assign key = language | first %}
+  {% assign value = language | last %}
+  {% if key != "default" %}
+  {% assign language_id = key | split: 'ly' | last %}
+  {% assign img = 'ly-icon-' | append: language_id | append:'.png' %}
+  <a href="#" id="{{ key }}" class="ly-languages-link {% if key == currentLanguageId %}current{% endif %}">
+    {{ value }}
+  </a>
+  {% endif %}
+  {% endfor %}
+</div>

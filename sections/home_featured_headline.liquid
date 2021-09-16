@@ -1,0 +1,91 @@
+
+<section class="clear index-module section home__featured-headline" style="background-color:{{ section.settings.background-color }}; color:{{ section.settings.text-color }};">
+  <div class="{{settings.gutter}} {{settings.container}}">
+    <div class="content-max-width-wrapper">
+    {% if section.settings.title != blank %}
+      <{{section.settings.headline-typ}} class="section__title" style="color:{{ section.settings.text-color }};">{{ section.settings.title }}</{{section.settings.headline-typ}}>
+    {% endif %}
+    </div>
+  </div>
+</section> 
+
+
+{% schema %}
+
+
+{
+  "name": "Headline",
+  "class": "section__home__headline",
+  "settings": [
+    {
+      "type": "select",
+      "id": "headline-typ",
+      "label": "h1, h2 or h3",
+      "options": [
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h3",
+          "label": "h3"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "color",
+      "id": "background-color",
+      "label": "background color",
+      "default": "#ffffff"
+    },
+      {
+      "type": "color",
+      "id": "text-color",
+      "label": "text color",
+      "default": "#000000"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Headling",
+      "default": "<p>Your title</p>"
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Text position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Text",
+      "name": "Headline"
+    }
+  ]
+}
+
+
+    
+
+
+{% endschema %}

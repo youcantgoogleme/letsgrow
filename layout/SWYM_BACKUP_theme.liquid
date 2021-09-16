@@ -1,0 +1,241 @@
+
+
+
+<!doctype html>
+
+<!--[if IE 9 ]><html class="no-js csscalc no-flexbox ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    <meta name="google-site-verification" content="4kcZRywzKwuyWVZeGUMuZ239vO88k1ziF611ig0hikk" />
+
+    <title>
+      {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} – {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} – {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} – {{ shop.name }}{% endunless %}
+    </title>
+    {% comment %}
+    <title>
+    {{ page_title }}{% if current_tags %} – tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} – Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} – {{ shop.name }}{% endunless %}
+	</title>
+    {% endcomment %}
+    
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {% comment %} We preconnect of two popular domains (Shopify CDN and Google Font) to speed up performance {% endcomment %}
+    <link rel="preconnect" href="//cdn.shopify.com" crossorigin>
+    <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
+
+    {% if settings.favicon %}
+      <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+    {% endif %}
+
+    {% include 'social_meta_tags' %}
+    {% comment %}
+    {% include 'google_fonts' %}
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,600,700|PT+Sans:400,700|Source+Sans+Pro:300,400,500,600,700|PT+Sans:400" rel="stylesheet" type="text/css" media="all" />
+	<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+    {% endcomment %}
+    
+        <!-- link different font#-weights -->
+    {{ content_for_header }}
+    
+    {% comment %}<link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">{% endcomment %}
+
+    
+  
+    {% comment %}{{ 'jquery.fancybox.css' | asset_url | stylesheet_tag }}{% endcomment %}
+  	{% comment %}  {{ 'debut.scss.css' | asset_url | stylesheet_tag }}{% endcomment %}
+    {% comment %}{{ 'bootstrap.scss.css' | asset_url | stylesheet_tag }}{% endcomment %}
+    
+    {{ 'custom-css.css' | asset_url | stylesheet_tag }}
+    
+    {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+
+    {% comment %}{{ 'custom_theme.scss.css' | asset_url | stylesheet_tag }} {% endcomment %}
+	{{ 'shadowbox-js.scss.css' | asset_url | stylesheet_tag }}
+	{% comment %}{{ 'jquery.modal.css' | asset_url | stylesheet_tag }}{% endcomment %}
+
+	<link rel="shortcut icon" href="{{ 'favicon.ico' | asset_url }}" type="image/x-icon" />
+
+
+    <script>
+      // This allows to expose several variables to the global scope, to be used in scripts
+      window.shop = {
+        template: {{ template | json }},
+        currentPage: {{ current_page }},
+        shopCurrency: {{ shop.currency | json }},
+        moneyFormat: {{ shop.money_format | json }},
+        moneyWithCurrencyFormat: {{ shop.money_with_currency_format | json }},
+        collectionSortBy: {{ collection.sort_by | default: collection.default_sort_by | json }}
+      };
+
+      window.languages = {
+        autocompleteNoResults: {{ 'search.autocomplete.no_results' | t | json }},
+        autocompleteSeeAll: {{ 'search.autocomplete.see_all' | t | json }},
+        closeReview: {{ 'product.reviews.close' | t | json }},
+        passwordRecoverTitle: {{ 'customer.recover.title' | t | json }},
+        shippingEstimatorSubmitting: {{ 'cart.shipping_estimator.submitting' | t | json }},
+        shippingEstimatorSubmit: {{ 'cart.shipping_estimator.submit' | t | json }},
+        shippingEstimatorError: {{ 'cart.shipping_estimator.error' | t | json }},
+        shippingEstimatorRates: {{ 'cart.shipping_estimator.rates' | t | json }},
+        shippingEstimatorNoRates: {{ 'cart.shipping_estimator.no_rates' | t | json }},
+        cartEstimatedShipping: {{ 'cart.general.estimated_shipping' | t | json }},
+        addToCartLabel: {{ 'product.general.add_to_cart' | t | json }},
+        soldOutLabel: {{ 'product.labels.sold_out' | t | json }},
+        onSaleLabel: {{ 'product.labels.on_sale' | t | json }},
+        unavailableLabel: {{ 'product.labels.unavailable' | t | json }},
+        addToCartButton: {{ 'product.general.add_to_cart' | t | json }},
+        addingToCartButton: {{ 'product.general.adding_to_cart' | t | json }},
+        addedToCartButton: {{ 'product.general.added_to_cart' | t | json }}
+      }
+    </script>
+
+    {% include 'microdata_schema' %}
+    
+    <!-- Global site tag (gtag.js) - Google AdWords: 867295992 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-867295992"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-867295992');
+</script>
+
+
+
+<!-- Event snippet for Sale conversion page -->
+<!--
+<script>
+  gtag('event', 'conversion', {
+      'send_to': 'AW-867295992/59p6CJKGqmwQ-MXHnQM',
+      'value': {{ total_price | money_without_currency }},
+      'currency': 'EUR',
+      'transaction_id': ''
+  });
+</script>
+-->
+
+<!-- Start of Sleeknote signup and lead generation tool - www.sleeknote.com -->
+<script id='sleeknoteScript' type='text/javascript'>
+    (function () {        var sleeknoteScriptTag = document.createElement('script');
+        sleeknoteScriptTag.type = 'text/javascript';
+        sleeknoteScriptTag.charset = 'utf-8';
+        sleeknoteScriptTag.src = ('//sleeknotecustomerscripts.sleeknote.com/14240.js');
+        var s = document.getElementById('sleeknoteScript'); 
+       s.parentNode.insertBefore(sleeknoteScriptTag, s); 
+   })();
+   </script>
+<!-- End of Sleeknote signup and lead generation tool - www.sleeknote.com -->
+    
+  
+</head>
+
+  {% assign template_handle = template | replace: '.', ' ' | truncatewords: 1, '' | handle %}
+
+  <body class="template-{{ template_handle }} {% if page.template_suffix != blank %}template-{{ template_handle }}-{{page.template_suffix}}{% endif %}">
+        {% include 'svg_icons' %}
+
+    <div class="page__overlay"></div>
+
+    <div class="drawers">
+      {% include 'mini_cart' %}
+      {% include 'navigation_sidebar' %}
+    </div>
+
+    <div class="page__container {% if use_secondary_background %}page__container--secondary{% endif %}">
+
+      {% section 'header' %}
+      {% section 'announcement' %}
+
+      {% if product.type != 'Gift Card' %}
+        {% if settings.navigation_mode == 'sidebar' %}
+
+          <div class="sidebar" id="sidebar">
+            <div class="col-16-sm-3 col-16-md-2">
+
+              {% include 'navigation_sidebar_custom', level: 0 %}
+              {% include 'product_filter_custom_mm', level: 0 %}
+
+            </div>
+          </div>
+      
+        {% endif %}
+      {% endif %}
+      
+
+      <main id="main" class="main" role="main">
+        {{ content_for_layout }}
+      </main>
+
+     
+      {% if template != 'index' and settings.newsletter_always_display %}
+        {% include 'newsletter' %}
+      {% endif %}
+
+      {% section 'footer' %}
+    </div>
+
+    {% include 'popup' %}
+
+    {% comment %}This is an empty modal this is used to display the quick shop{% endcomment %}
+    <div class="quick-shop modal modal--large remodal">
+      <div class="quick-shop__spinner spinner-container spinner-container--large">
+        <div class="spinner spinner--circle"></div>
+      </div>
+    </div>
+
+    {{ '//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js' | script_tag }}
+    {{ 'modernizr.min.js' | asset_url | script_tag }}
+
+    {% if settings.currency_conversion_enabled %}
+      {{ '//cdn.shopify.com/s/javascripts/currencies.js' | script_tag }}
+    {% endif %}
+
+    {% if template contains 'customers' %}
+      {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+      {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+    {% endif %}
+
+    {% if template contains 'cart' %}
+      {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+    {% endif %}
+
+    {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+
+    {{ '//cdn.polyfill.io/v2/polyfill.min.js?features=String.prototype.trim,Object.keys,Array.prototype.map,Array.prototype.forEach' | script_tag }}
+    {{ 'libs.js' | asset_url | script_tag }}
+    {{ 'script.js' | asset_url | script_tag }}
+    
+    {{ 'jquery.hoverIntent.min.js' | asset_url | script_tag }}
+    {{ 'imagesloaded.pkgd.min-2.js' | asset_url | script_tag }}
+    {{ 'shadowbox.js' | asset_url | script_tag }}
+    {{ 'jquery.modal.min.js' | asset_url | script_tag }}
+    {{ 'jquery.touchSwipe.min.js' | asset_url | script_tag }}
+	
+    {{ 'jquery.fancybox.js' | asset_url | script_tag }}
+	{{ 'isotope.pkgd.min.js' | asset_url | script_tag }}
+    {{ 'mm_custom.js' | asset_url | script_tag }}
+    
+    {{ 'lazyload.min.js' | asset_url | script_tag }}
+    {% comment %}<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.3.0/dist/lazyload.min.js"></script>{% endcomment %}
+    
+    
+    
+    
+   	{% comment %}{{ 'jquerymobile.js' | asset_url | script_tag }}{% endcomment %}
+    
+
+    <!--[if IE 9]>
+      {{ 'polyfills-ie9.js' | asset_url | script_tag }}
+    <![endif]-->
+
+	
+{% include 'swymSnippet' %}
+
+</body>
+</html>

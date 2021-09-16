@@ -1,0 +1,78 @@
+
+{% comment%} ****** custom image row with two images and differernt align options like Mango {% endcomment %}
+
+
+<div class="{{settings.gutter}} {{settings.container}}">
+	<div class="row">
+  	
+    {% if block.settings.wrapper == true %}
+      <div class="section-wrapper">
+    {% endif %}
+		
+	{% include 'block__assign-image_a_b-size' %}	
+          
+        <div class="{{ block_width_a }}">
+          <div class="image-teaser__item-inner {% if block.settings.innner_alignment-a %}align--{{ block.settings.innner_alignment-a }}{% endif %}" style="width:{{ block.settings.inner__width-a }}%; {% if block.settings.margin_left-a != 0 %}margin-left:{{ block.settings.margin_left-a }}%;{% endif %} {% if block.settings.margin_top-a != 0 %}margin-top:{{ block.settings.margin_top-a }}%;{% endif %} ">
+            {% if block.settings.teaser_link-a != blank %}
+            <a href="{{ block.settings.teaser_link-a }}" class="wrapper-link">
+              {% endif %}
+              {% if block.settings.image-a != blank %}
+              {% assign image_alt = block.settings.image-a.alt %}
+              {{ block.settings.image-a | img_url: image_size_a, scale: 1 , format: 'pjpg'| img_tag: block.settings.image-a.alt, 'img-teaser-row-item-img' }}
+              {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+              {% if block.settings.teaser_link-a != blank %}
+            </a>
+            {% endif %}
+            {% if block.settings.teaser-image-text-a != blank %}
+            <div class="teaser-text">
+              {% if block.settings.teaser_link-a != blank %}
+              <a href="{{ block.settings.teaser_link-a }}" class="wrapper-link">
+                {% endif %}
+                {{block.settings.teaser-image-text-a}}
+                {% if block.settings.teaser_link-a != blank %}
+              </a>
+              {% endif %}
+            </div>
+            {% endif %}
+
+          </div>
+
+        </div>
+
+        <div class="{{ block_width_b }}">
+          <div class="image-teaser__item-inner {% if block.settings.innner_alignment-b %}align--{{ block.settings.innner_alignment-b }}{% endif %}" style="width:{{ block.settings.inner__width-b }}%; {% if block.settings.margin_left-b != 0 %}margin-left:{{ block.settings.margin_left-b }}%;{% endif %} {% if block.settings.margin_top-b != 0 %}margin-top:{{ block.settings.margin_top-b }}%;{% endif %} ">
+            {% if block.settings.teaser_link-b != blank %}
+            <a href="{{ block.settings.teaser_link-b }}" class="wrapper-link">
+              {% endif %}
+              {% if block.settings.image-b != blank %}
+              {% assign image_alt = block.settings.image-b.alt %}
+              {{ block.settings.image-b | img_url: image_size_b, scale: 1 , format: 'pjpg'| img_tag: block.settings.image-b.alt, 'img-teaser-row-item-img' }}
+              {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+              {% if block.settings.teaser_link-b != blank %}
+            </a>
+            {% endif %}
+            {% if block.settings.teaser-image-text-b != blank %}
+            <div class="teaser-text">
+              {% if block.settings.teaser_link-b != blank %}
+              <a href="{{ block.settings.teaser_link-b }}" class="wrapper-link">
+                {% endif %}
+                {{block.settings.teaser-image-text-b}}
+                {% if block.settings.teaser_link-b != blank %}
+              </a>
+              {% endif %}
+            </div>
+            {% endif %}
+
+          </div>
+        </div>
+        
+    {% if block.settings.wrapper == true %}
+      </div>
+    {% endif %}
+    
+	</div>
+</div>

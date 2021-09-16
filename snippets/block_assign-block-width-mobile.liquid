@@ -1,0 +1,15 @@
+
+		{% case block.settings.width %}
+          {% when '25%' %}
+            {% assign block_width = 'col-xs-6 col-xsm-6 col-sm-3' %}
+          {% when '33%' %}
+            {% assign block_width = 'col-xs-6 col-xsm-6 col-sm-4' %}
+          {% when '50%' %}
+            {% assign block_width = 'col-xs-6 col-xsm-6' %}
+          {% when '66%' %}
+            {% assign block_width = 'col-xs-6 col-xsm-8' %}
+          {% when '75%' %}
+            {% assign block_width = 'col-xs-6 col-xsm-10' %}
+          {% when '100%' %}
+            {% assign block_width = 'col-xs-6 col-xsm-12' %}
+        {% endcase %}

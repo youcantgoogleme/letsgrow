@@ -1,0 +1,424 @@
+{%- if section.settings.show_payment_methods -%}
+{%- unless shop.enabled_payment_types == empty -%}
+{%- assign show_payment_icons = true -%}
+{%- endunless -%}
+{%- endif -%}
+
+
+{% if section.settings.show_newsletter %}
+{% unless template == 'index' and section.settings.show_newsletter_on_home_page == false %}
+
+{% comment %} {% include 'newsletter' %} {% endcomment %}
+
+<!-- Begin MailChimp Signup Form -->
+<div id="mc_embed_signup">
+  <form action="//rotholz-clothing.us7.list-manage.com/subscribe/post?u=8576f8fe7f6b4d2931f8021db&id=ef333c4bfc" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+
+      <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_8576f8fe7f6b4d2931f8021db_ef333c4bfc" tabindex="-1" value=""></div>
+      <div class="clear"><input type="submit" value="Anmelden" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    </div>
+  </form>
+</div>
+
+<!--End mc_embed_signup-->
+{% endunless %}
+{% endif %}
+
+{% capture footer_social_media %}
+{% include 'social_networks', show_social_name: true %}
+{% endcapture %}
+
+{% for block in section.blocks %}
+{% case block.type %}
+{% when 'newsletter' %}
+
+<section class="footer__newsletter" {{ block.shopify_attributes }}>
+
+  {% comment %}<div class="line"></div>{% endcomment %}
+
+  <h3 class="footer__title">{{ 'layout.footer.newsletter_title' | t }}</h3>
+
+
+
+  <!-- Begin MailChimp Signup Form -->
+  <div id="mc_embed_signup">
+    <form action="https://stoffbruch.us6.list-manage.com/subscribe/post?u=eb52a79768d3c09e0a77879be&amp;id=1501df658d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div id="mc_embed_signup_scroll">
+
+        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_eb52a79768d3c09e0a77879be_1501df658d" tabindex="-1" value=""></div>
+        <div id="mce-responses" class="clear">
+          <div class="response" id="mce-error-response" style="display:none"></div>
+          <div class="response" id="mce-success-response" style="display:none"></div>
+        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+        <div class="clear"><input type="submit" value="Anmelden" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+      </div>
+    </form>
+  </div>
+  <div class="newsletter-extra-info">
+    <div class="newsletter-icon">
+      <img class="product-detail__icon" src="{{ 'newsletter-icon.svg' | asset_url }}" />
+    </div>
+    <div class="newsletter-extra-info-text">
+      <p>Mit der Anmeldung erkläre ich mich damit einverstanden, dass Stoffbruch Fair Fashion GmbH die in diesem Formular angegebenen Informationen verwendet, um mit mir  E-Mail/Social Media in Kontakt zu treten und mir Marken-Updates und Marketinginhalte zur Verfügung zu stellen.</p>
+
+      {% comment %}
+      <fieldset class="mc_fieldset gdprRequired mc-field-group" name="interestgroup_field">
+        <label class="checkbox subfield" for="gdpr_2829">
+          <input type="checkbox" id="gdpr_2829" name="gdpr[2829]" value="Y" class="av-checkbox ">
+          <span>Email</span>
+        </label>
+        <label class="checkbox subfield" for="gdpr_17490">
+          <input type="checkbox" id="gdpr_17490" name="gdpr[17490]" value="Y" class="av-checkbox ">
+          <span>Facebook & Instagram Marketing</span>
+        </label>
+        <label class="checkbox subfield" for="gdpr_17494">
+          <input type="checkbox" id="gdpr_17494" name="gdpr[17494]" value="Y" class="av-checkbox ">
+          <span>Google Marketing</span>
+        </label>
+      </fieldset>
+      {% endcomment %}
+
+      <p>Du kannst dich jederzeit wieder abmelden, indem du auf den Link in der Fußzeile unserer E-Mails klickst oder uns über info@givn.berlin.com kontaktierst. Weitere Informationen über unsere Datenschutzpraktiken finden Sie in unserer Datenschutzerklärung auf unserer Website.</p>
+      <p>
+        Wir nutzen MailChimp als unsere Marketing-Automatisierungsplattform. Mit dem Absenden dieses Formulars erklärst Du Dich damit einverstanden, dass die von Dir angegebenen Daten an MailChimp zur Verarbeitung gemäß deren <a href="https://mailchimp.com/legal/" target="_blank">Datenschutzerkärung und AGB</a> übertragen werden.
+      </p>
+    </div>
+  </div>
+  <!--End mc_embed_signup-->
+
+
+
+  {% comment %}
+  {% assign footer_form_posted_successfully = false %}
+  {% capture footer_form_action %}/contact#shopify-section-{{ section.id }}{% endcapture %}
+
+  {%- capture footer_newsletter_form -%}
+  {%- form 'customer', action: footer_form_action, class: 'footer__newsletter-form' -%}
+  {% if form.posted_successfully? %}
+  {% assign footer_form_posted_successfully = true %}
+  {% endif %}
+
+  <input type="hidden" name="contact[tags]" value="newsletter">
+  <input class="footer__newsletter-input footer__newsletter-input--email" type="email" name="contact[email]" aria-label="{{ 'layout.footer.newsletter_placeholder' | t }}" placeholder="{{ 'layout.footer.newsletter_placeholder' | t }}">
+  <button class="footer__newsletter-submit button" type="submit">{{ 'layout.footer.newsletter_submit' | t }}</button>
+  {%- endform -%}
+  {%- endcapture -%}
+
+  {%- if footer_form_posted_successfully -%}
+  <p>{{ 'layout.footer.newsletter_success' | t }}</p>
+  {%- else -%}
+  {{ footer_newsletter_form }}
+  {%- endif -%}
+  {% endcomment %}
+
+</section>
+
+
+
+{% endcase %}
+{% endfor %}
+
+<footer class="footer" role="contentinfo">
+  <div class="inner">
+    <div class="footer__wrapper">
+      <div class="row">
+
+        {% for block in section.blocks %}
+        {% case block.type %}
+        {% when 'officeimage' %}
+
+        <div class="col-xs-12 col-xsm-8 col-xlg15-4">
+          <div class="footer__studio-image">
+            <a href="/pages/our-store">
+            {% if block.settings.add__image != blank %}
+            {{ block.settings.add__image | img_url: 1400, scale: 1, format: 'pjpg' | img_tag: block.settings.image.alt, 'foooter-studio-image' }}
+            {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+            </a>
+                        {% comment %}<h3 class="footer__title">{{ 'layout.footer.social_title' | t }}</h3>{% endcomment %}
+            <div class="footer__social"> {{ footer_social_media }} </div>
+          </div>
+        </div>
+
+        {% when 'contact' %}
+        <div class="col-xs-12 col-xsm-4 col-xlg15-3">
+          <section class="footer__contact" {{ block.shopify_attributes }}>
+            <h3 class="footer__title">{{ 'layout.footer.contact_title' | t }}</h3>
+            
+            {% if block.settings.contact_address != blank %}
+            <div class="footer__address">{{ block.settings.contact_address }}</div>
+            {% endif %}
+
+            {% if block.settings.contact_phone != blank %}
+            <p class="footer__phone">{{ block.settings.contact_phone }}</p>
+            {% endif %}
+
+            {% if block.settings.contact_email != blank %}
+            <p class="footer__email">
+              <a href="mailto:{{ block.settings.contact_email }}">{{ block.settings.contact_email }}</a>
+            </p>
+            {% endif %}
+            {% if block.settings.opening_hours != blank %}
+            <div class="footer__opening-hours">
+              {{ block.settings.opening_hours }}
+            </div>
+            {% endif %}
+          </section>
+        </div>
+
+
+        {% when 'links' %}
+        {% assign linklist = linklists[block.settings.menu_linklist] %}
+        {% unless linklist.empty? %}
+        {% if linklist.title == "Information" %}
+        <div class="col-xs-12 col-xsm-4 col-xlg15-3">
+          {% else %}
+          <div class="col-xs-12 col-xsm-8 col-xlg15-3"> 
+            {% endif %}
+            <section class="footer__module__inner" {{ block.shopify_attributes }}>
+
+              <h3 class="footer__title">{{ linklist.title }}</h3>
+
+              <ul class="footer__linklist">
+                {% for link in linklist.links %}
+                <li class="footer__linklist-item">
+                  <a href="{{ link.url }}" class="footer__linklist-link">{{ link.title }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+
+            </section>
+          </div>
+
+          {% endunless %}
+
+          {% when 'social' %}
+
+          {% capture footer_social_media %}
+          {% include 'social_networks', show_social_name: true %}
+          {% endcapture %}
+
+          {% endcase %}
+          {% endfor %}
+
+          <div class="col-xs-12 col-xsm-4 col-xlg15-5">
+
+            <div class="footer-payment">
+              <h3 class="footer__title">Zahlungsarten</h3>
+              {%- if show_payment_icons -%}
+              <div class="grid__item site-footer__payment-icons">
+                <span class="visually-hidden">{{ 'general.payment.method' | t }}</span>
+                <ul class="payment-icons list--inline site-footer__icon-list">
+                  {% assign enabled_payment_types = 'visa,master,american_express,paypal,maestro,klarna-pay-later,sofort,google_pay,apple_pay' | remove: ' ' | split: ',' %}
+                  {%- for type in enabled_payment_types -%}
+                  <li class="payment-icon">
+                    {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                  </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+              {%- endif -%}
+            </div>
+
+            <div class="footer-payment">
+              <h3 class="footer__title">Versand</h3>
+              Klimaneutral mit DHL Go Green<br>
+              Versandkostenfrei ab 150€
+            </div>
+
+
+          </div>
+          
+      </div>
+        </div>
+
+      <div class="footer__misc">
+        <div class="inner">
+          <p class="footer__copyright">
+            {% capture shop_copyright %}<a href="/">{{ shop.name }}</a>{% endcapture %}
+            {{ 'layout.footer.copyright_html' | t: shop_copyright: shop_copyright }}
+          </p>
+
+
+        </div>
+      </div>
+      </footer>
+
+    {% if section.settings.show_back_to_top %}
+    <a href="#" class="back-to-top" title="Back to the top">
+      {% include 'icon' with 'back-to-top-arrow' %}
+    </a>
+    {% endif %}
+
+    {% schema %}
+    {
+    "name": "Footer",
+    "class": "shopify-section__footer",
+    "max_blocks": 8,
+    "settings": [
+    {
+    "type": "checkbox",
+    "id": "show_payment_methods",
+    "label": "Show payment methods",
+    "default": true
+    },
+    {
+    "type": "checkbox",
+    "id": "show_back_to_top",
+    "label": "Show back to top button",
+    "default": true
+    },
+    {
+    "type": "header",
+    "content": "Newsletter"
+    },
+    {
+    "type": "paragraph",
+    "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)."
+    },
+    {
+    "type": "paragraph",
+    "content": "You can sync your customers with a newsletter service by installing their app."
+    },
+    {
+    "type": "checkbox",
+    "id": "show_newsletter",
+    "label": "Show newsletter",
+    "default": true
+    },
+    {
+    "type": "checkbox",
+    "id": "show_newsletter_on_home_page",
+    "label": "Show newsletter on home page",
+    "info": "By disabling this option, you can use the dedicated home page newsletter section to display the newsletter in a different position",
+    "default": false
+    }
+    ],
+    "blocks": [
+    {
+    "type": "officeimage",
+    "name": "Image Block",
+    "settings": [
+    {
+    "type": "image_picker",
+    "id": "add__image",
+    "label": "add Image"
+    }
+    ]
+    },
+
+    {
+    "type": "contact",
+    "name": "Contact info",
+    "limit": 1,
+    "settings": [
+    {
+    "type": "richtext",
+    "id": "contact_address",
+    "label": "Address",
+    "default": "<p>This can be a small text giving extra info</p>"
+    },
+    {
+    "type": "text",
+    "id": "contact_phone",
+    "label": "Phone number"
+    },
+    {
+    "type": "text",
+    "id": "contact_email",
+    "label": "Email"
+    },
+    {
+    "type": "html",
+    "id": "opening_hours",
+    "label": "Opending hours"
+    }
+    ]
+    },
+    {
+    "type": "social",
+    "name": "Social media",
+    "limit": 1,
+    "settings": [
+    {
+    "type": "paragraph",
+    "content": "Make sure to have properly configured your social networks in the theme settings"
+    }
+    ]
+    },
+    {
+    "type": "links",
+    "name": "Links",
+    "settings": [
+    {
+    "type": "link_list",
+    "id": "menu_linklist",
+    "label": "Menu I"
+    }
+    ]
+    },
+    {
+    "type": "menu",
+    "name": "menu",
+    "settings": [
+    {
+    "type": "link_list",
+    "id": "menu_linklist_two",
+    "label": "Menu II"
+    }
+    ]
+    },
+    {
+    "type": "newsletter",
+    "name": "Newsletter",
+    "limit": 1,
+    "settings": [
+    {
+    "type": "richtext",
+    "id": "newsletter-customer-info",
+    "label": "Info Text"
+    },
+
+    {
+    "type": "paragraph",
+    "content": "Der Shopify default Newsletter ist mit Mailchimp überschrieben. FOLGENDE INFO UNTEN GILT NICHT !Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)."
+    },
+    {
+    "type": "paragraph",
+    "content": "You can sync your customers with a newsletter service by installing their app."
+    }
+    ]
+    }
+    ],
+    "default": {
+    "blocks": [
+    {
+    "type": "contact",
+    "settings": {
+    "contact_phone": "(333) 123 456",
+    "contact_email": "john@doe.com"
+    }
+    },
+    {
+    "type": "social",
+    "settings": {}
+    },
+    {
+    "type": "links",
+    "settings": {
+    "menu_linklist": "footer"
+    }
+    },
+    {
+    "type": "newsletter",
+    "settings": {}
+    }
+    ]
+    }
+    }
+    {% endschema %}

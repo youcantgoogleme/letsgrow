@@ -1,0 +1,169 @@
+
+
+<div class="row">
+
+  {% for block in section.blocks %}
+
+  {% include 'block__assign-image-size' %}
+  {% include 'block__assign-block-width' %}
+
+
+  <div class="section__item__{{block.type}} teaser-block__item teaser-block__item custom__section--{{section.id}} {{ block_width }} {% if section.settings.alignment %}align--{{ section.settings.alignment }}{% endif %}" {{ section.shopify_attributes }}>
+    <div class="teaser-block__item-inner">
+      {% if block.settings.teaser_link != blank %}
+      <a href="{{ block.settings.teaser_link }}" class="wrapper-link">
+        {% endif %}
+        {% if block.settings.image != blank %}
+
+
+        {% assign image_alt = block.settings.image.alt %}
+
+        {% assign  image_url = block.settings.image | img_url: image_size %}
+        {% assign  image_url_small = block.settings.image | img_url: '60x' %}
+        {% assign  image_url_210 = block.settings.image | img_url: '210x' %}
+        {% assign  image_url_420 = block.settings.image | img_url: '420x' %}
+        {% assign  image_url_730 = block.settings.image | img_url: '730x' %}
+        {% assign  image_url_1270 = block.settings.image | img_url: '1270x' %}
+
+        <img src="{{image_url_small}}" 
+             data-srcset="{{ image_url_210 }} 210w, {{ image_url_420 }} 420w, {{ image_url_730 }} 730w, {{ image_url_1270 }} 1270w," 
+             data-sizes="50vw" class="lazy img-teaser-row-item-img" alt="{{image_alt}}" >
+
+
+        {% comment %} {{ block.settings.image | img_url: image_size, scale: 1 | img_tag: image_alt, 'teaser-block-img' }} {% endcomment %}
+        {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+        {% if block.settings.teaser_link != blank %}
+      </a>
+      {% endif %}
+      {% if block.settings.teaser-image-text != blank %}
+      <div class="link-text">
+        {% if block.settings.teaser_link != blank %}
+        <a class="teaser-block-link" href="{{ block.settings.teaser_link }}">
+          {% endif %}
+          {{block.settings.teaser-image-text}}
+          {% if block.settings.teaser_link != blank %}
+        </a>
+        {% endif %}
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+
+
+  {% endfor %}
+</div>
+
+
+
+
+  {% schema %}
+  {
+    "name": "Featured Image",
+    "class": "section__teaser-image col-12",
+
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Image Teaser List | teaser-blocks.liquid"
+      }
+      ],
+
+    "blocks": [
+      {
+        "type": "Image",
+        "name": "Image Teaser",
+        "settings": [
+  			{
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image"
+
+            },
+            {
+              "type": "text",
+              "id": "teaser-image-text",
+              "label": "text",
+              "default": "Link Text"
+            },
+            {
+              "type": "select",
+              "id": "width",
+              "label": "Container width",
+              "default": "50%",
+              "options": [
+                {
+                  "value": "25%",
+                  "label": "25%"
+                },
+                {
+                  "value": "33%",
+                  "label": "33%"
+                },
+                {
+                  "value": "50%",
+                  "label": "50%"
+                },
+
+                {
+                  "value": "66%",
+                  "label": "66%"
+                },
+                {
+
+                  "value": "75%",
+                  "label": "75%"
+                },
+                {
+                  "value": "100%",
+                  "label": "100%"
+                }
+              ]
+            },
+            {
+              "type": "checkbox",
+              "id": "wrapper",
+              "label": "Wrapper",
+              "default":   false,
+              "info":      "Create a 100% Wrapper"
+            },
+            {
+              "type": "select",
+              "id": "alignment",
+              "label": "Vertical alignment",
+              "default": "center",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "left"
+                },
+                {
+                  "value": "center",
+                  "label": "center"
+                },
+                {
+                  "value": "right",
+                  "label": "right"
+                }
+              ]
+            },
+            {
+              "type": "url",
+              "id": "teaser_link",
+              "label": "Teaser link"
+            }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "category": "Image",
+        "name": "Image Teaser List | teaser-blocks.liquid"
+      }
+    ]
+  }
+  {% endschema %}

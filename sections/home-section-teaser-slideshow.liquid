@@ -1,0 +1,483 @@
+{% include 'block__assign-image-size' %}
+<div class="row">
+  <div class="col-12">
+    {% if section.settings.wrapper == true %}
+
+    <!-- <div class="ection-wrapper flex-width-{{ section.settings.section-wrapper-size }}"> --> 
+
+    <div class="slideshow-wrapper section-wrapper" style="{% if section.settings.wrapper-background-color != blank %}background-color:{{section.settings.wrapper-background-color}}{% endif %}">
+      {% endif %}
+      {% if section.settings.section-title != blank %}
+
+      <div class="section-title">
+        <h2 class="section__title">{{section.settings.section-title}}</h2>
+      </div>
+
+      {% endif %}
+
+
+
+      <div id="{{section.id}}" class="teaser-slideshow owl-carousel owl-theme ">
+
+        {% for block in section.blocks %}
+
+        {% assign block_width = 'col-xs-12' %}
+        {% include 'block__assign-image-size' %}
+
+        <div class="{{ block_width }}">
+          <div class="block__item__image image-teaser__item-inner{% if block.settings.innner_alignment %} align--{{ block.settings.innner_alignment }}{% endif %}{% if block.settings.jsrenderheight-mobile %} jsrenderheight-mobile{% else %} no-mobile-js-height{% endif %}{% if block.settings.jsrenderheight %} renderheight{% else %} noheight{% endif %}{% if block.settings.jsrenderheight == false and block.settings.jsrenderheight-mobile == false %} noheight{% endif %}"
+
+               style="{% if block.settings.background-color %}background-color: {{ block.settings.background-color }}{% endif %}; width:{{ block.settings.inner__width }}%; {% if block.settings.margin_left != 0 %}margin-left:{{ block.settings.margin_left }}%;{% endif %} {% if block.settings.margin_top != 0 %}margin-top:{{ block.settings.margin_top }}%;{% endif %} ">
+
+            {% if block.settings.image != blank %}
+            {% if block.settings.teaser_link != blank %}
+            <a href="{{ block.settings.teaser_link }}" class="wrapper-link">
+              {% endif %}
+
+              {% assign image_alt = block.settings.image.alt %}
+
+              {% assign  image_url = block.settings.image | img_url: image_size %}
+              {% assign  image_url_small = block.settings.image | img_url: '60x' %}
+              {% assign  image_url_210 = block.settings.image | img_url: '210x' %}
+              {% assign  image_url_420 = block.settings.image | img_url: '420x' %}
+              {% assign  image_url_730 = block.settings.image | img_url: '730x' %}
+              {% assign  image_url_1270 = block.settings.image | img_url: '1270x' %}
+
+              <img  src="{{image_url_small}}" 
+                   data-srcset="{{ image_url_210 }} 210w, {{ image_url_420 }} 420w, {{ image_url_730 }} 730w, {{ image_url_1270 }} 1270w,"
+
+                   data-sizes="100vw"  alt="{{image_alt}}"
+                   class="lazy block_img_link_img {% if block.settings.jsrenderheight %} centered{% endif %}{% if block.settings.jsrenderheight-mobile %} centered-mobile{% endif %}{% if block.settings.jsrenderheight == false and block.settings.jsrenderheight-mobile == false %} notcentred{% endif %}"
+                   />
+
+
+              {% if block.settings.teaser_link != blank %}
+            </a>
+            {% endif %}
+            {% endif %}
+
+            {% if block.settings.image-teaser-text != blank %}
+            <div class="text-wrapper center{% if block.settings.mobile-text-position == true %} ontop{% endif %}{% if block.settings.image == blank %} single{% endif %}" style="background-color:{{block.settings.text-background-color}}">
+              <div class="image-teaser-text  {{block.settings.image-text-mobile-font-size}}" style="color:{{ block.settings.text_color }}; font-size:{{block.settings.image-text-font-size}}px; font-weight:{{block.settings.font-weight}}">
+                {% if block.settings.teaser_link != blank %}
+                <a href="{{ block.settings.teaser_link }}">
+                  {% endif %}
+                  {{ block.settings.image-teaser-text }}
+                  {% if block.settings.teaser_link != blank %}
+                </a>
+                {% endif %}    
+              </div>
+
+              {% if block.settings.button-position == false %}
+              {% if block.settings.teaser-image-text != blank %}
+              <div class="teaser-text inside{% if block.settings.mobile-text-position == true %} ontop{% endif %}{% if block.settings.text-alignment %} align--{{block.settings.text-alignment}}{% endif %}">
+                {% if block.settings.teaser_link != blank %}
+                <a class="{{block.settings.link-style}}" style="color:{{block.settings.link-text-color}};{% if block.settings.link-style != 'button--link' %} background-color:{{block.settings.button-color}}{% endif %}" href="{{ block.settings.teaser_link }}" class="wrapper-link">
+                  {% endif %}
+                  <span class="cta-text"{% if block.settings.link-text-color != blank %}style="color:{{block.settings.link-text-color}}"{% endif %} >{{block.settings.teaser-image-text}}</span> 
+                  {% if block.settings.price != blank %}{{block.settings.price}}{% endif %}
+                  {% if block.settings.teaser_link != blank %}
+                </a>
+                {% endif %}
+              </div>
+              {% endif %}
+              {% endif %}
+
+            </div>
+            {% endif %}
+
+            {% if block.settings.button-position == true %}
+            {% if block.settings.teaser-image-text != blank %}
+            <div class="teaser-text outside{% if block.settings.mobile-text-position == true %} ontop{% endif %}{% if block.settings.text-alignment %} align--{{block.settings.text-alignment}}{% endif %}">
+              {% if block.settings.teaser_link != blank %}
+              <a class="{{block.settings.link-style}}" style="color:{{block.settings.link-text-color}};{% if block.settings.link-style != 'button--link' %} background-color:{{block.settings.button-color}}{% endif %}" href="{{ block.settings.teaser_link }}" class="wrapper-link">
+                {% endif %}
+                <span {% if block.settings.link-text-color != blank %}style="color:{{block.settings.link-text-color}}"{% endif %}>{{block.settings.teaser-image-text}}</span>
+                {% if block.settings.price != blank %}{{block.settings.price}}{% endif %}
+                {% if block.settings.teaser_link != blank %}
+              </a>
+              {% endif %}
+            </div>
+            {% endif %}
+            {% endif %}
+
+
+          </div>
+        </div>
+
+
+
+        {% endfor %} 
+      </div>
+
+      {% if section.settings.wrapper == true %}
+    </div>
+    {% endif %}
+  </div>
+
+</div>
+
+
+
+
+<script defer>
+
+
+  jQuery(document).ready(function() {
+
+    jQuery("#{{section.id}}").owlCarousel({
+           items : 1,
+           lazyLoad:true,
+           lazyLoadEager: 1,
+           nav: true, // Show next and prev buttons
+           loop: true,
+           autoplay: false,
+           autoplayHoverPause: true,
+           autoplaySpeed: 400,
+           dots:false,
+           navSpeed:400,
+           autoHeight:true,
+           checkVisibility:false,
+           navText: [
+           '<span aria-label="' + 'Previous' + '"><svg class="icon icon-arrow-left-thin"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-left-thin"></use></svg></span>',
+           '<span aria-label="' + 'Next' + '"><svg class="icon icon-arrow-right-thin"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-right-thin"></use></svg></span>'
+           ],
+           responsive:{
+           0:{
+           items: 1,
+           stagePadding: 35
+           },
+           600:{
+           items: 2,
+           stagePadding: 35
+           },
+           768:{
+           items: 3,
+           stagePadding: 70
+           },
+           769:{
+           items: 3,
+           stagePadding: 70
+           },
+           1100:{
+           items: 3,
+           stagePadding: 70
+           }
+           }
+           });
+
+  });
+
+</script>
+
+
+{% schema %}
+
+{
+"name": "Image Teaser Slideshow",
+"class": "section__slideshow",
+"settings": [
+{
+"type": "checkbox",
+"id": "wrapper",
+"label": "Wrapper",
+"default":   false,
+"info":      "Create a 100% Wrapper"
+},
+{
+"type":      "range",
+"id":        "section-wrapper-size",
+"min":        25,
+"max":        100,
+"step":       5,
+"unit":       "%",
+"label":     "Wrapper Size",
+"default":   100
+},
+{
+"type": "color",
+"id": "wrapper-background-color",
+"label": "Wrapper Background Color",
+"default": "transparent"
+},
+{
+"type": "richtext",
+"id": "section-title",
+"label": "Section Title",
+"default": "<p>Section Title</p>"
+}
+],
+
+"blocks": [
+{
+"type": "Image-Block",
+"name": "Image Block",
+"settings": [
+{
+"type": "image_picker",
+"id": "image",
+"label": "Image"
+},
+{
+"type": "color",
+"id": "background-color",
+"label": "Background Color",
+"default": "transparent"
+},
+{
+"type": "checkbox",
+"id": "jsrenderheight",
+"label": "render height",
+"default": false,
+"info": "Berechnet die Teaser Höhe mit eingestellter Ratio"
+},
+{
+"type": "checkbox",
+"id": "jsrenderheight-mobile",
+"label": "render height mobile",
+"default": false,
+"info": "Berechnet die Teaser Höhe mit eingestellter Ratio"
+},
+{
+"type": "checkbox",
+"id": "mobile-two",
+"label": "mobile two images",
+"default": false
+},
+
+{
+"type":      "range",
+"id":        "inner__width",
+"min":        25,
+"max":        100,
+"step":       1,
+"unit":       "%",
+"label":     "Inner Width",
+"default":   100
+},
+{
+"type": "select",
+"id": "innner_alignment",
+"label": "Inner alignment",
+"default": "left",
+"options": [
+{
+"value": "left",
+"label": "left"
+},
+{
+"value": "center",
+"label": "center"
+},
+{
+"value": "right",
+"label": "right"
+}
+]
+},
+{
+"type":      "range",
+"id":        "margin_top",
+"min":        0,
+"max":        100,
+"step":       1,
+"unit":       "%",
+"label":     "Margin top",
+"default":   0
+},
+{
+"type":      "range",
+"id":        "margin_left",
+"min":        0,
+"max":        100,
+"step":       1,
+"unit":       "%",
+"label":     "Margin Left",
+"default":   0
+},
+{
+"type": "url",
+"id": "teaser_link",
+"label": "Teaser link"
+},
+{
+"type": "richtext",
+"id": "teaser-image-text",
+"label": "CTA Text",
+"default": "<p>CTA Text</p>"
+},
+{
+"type": "select",
+"id": "link-style",
+"label": "CTA",
+"default": "button",
+"options": [
+{
+"value": "button",
+"label": "Button"
+},
+{
+"value": "button--link",
+"label": "Link"
+},
+{
+"value": "button button--transparent",
+"label": "Transparent"
+}
+]
+},
+{
+"type": "color",
+"id": "link-text-color",
+"label": "CTA Text Color",
+"default": "#ffffff"
+},
+{
+"type": "richtext",
+"id": "price",
+"label": "Preis"
+},
+
+{
+"type": "color",
+"id": "button-color",
+"label": "Button Background Color",
+"default": "#ffffff"
+},
+{
+"type": "checkbox",
+"id": "button-position",
+"label": "CTA on Bottom ",
+"default": true,
+"info": "Button/Link unter Text oder unten im Bild"
+},
+{
+"type": "select",
+"id": "text-alignment",
+"label": "Link Alignment",
+"default": "bottom-center",
+"options": [
+{
+"value": "bottom-center",
+"label": "Bottom Center"
+},
+{
+"value": "bottom-left",
+"label": "Bottom Left"
+},
+{
+"value": "bottom-right",
+"label": "Bottom Right"
+},
+{
+"value": "top-center",
+"label": "Top Center"
+},
+{
+"value": "top-left",
+"label": "Top Left"
+},
+{
+"value": "top-right",
+"label": "Top Right"
+},
+{
+"value": "under",
+"label": "Under"
+},
+{
+"value": "under-center",
+"label": "Under Center"
+}
+]
+},
+{
+"type": "richtext",
+"id": "image-teaser-text",
+"label": "Teaser Text"
+},
+{
+"type":      "range",
+"id":        "image-text-font-size",
+"min":        14,
+"max":        80,
+"step":       1,
+"unit":       "px",
+"label":     "Text Font Size",
+"default":   15
+},
+{
+"type": "select",
+"id": "image-text-mobile-font-size",
+"label": "Mobile Text Font Size",
+"default": "middle",
+"options": [
+{
+"value": "big",
+"label": "big"
+},
+{
+"value": "middle",
+"label": "middle"
+},
+{
+"value": "small",
+"label": "small"
+}
+]
+},
+{
+"type": "select",
+"id": "font-weight",
+"label": "Teaser Text Font Weight",
+"default": "700",
+"options": [
+{
+"value": "700",
+"label": "700"
+},
+{
+"value": "500",
+"label": "500"
+},
+{
+"value": "400",
+"label": "400"
+},
+{
+"value": "300",
+"label": "300"
+}
+]
+},
+{
+"type": "color",
+"id": "text-background-color",
+"label": "Text Background Color",
+"default": "transparent"
+},
+{
+"type": "color",
+"id": "text_color",
+"label": "Text Font Color",
+"default": "#ffffff"
+},
+{
+"type": "checkbox",
+"id": "mobile-text-position",
+"label": "Mobile on top of image",
+"default": true,
+"info": "Mobile on top of image or below"
+}
+]
+}
+],
+"presets": [
+{
+"category": "Image",
+"name": "Image Teaser Slideshow"
+}
+]
+}
+
+{% endschema %}

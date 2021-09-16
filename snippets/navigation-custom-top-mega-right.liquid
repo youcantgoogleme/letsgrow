@@ -1,0 +1,167 @@
+<div class="navigation_top_mega_mm">
+  <ul class="top-mega-nav-link-list-mm level-0">
+
+    {% for link in linklists.page-about.links %}
+    <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-0">
+      <a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-0" href="{{ link.url }}"><span>{{ link.title }}</span></a>
+
+      {% comment %}
+      <div class="mega-nav-submenu-wrapper" id="mega-menu-about">
+        <div class="nav-border-top"></div>
+        <div class="mega-nav-catalog-nav-lists-wrapper">
+
+
+          <!--  space for Megamenu Content without extra links -->
+
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list__image">
+            {% for link in linklists.about-the-brand.links %}
+            <div class="col-12 col-sm-3 col-md-3">
+              <li class="top-mega-nav-link_mm_li image__link {% if link.active %}active{% endif %} level-1">
+                <a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}">
+                  {% if link.object.title == 'About Us' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0445/7650/6006/files/Ueber_Uns.jpg?v=1603466203" />
+                  {% endif %}
+                  {% if link.object.title == 'Our Store' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0445/7650/6006/files/Concept_Store_Berlin_2.jpg?v=1603466203" />
+                  {% endif %}
+                  {% if link.object.title == 'Faire Produktion' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0445/7650/6006/files/Faire-Produktion_Shopify.jpg?v=1603466203" />
+                  {% endif %}
+                  {% if link.object.title == 'Nachhaltige Materialien' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0445/7650/6006/files/Nachhaltige_Materialien_92df923d-3cf5-4399-83c5-348accd538a4.jpg?v=1603466203" />
+                  {% endif %}
+                  <span>{{ link.title }}</span>
+                </a>
+              </li>
+            </div>
+            {% endfor %}
+          </ul>
+
+          {% comment %}
+          {% if linklists.about-nav-one.level != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="top-mega-nav-link-list-featured">
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.about-nav-one.title }}</li>
+            {% for link in linklists.about-nav-one.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if linklists.about-nav-two.level != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="top-mega-nav-link-list-featured">
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.about-nav-two.title }}</li>
+            {% for link in linklists.about-nav-two.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if linklists.about-nav-three.level != '' %}
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list" id="top-mega-nav-link-list-featured">
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1 menu-title">{{ linklists.about-nav-three.title }}</li>
+            {% for link in linklists.about-nav-three.links %}
+            <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% endcomment %}
+        </div>
+      </div>
+      {% endcomment %}
+
+
+    </li>
+    {% endfor %}
+
+    {% for link in linklists.page-journal.links %}
+    <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-0">
+      <a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-0" href="{{ link.url }}"><span>{{ link.title }}</span></a>
+
+      {% comment %}
+      <div class="mega-nav-submenu-wrapper" id="mega-menu-store">
+        <div class="nav-border-top"></div>
+
+        <div class="mega-nav-catalog-nav-lists-wrapper">
+
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list__image">
+
+            {% for link in linklists.journal.links %}
+            <div class="col-12 col-sm-3 col-md-3">
+              <li class="top-mega-nav-link_mm_li image__link {% if link.active %}active{% endif %} level-1">
+                <a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}">
+
+                  {% if link.object.title == 'About Us' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0445/7650/6006/files/Ueber_Uns.jpg?v=1603466203" />
+                  {% endif %}
+                  {% if link.object.title == 'Our Store' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0445/7650/6006/files/Concept_Store_Berlin_2.jpg?v=1603466203" />
+                  {% endif %}
+                  {% if link.object.title == 'Faire Produktion' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0445/7650/6006/files/Faire-Produktion_Shopify.jpg?v=1603466203" />
+                  {% endif %}
+                  {% if link.object.title == 'Nachhaltige Materialien' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0445/7650/6006/files/Nachhaltige_Materialien_92df923d-3cf5-4399-83c5-348accd538a4.jpg?v=1603466203" />
+                  {% endif %}
+                  <span>{{ link.title }}</span>
+
+                </a>
+              </li>
+            </div>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endcomment %}
+
+    </li>
+    {% endfor %}
+
+    {% for link in linklists.page-store.links %}
+    <li class="top-mega-nav-link_mm_li {% if link.active %}active{% endif %} level-0">
+      <a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-0" href="{{ link.url }}"><span>{{ link.title }}</span></a>
+
+      {% comment %}
+      <div class="mega-nav-submenu-wrapper" id="mega-menu-store">
+        <div class="nav-border-top"></div>
+
+        <!--  space for Megamenu Content without extra links -->
+
+        <div class="mega-nav-catalog-nav-lists-wrapper">
+
+          <ul class="top-mega-nav-link-list-mm level-1 mega-nav-catalog-nav-list__image">
+
+            {% for link in linklists.stores.links %}
+            <div class="col-12 col-sm-3 col-md-3">
+              <li class="top-mega-nav-link_mm_li image__link {% if link.active %}active{% endif %} level-1">
+                <a  class="top-mega-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}">
+
+                  {% if link.object.title == 'About Us' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0445/7650/6006/files/Ueber_Uns.jpg?v=1603466203" />
+                  {% endif %}
+                  {% if link.object.title == 'Our Store' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0445/7650/6006/files/Concept_Store_Berlin_2.jpg?v=1603466203" />
+                  {% endif %}
+                  {% if link.object.title == 'Faire Produktion' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0445/7650/6006/files/Faire-Produktion_Shopify.jpg?v=1603466203" />
+                  {% endif %}
+                  {% if link.object.title == 'Nachhaltige Materialien' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0445/7650/6006/files/Nachhaltige_Materialien_92df923d-3cf5-4399-83c5-348accd538a4.jpg?v=1603466203" />
+                  {% endif %}
+                  <span>{{ link.title }}</span>
+
+                </a>
+              </li>
+            </div>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endcomment %}
+
+    </li>
+    {% endfor %}
+
+
+  </ul>
+  {% comment %}
+  {% include 'product_filter_custom_mm' %}
+  {% endcomment %}
+</div>

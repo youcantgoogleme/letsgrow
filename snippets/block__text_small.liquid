@@ -1,0 +1,8 @@
+<div class="block__text-teaser-small {% if block.settings.align_text != blank %} align-{{ block.settings.align_text }} {% endif %} " style="width:{{ block.settings.inner__width}}%;{% if block.settings.margin__left != 0 %}margin-left:{{ block.settings.margin__left }}%;{% endif %} {% if block.settings.margin__top != 0 %}margin-top:{{ block.settings.margin__top }}%;{% endif %}">
+  {% if block.settings.title != blank %}
+    <h2 class="title">{{ block.settings.title | escape }}</h2>
+  {% endif %}
+  {% if block.settings.text != blank %}
+  <div class="main-text">{{ block.settings.text }}</div>
+  {% endif %}
+</div>

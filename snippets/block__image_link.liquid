@@ -1,0 +1,78 @@
+{% include 'block__assign-image-size' %}
+
+
+<div class="img-link-content-wrapper{% if block.settings.innner_alignment %} align--{{ block.settings.innner_alignment }}{% endif %}"  style="{% if block.settings.background-color %}background-color: {{ block.settings.background-color }}{% endif %}; width:{{ block.settings.inner__width}}%;">
+
+    {% if block.settings.image_link != blank %}
+    <a href="{{ block.settings.image_link }}" class="wrapper-link">
+        {% endif %}
+        {% if block.settings.image != blank %}
+        <div class="img-wrapper">
+
+          {% assign image_alt = block.settings.image.alt %}
+
+          {% assign  image_url = block.settings.image | img_url: image_size %}
+          {% assign  image_url_small = block.settings.image | img_url: '60x' %}
+          {% assign  image_url_210 = block.settings.image | img_url: '210x' %}
+          {% assign  image_url_420 = block.settings.image | img_url: '420x' %}
+          {% assign  image_url_730 = block.settings.image | img_url: '730x' %}
+          {% assign  image_url_1270 = block.settings.image | img_url: '1270x' %}
+
+          <img  
+             src="{{image_url_small}}"
+             data-srcset="{{ image_url_210 }} 210w, {{ image_url_420 }} 420w, {{ image_url_730 }} 730w, {{ image_url_1270 }} 1270w,"
+             data-sizes="(min-width: 768px) {{image_container}}" alt="{{image_alt}}" 
+             class="lazy block_img_link_img {% if block.settings.jsrenderheight %} centered-desktop{% endif %}{% if block.settings.jsrenderheight-mobile %} centered-mobile{% endif %}{% if block.settings.jsrenderheight == false and block.settings.jsrenderheight-mobile == false %} notcentred{% endif %}"
+             />
+
+        </div>
+        {% endif %}
+        {% if block.settings.image_link != blank %}
+    </a>
+    {% endif %}
+
+    {% if block.settings.image-teaser-text != blank %}
+    <div class="text-wrapper center{% if block.settings.mobile-text-position == true %} ontop{% endif %}{% if block.settings.image == blank %} single{% endif %}" style="background-color:{{block.settings.text-background-color}}">
+      {% if block.settings.image_link != blank %}
+      <a href="{{ block.settings.image_link }}" class="teaser-text-link">
+      {% endif %}
+      	<div class="image-teaser-text " style="color:{{ block.settings.text_color }}; font-size:{{block.settings.image-text-font-size}}px; font-weight:{{block.settings.font-weight}}">
+            {{ block.settings.image-teaser-text }}
+        </div>
+        {% if block.settings.image_link != blank %}
+      </a>
+      {% endif %}
+
+        {% if block.settings.button-position == false %}
+        {% if block.settings.image-link-text != blank %}
+        <div class="teaser-text inside{% if block.settings.mobile-text-position == true %} ontop{% endif %}{% if block.settings.image-teaser-link_alignment %}align--{{ block.settings.image-teaser-link_alignment }}{% endif %}">
+            {% if block.settings.image_link != blank %}
+            <a class="{{block.settings.link-style}}" style="{% if block.settings.link-style != 'button--link' %}background-color:{{block.settings.button-color}}{% endif %}" href="{{ block.settings.image_link }}" class="wrapper-link">
+            {% endif %}
+               <span class="link-text-custom-color" style="color:{{ block.settings.link_color }}">{{block.settings.image-link-text}}</span>
+            {% if block.settings.image_link != blank %}
+            </a>
+            {% endif %}
+        </div>
+        {% endif %}
+        {% endif %}
+        
+    </div>
+    {% endif %}
+
+    {% if block.settings.button-position == true %}
+    {% if block.settings.image-link-text != blank %}
+    <div class="teaser-text outside {% if block.settings.mobile-text-position == true %}ontop{% endif %} {% if block.settings.image-teaser-link_alignment %}align--{{ block.settings.image-teaser-link_alignment }}{% endif %}">
+        {% if block.settings.image_link != blank %}
+        <a class="{{block.settings.link-style}}" style="background-color:{{block.settings.button-color}}" href="{{  block.settings.image_link }}" class="wrapper-link">
+            {% endif %}
+            <span class="link-text-custom-color" style="color:{{ block.settings.link_color }}">{{block.settings.image-link-text}}</span>
+            {% if block.settings.image_link != blank %}
+        </a>
+        {% endif %}
+    </div>
+    {% endif %}
+    {% endif %}
+</div>
+
+

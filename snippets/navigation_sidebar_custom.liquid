@@ -1,0 +1,66 @@
+
+    <div class="navigation_sidebar_custom_mm">
+         
+      <ul class="sidebar-nav-link-list-mm level-0">
+        
+        {% for link in linklists.page-men.links %}
+          <li class="sidbar-nav-link_mm_li {% if link.active %}active{% endif %} level-0">
+            <a  class="sidbar-nav-link_mm {% if link.active %}active{% endif %} level-0" href="{{ link.url }}"><span>{{ link.title }}</span></a>
+            <ul class="sidebar-nav-link-list-mm level-1" id="sidebar-nav-link-list-mm-men">
+              {% for link in linklists.herren.links %}
+              <li class="sidbar-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="sidbar-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% endfor %}
+        
+        {% for link in linklists.page-women.links %}
+          <li class="sidbar-nav-link_mm_li {% if link.active %}active{% endif %} level-0">
+            <a  class="sidbar-nav-link_mm {% if link.active %}active{% endif %} level-0" href="{{ link.url }}"><span>{{ link.title }}</span></a>
+            <ul class="sidebar-nav-link-list-mm level-1" id="sidebar-nav-link-list-mm-men">
+              {% for link in linklists.damen.links %}
+              <li class="sidbar-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="sidbar-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% endfor %}
+        
+         {% for link in linklists.page-accessories.links %}
+          <li class="sidbar-nav-link_mm_li {% if link.active %}active{% endif %} level-0">
+            <a  class="sidbar-nav-link_mm {% if link.active %}active{% endif %} level-0" href="{{ link.url }}"><span>{{ link.title }}</span></a>
+            <ul class="sidebar-nav-link-list-mm level-1" id="sidebar-nav-link-list-mm-men">
+              {% for link in linklists.accessories.links %}
+              <li class="sidbar-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="sidbar-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% endfor %}
+        {% for link in linklists.product-gutscheine.links %}
+          <li class="sidbar-nav-link_mm_li {% if link.active %}active{% endif %} level-0">
+              <a  class="sidbar-nav-link_mm {% if link.active %}active{% endif %} level-0" href="{{ link.url }}"><span>{{ link.title }}</span></a>
+            </li>
+        {% endfor %}
+         {% for link in linklists.page-sale.links %}
+          <li class="sidbar-nav-link_mm_li {% if link.active %}active{% endif %} level-0">
+            <a  class="sidbar-nav-link_mm {% if link.active %}active{% endif %} level-0" href="{{ link.url }}"><span>{{ link.title }}</span></a>
+            <ul class="sidebar-nav-link-list-mm level-1" id="sidebar-nav-link-list-mm-men">
+              {% for link in linklists.sale.links %}
+              <li class="sidbar-nav-link_mm_li {% if link.active %}active{% endif %} level-1"><a  class="sidbar-nav-link_mm {% if link.active %}active{% endif %} level-1" href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% endfor %}
+        {% for link in linklists.page-brand.links %}
+          <li class="sidbar-nav-link_mm_li {% if link.active %}active{% endif %} level-0">
+              <a  class="sidbar-nav-link_mm {% if link.active %}active{% endif %} level-0" href="{{ link.url }}"><span>{{ link.title }}</span></a>
+            </li>
+        {% endfor %}
+ 
+      </ul>
+
+      {% include 'product_filter_custom_mm' %}
+    </div>
+	
+    {% comment %}
+     	 ******* {{ linklists.men.title }} 
+    {% endcomment %}

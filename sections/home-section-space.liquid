@@ -1,0 +1,27 @@
+<div class="spacer" style="padding-bottom:{{ section.settings.section-bottom-padding}}px"></div>
+
+
+{% schema %}
+{
+"name": "Space",
+"class": "spacer-section",
+"settings": [
+  {
+  "type":      "range",
+  "id":        "section-bottom-padding",
+  "min":        0,
+  "max":        120,
+  "step":       5,
+  "unit":       "px",
+  "label":     "Bottom Padding",
+  "default":   0
+  }
+  ],
+  "presets": [
+  {
+  "category": "HTML",
+  "name": "spacer"
+  }
+]
+}
+{% endschema %}

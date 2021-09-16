@@ -1,0 +1,1513 @@
+  {
+    "name": "Custom landing Page",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Landing Page"
+      }
+    ],
+
+    "blocks": [
+	
+  		{
+        "type": "headline",
+        "name": "Headline",
+        "settings": [
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Headling",
+              "default": "Your title"
+            },
+            {
+              "type": "select",
+              "id": "content_position",
+              "label": "Text position",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "Left"
+                },
+                {
+                  "value": "center",
+                  "label": "Center"
+                },
+                {
+                  "value": "right",
+                  "label": "Right"
+                }
+              ],
+              "default": "center"
+            }
+            ]
+      },
+
+
+        {
+        "type": "image_with_text_story",
+        "name": "Image with text story",
+        "settings": [
+
+          {
+            "type": "checkbox",
+            "id": "wrapper",
+            "label": "Wrapper",
+            "default":   true,
+            "info":      "Create a 100% Wrapper"
+          },
+          {
+            "type": "select",
+            "id": "layout",
+            "label": "Layout",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Image on left"
+              },
+              {
+                "value": "right",
+                "label": "Image on right"
+              }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "select",
+            "id": "width-a",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+              "type":      "range",
+              "id":        "inner__width_img",
+              "min":        0,
+              "max":        100,
+              "step":       5,
+              "unit":       "%",
+              "label":     "Inner Width",
+              "default":   100
+          },
+          {
+              "type":      "range",
+              "id":        "margin__top_img",
+              "min":        0,
+              "max":        100,
+              "step":       1,
+              "unit":       "%",
+              "label":     "Margin Top",
+              "default":   0
+          },
+          {
+              "type":      "range",
+              "id":        "margin__left_img",
+              "min":        0,
+              "max":        100,
+              "step":       1,
+              "unit":       "%",
+              "label":     "Marginp Left",
+              "default":   0
+          },
+          {
+            "type": "select",
+            "id": "innner_alignment_img",
+            "label": "Inner alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              },
+              {
+                "value": "center",
+                "label": "center"
+              },
+              {
+                "value": "right",
+                "label": "right"
+              }
+            ]
+          },
+
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Talk about your brand"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          },
+          {
+            "type": "select",
+            "id": "width-b",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "alignment_text_inner",
+            "label": "Block inner alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              },
+              {
+                "value": "center",
+                "label": "center"
+              },
+              {
+                "value": "right",
+                "label": "right"
+              }
+            ]
+          },
+          {
+              "type":      "range",
+              "id":        "inner__width_text",
+              "min":        0,
+              "max":        100,
+              "step":       5,
+              "unit":       "%",
+              "label":     "Inner Width",
+              "default":   100
+          },
+          {
+              "type":      "range",
+              "id":        "margin__top_text",
+              "min":        0,
+              "max":        100,
+              "step":       1,
+              "unit":       "%",
+              "label":     "Margin Top",
+              "default":   0
+          },
+          {
+              "type":      "range",
+              "id":        "margin__left_text",
+              "min":        0,
+              "max":        100,
+              "step":       1,
+              "unit":       "%",
+              "label":     "Marginp Left",
+              "default":   0
+          },
+          {
+            "type": "select",
+            "id": "align_text",
+            "label": "Text alignment",
+            "default": "left",
+            "options": [
+              {"value": "left", "label": "Left"},
+              {"value": "center", "label": "Centered"},
+              {"value": "right", "label": "Right"}
+
+            ]
+
+          }
+          
+            
+         ]
+
+      },
+  		
+  		
+  		{
+        "type": "image-row",
+        "name": "Image Row",
+        "settings": [
+            {
+            "type": "image_picker",
+            "id": "image-a",
+            "label": "Image"
+            },
+            {
+            "type": "select",
+            "id": "width-a",
+            "label": "Container a width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          	},
+            {
+            "type":      "range",
+            "id":        "inner__width-a",
+            "min":        25,
+            "max":        100,
+            "step":       5,
+            "unit":       "%",
+            "label":     "Inner Width",
+            "default":   100
+            },
+            {
+            "type": "select",
+            "id": "innner_alignment-a",
+            "label": "Inner alignment",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              },
+              {
+                "value": "center",
+                "label": "center"
+              },
+              {
+                "value": "right",
+                "label": "right"
+              }
+            ]
+            },
+            {
+            "type":      "range",
+            "id":        "margin_left-a",
+            "min":        0,
+            "max":        100,
+            "step":       1,
+            "unit":       "%",
+            "label":     "Margin Left",
+            "default":   0
+            },
+            {
+            "type":      "range",
+            "id":        "margin_top-a",
+            "min":        0,
+            "max":        100,
+            "step":       1,
+            "unit":       "%",
+            "label":     "Margin top",
+            "default":   0
+            },
+            {
+              "type": "richtext",
+              "id": "teaser-image-text-a",
+              "label": "text"
+            },
+            {
+              "type": "url",
+              "id": "teaser_link-a",
+              "label": "Teaser link"
+            },
+            {
+            "type": "image_picker",
+            "id": "image-b",
+            "label": "Image"
+            },
+			{
+            "type": "select",
+            "id": "width-b",
+            "label": "Container b width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          	},
+            {
+            "type":      "range",
+            "id":        "inner__width-b",
+            "min":        25,
+            "max":        100,
+            "step":       5,
+            "unit":       "%",
+            "label":     "Inner Width",
+            "default":   100
+            },
+            {
+            "type": "select",
+            "id": "innner_alignment-b",
+            "label": "Inner alignment",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              },
+              {
+                "value": "center",
+                "label": "center"
+              },
+              {
+                "value": "right",
+                "label": "right"
+              }
+            ]
+            },
+            {
+            "type":      "range",
+            "id":        "margin_left-b",
+            "min":        0,
+            "max":        100,
+            "step":       1,
+            "unit":       "%",
+            "label":     "Margin Left",
+            "default":   0
+            },
+            {
+            "type":      "range",
+            "id":        "margin_top-b",
+            "min":        0,
+            "max":        100,
+            "step":       1,
+            "unit":       "%",
+            "label":     "Margin top",
+            "default":   0
+            },
+            {
+              "type": "richtext",
+              "id": "teaser-image-text-b",
+              "label": "text"
+            },
+            {
+              "type": "url",
+              "id": "teaser_link-b",
+              "label": "Teaser link"
+            },
+			{
+            "type": "select",
+            "id": "width",
+            "label": "Container around a+b width",
+            "default": "100%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          	}
+          ]
+        },
+        {
+        "type": "Image_teaser",
+        "name": "Image Teaser",
+        "settings": [
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image"
+
+            },
+            {
+                "type":      "range",
+                "id":        "margin-top",
+                "min":        0,
+                "max":        24,
+                "step":       1,
+                "unit":       "em",
+                "label":     "margin top",
+                "default":   15
+            },
+            {
+              "type": "text",
+              "id": "teaser-image-text",
+              "label": "text"
+            },
+            {
+              "type": "select",
+              "id": "width",
+              "label": "Container width",
+              "default": "50%",
+              "options": [
+                {
+                  "value": "25%",
+                  "label": "25%"
+                },
+                {
+                  "value": "33%",
+                  "label": "33%"
+                },
+                {
+                  "value": "50%",
+                  "label": "50%"
+                },
+
+                {
+                  "value": "66%",
+                  "label": "66%"
+                },
+                {
+
+                  "value": "75%",
+                  "label": "75%"
+                },
+                {
+                  "value": "100%",
+                  "label": "100%"
+                }
+              ]
+            },
+            {
+              "type": "checkbox",
+              "id": "wrapper",
+              "label": "Wrapper",
+              "default":   false,
+              "info":      "Create a 100% Wrapper"
+            },
+            {
+              "type": "select",
+              "id": "alignment",
+              "label": "Vertical alignment",
+              "default": "center",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "left"
+                },
+                {
+                  "value": "center",
+                  "label": "center"
+                },
+                {
+                  "value": "right",
+                  "label": "right"
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "id": "inner-alignment",
+              "label": "Inner alignment",
+              "default": "left",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "left"
+                },
+                {
+                  "value": "center",
+                  "label": "center"
+                },
+                {
+                  "value": "right",
+                  "label": "right"
+                }
+              ]
+            },
+            {
+              "type": "url",
+              "id": "teaser_link",
+              "label": "Teaser link"
+            }
+        ]
+      },
+      
+      
+      {
+        "type": "image_with_text",
+        "name": "Image with text",
+        "settings": [
+            {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+            },
+            {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "100%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "image-width",
+            "label": "Image width",
+            "default": "7",
+            "options": [
+              {
+                "value": "3",
+                "label": "3"
+              },
+              {
+                "value": "4",
+                "label": "4"
+              },
+              {
+                "value": "5",
+                "label": "5"
+              },
+              {
+                "value": "6",
+                "label": "6"
+              },
+              {
+                "value": "7",
+                "label": "7"
+              },
+              {
+                "value": "8",
+                "label": "8"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "layout",
+            "label": "Layout",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Image on left"
+              },
+              {
+                "value": "right",
+                "label": "Image on right"
+              }
+            ]
+          },
+          
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Heading Text"
+          },
+          {
+            "type": "select",
+            "id": "text-layout",
+            "label": "Text Layout",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Text align left"
+              },
+              {
+                "value": "right",
+                "label": "Text align right"
+              },
+              {
+                "value": "center",
+                "label": "text align center"
+              }
+            ]
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Large Text",
+            "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post.</p>"
+          },
+          {
+            "type": "richtext",
+            "id": "small_text",
+            "label": "Small Text",
+            "default": "<p>This can be a small text giving extra info</p>"
+          },
+
+          {
+            "type": "select",
+            "id": "button_type",
+            "label": "Button Type",
+            "options": [
+              {
+                "value": "button--link",
+                "label": "Link"
+              },
+              {
+                "value": "button--transparent",
+                "label": "Transparent"
+              },
+              {
+                "value": "button--secondary",
+                "label": "Button Secondary"
+              },
+              {
+                "value": "button--primary",
+                "label": "Button Primary"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "button-alignment",
+            "label": "Button Text alignment",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              },
+              {
+                "value": "right",
+                "label": "right"
+              },
+              {
+                "value": "center",
+                "label": "center"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+          },
+
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "select",
+            "id": "small-text-alignment",
+            "label": "Small Text alignment",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              },
+              {
+                "value": "right",
+                "label": "right"
+              },
+              {
+                "value": "center",
+                "label": "center"
+              }
+            ]
+          }
+        ]
+
+      },
+      
+
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": 
+        [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+              "type":      "range",
+              "id":        "inner__width",
+              "min":        0,
+              "max":        100,
+              "step":       5,
+              "unit":       "%",
+              "label":     "Inner Width",
+              "default":   100
+          },
+          {
+              "type":      "range",
+              "id":        "margin__top",
+              "min":        0,
+              "max":        100,
+              "step":       1,
+              "unit":       "%",
+              "label":     "Margin Top",
+              "default":   0
+          },
+          {
+              "type":      "range",
+              "id":        "margin__left",
+              "min":        0,
+              "max":        100,
+              "step":       1,
+              "unit":       "%",
+              "label":     "Marginp Left",
+              "default":   0
+          },
+
+          {
+            "type": "checkbox",
+            "id": "wrapper",
+            "label": "Wrapper",
+            "default":   false,
+            "info":      "Create a 100% Wrapper"
+          },
+          {
+            "type": "select",
+            "id": "innner_alignment",
+            "label": "Inner alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              },
+              {
+                "value": "center",
+                "label": "center"
+              },
+              {
+                "value": "right",
+                "label": "right"
+              }
+            ]
+          },
+          {
+            "type": "richtext",
+            "id": "image-link-text",
+            "label": "Link Text"
+          },
+          {
+            "type": "url",
+            "id": "image_link",
+            "label": "Image link"
+          },
+          {
+            "type": "select",
+            "id": "image-teaser-link_alignment",
+            "label": "Link alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              },
+              {
+                "value": "center",
+                "label": "center"
+              },
+              {
+                "value": "right",
+                "label": "right"
+              }
+            ]
+          }
+
+        ]
+      },
+      
+      {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Talk about your brand"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          },
+          {
+            "type": "checkbox",
+            "id": "wrapper",
+            "label": "Wrapper",
+            "default":   false,
+            "info":      "Create a 100% Wrapper"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+              "type":      "range",
+              "id":        "margin-top",
+              "min":        0,
+              "max":        24,
+              "step":       1,
+              "unit":       "em",
+              "label":     "margin top",
+              "default":   15
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Block alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              },
+              {
+                "value": "center",
+                "label": "center"
+              },
+              {
+                "value": "right",
+                "label": "right"
+              }
+            ]
+          },
+          {
+              "type":      "range",
+              "id":        "inner__width",
+              "min":        0,
+              "max":        100,
+              "step":       5,
+              "unit":       "%",
+              "label":     "Inner Width",
+              "default":   100
+          },
+          {
+              "type":      "range",
+              "id":        "margin__top",
+              "min":        0,
+              "max":        100,
+              "step":       1,
+              "unit":       "%",
+              "label":     "Margin Top",
+              "default":   0
+          },
+          {
+              "type":      "range",
+              "id":        "margin__left",
+              "min":        0,
+              "max":        100,
+              "step":       1,
+              "unit":       "%",
+              "label":     "Marginp Left",
+              "default":   0
+          },
+          {
+            "type": "select",
+            "id": "align_text",
+            "label": "Text alignment",
+            "default": "left",
+            "options": [
+              {"value": "left", "label": "Left"},
+              {"value": "center", "label": "Centered"},
+              {"value": "right", "label": "Right"}
+
+            ]
+
+          }
+
+        ]
+
+      },
+      {
+        "type": "text_small",
+        "name": "Text Small",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Talk about your brand"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          },
+          {
+            "type": "checkbox",
+            "id": "wrapper",
+            "label": "Wrapper",
+            "default":   false,
+            "info":      "Create a 100% Wrapper"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+              "type":      "range",
+              "id":        "margin-top",
+              "min":        0,
+              "max":        24,
+              "step":       1,
+              "unit":       "em",
+              "label":     "margin top",
+              "default":   15
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Block alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              },
+              {
+                "value": "center",
+                "label": "center"
+              },
+              {
+                "value": "right",
+                "label": "right"
+              }
+            ]
+          },
+          {
+              "type":      "range",
+              "id":        "inner__width",
+              "min":        0,
+              "max":        100,
+              "step":       5,
+              "unit":       "%",
+              "label":     "Inner Width",
+              "default":   100
+          },
+          {
+              "type":      "range",
+              "id":        "margin__top",
+              "min":        0,
+              "max":        100,
+              "step":       1,
+              "unit":       "%",
+              "label":     "Margin Top",
+              "default":   0
+          },
+          {
+              "type":      "range",
+              "id":        "margin__left",
+              "min":        0,
+              "max":        100,
+              "step":       1,
+              "unit":       "%",
+              "label":     "Marginp Left",
+              "default":   0
+          },
+          {
+            "type": "select",
+            "id": "align_text",
+            "label": "Text alignment",
+            "default": "left",
+            "options": [
+              {"value": "left", "label": "Left"},
+              {"value": "center", "label": "Centered"},
+              {"value": "right", "label": "Right"}
+
+            ]
+
+          }
+
+        ]
+
+      },
+
+      {
+        "type": "video",
+        "name": "Video",
+        "settings": [
+          {
+            "type": "video_url",
+            "id": "video_url",
+            "label": "YouTube or Vimeo link",
+            "accept": ["youtube", "vimeo"]
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "100%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Vertical alignment",
+            "default": "top-middle",
+            "options": [
+              {
+                "value": "top-middle",
+                "label": "Top"
+              },
+              {
+                "value": "center",
+                "label": "Middle"
+              },
+              {
+                "value": "bottom-middle",
+                "label": "Bottom"
+              }
+            ]
+          }
+        ]
+      },
+      
+      
+      {
+        "type": "product",
+        "name": "Product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Vertical alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "top-left",
+                "label": "Top left"
+              },
+              {
+                "value": "top-middle",
+                "label": "Top middle"
+              },
+              {
+                "value": "top-right",
+                "label": "Top right"
+              },
+              {
+                "value": "middle-left",
+                "label": "Middle left"
+              },
+              {
+                "value": "center",
+                "label": "Middle"
+
+              },
+              {
+                "value": "middle-right",
+                "label": "Middle right"
+              },
+              {
+                "value": "bottom-left",
+                "label": "Bottom left"
+              },
+              {
+                "value": "bottom-middle",
+                "label": "Bottom middle"
+              },
+              {
+                "value": "bottom-right",
+                "label": "Bottom right"
+              }
+            ]
+          }
+        ]
+      },
+      
+      
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      },
+      
+      
+      {
+        "type": "html",
+        "name": "Custom HTML",
+        "settings": [
+          {
+            "type": "html",
+            "id": "code",
+            "label": "HTML"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "My Custom Collections",
+        "category": "Advanced layout",
+        "blocks": [
+          {
+            "type": "text"
+          },
+          {
+            "type": "image"
+          }
+        ]
+      }
+    ]
+  }

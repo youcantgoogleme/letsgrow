@@ -1,0 +1,79 @@
+
+{% if block.settings.image-width %}
+{% assign image__width = block.settings.image-width %}
+{% else %}
+{% assign image__width = 7 %}
+{% endif %}
+{% assign text__width = 12 | minus: image__width %}
+
+{% if block.settings.button_type == 'button--link' %}
+{% assign link__class = 'arrow-link' %}
+{% else %}
+{% assign link__class = 'btn button' %}
+{% endif %}
+
+
+{% capture image_layout %}    
+<div class="feature-row__item feature-row__item-image col-xs-12 col-sm-6 col-md-{{image__width}} image__{{ block.settings.layout }}">
+    {% if block.settings.image != blank %}
+    {{ block.settings.image | img_url: '1000x1000' | img_tag: block.settings.image.alt, 'feature-row__image' }}
+    {% else %}
+    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+    {% endif %}
+</div>  
+{% endcapture %}
+
+
+
+<div class="page-width feature-row" style="background: {{ block.settings.background-color }}">
+  <div class="row">
+
+    {% if block.settings.button_link != blank %}
+    <a href="{{ block.settings.button_link }}" class="wrapper-link">
+      {% endif %}
+      <div class="feature-row">
+        {% if block.settings.layout == 'left' %}
+        {{ image_layout }}
+        {% endif %}
+
+        <div class="feature-row__item feature-row__text feature-row__text--{{ block.settings.text-layout }} col-xs-12 col-sm-6 col-md-{{ text__width }}">
+
+          <div class="feature-row__text-wrapper clear">
+
+            {% if block.settings.title != blank %}
+            <h2 class="h3">{{ block.settings.title | escape }}</h2>
+            {% endif %}
+
+            {% if block.settings.text != blank %}
+            <h2 class="rte-setting featured-row__subtext">{{ block.settings.text }}</h2>
+            {% endif %}
+
+            {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+
+            {% if block.settings.small_text != blank %}
+            <div class="{% comment %}align-{{ block.settings.small-text-alignment }} {% endcomment %} featured-row__subtext__small">{{ block.settings.small_text }}</div>
+
+            {% endif %}
+
+            <span class="cta {{ link__class }} {{ block.settings.button_type }} align-{{ block.settings.button-alignment }}" >
+              {{ block.settings.button_label }}
+            </span>
+            {% endif %}
+          </div>
+
+
+        </div>
+
+        {% if block.settings.layout == 'right' %}
+        {{ image_layout }}
+        {% endif %}
+
+      </div>
+
+      {% if block.settings.button_link != blank %}
+    </a>
+    {% endif %}
+  </div>
+</div>
+
+

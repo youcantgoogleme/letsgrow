@@ -1,0 +1,403 @@
+
+
+
+{% assign block_width = 'col-xs-12' %}
+{% include 'block__assign-section-image-size'%}
+{% include 'block__assign_section_width' %}
+
+{% assign block__margin = 4 %}
+{% if block.settings.margin-top %}
+{% assign block__margin = block.settings.margin-top | minus: 12 %}
+{% endif %}
+
+{% if block.settings.wrapper == true %}
+<div class="block-wrapper">
+  {% endif %}
+
+  <div class="block__item block__item__image section__item__image {% if block.settings.jsrenderheight %} renderheight{% else %} noheight{% endif %}{% if section.settings.boss == true %} boss{% else %} notboss{% endif %} {{ block_width }}{% if section.settings.alignment %} align--{{ section.settings.alignment }}{% endif %}" {{ section.shopify_attributes }} >
+    <div class="block__item-inner block__item-inner--{{ block.type }} clear " >
+
+      <div class="img-link-content-wrapper {% if section.settings.innner_alignment %}align--{{ section.settings.innner_alignment }}{% endif %}"  style="{% if section.settings.background-color %}background-color: {{ section.settings.background-color }}{% endif %}; width:{{ section.settings.inner__width}}%;{% if section.settings.margin__left != 0 %}margin-left:{{ section.settings.margin__left }}%;{% endif %} {% if section.settings.margin__top != 0 %}margin-top:{{ section.settings.margin__top }}%;{% endif %}">
+        {% if section.settings.image != blank %}
+        {% if section.settings.image_link != blank %}
+        <a href="{{ section.settings.image_link }}" class="wrapper-link">
+          {% endif %}
+          <div class="img-wrapper">
+
+            {% assign image_alt = section.settings.image.alt %}
+
+            {% assign  image_url = section.settings.image | img_url: image_size %}
+            {% assign  image_url_small = section.settings.image | img_url: '60x' %}
+            {% assign  image_url_210 = section.settings.image | img_url: '210x' %}
+            {% assign  image_url_420 = section.settings.image | img_url: '420x' %}
+            {% assign  image_url_730 = section.settings.image | img_url: '730x' %}
+            {% assign  image_url_1270 = section.settings.image | img_url: '1270x' %}
+
+            <img src="{{image_url_small}}"
+                 data-srcset="{{ image_url_210 }} 210w, {{ image_url_420 }} 420w, {{ image_url_730 }} 730w, {{ image_url_1270 }} 1270w,"
+                 data-sizes="50vw" class="lazy block_img_link_img" alt="{{image_alt}}" >
+
+          </div>
+
+          {% if section.settings.image_link != blank %}
+        </a>
+        {% endif %}
+        {% endif %}
+		
+        {% if section.settings.image-teaser-text != blank %}
+        <div class="text-wrapper{% if section.settings.mobile-text-position == true %} ontop{% endif %}{% if section.settings.image == blank %} single{% endif %}" style="background-color:{{section.settings.text-background-color}}">
+          <div class="image-teaser-text center {{section.settings.image-text-mobile-font-size}}" style="color:{{ section.settings.text_color }}; font-size:{{section.settings.image-text-font-size}}px; font-weight:{{section.settings.font-weight}}">
+            {{ section.settings.image-teaser-text }}
+          </div>
+
+          {% if section.settings.button-position == false %}
+          {% if section.settings.image-link-text != blank %}
+          <div class="teaser-text inside {% if section.settings.image-teaser-link_alignment %}align--{{ section.settings.image-teaser-link_alignment }}{% endif %}">
+
+            {% if section.settings.image_link != blank %}
+            <a class="{{section.settings.link-style}}" style="background-color:{{section.settings.button-color}}" href="{{ section.settings.image_link }}" class="wrapper-link">
+              {% endif %}
+              <span class="link-text-custom-color" style="color:{{ section.settings.link_color }}">{{section.settings.image-link-text}}</span>
+              {% if section.settings.image_link != blank %}
+            </a>
+            {% endif %}
+
+          </div>
+          {% endif %}
+          {% endif %}
+
+        </div>
+        {% endif %}
+
+        {% if section.settings.button-position == true %}
+          {% if section.settings.image-link-text != blank %}
+          <div class="teaser-text outside{% if section.settings.mobile-text-position == true %} ontop{% endif %} {% if section.settings.image-teaser-link_alignment %}align--{{ section.settings.image-teaser-link_alignment }}{% endif %}">
+
+            {% if section.settings.image_link != blank %}
+            <a class="{{section.settings.link-style}}" style="{% if section.settings.link-style != 'link' %} background-color:{{section.settings.button-color}};{% endif %} color:{{ section.settings.link_color }}" href="{{  section.settings.image_link }}" class="wrapper-link">
+              {% endif %}
+              <span class="link-text-custom-color">{{section.settings.image-link-text}}</span>
+              {% if section.settings.image_link != blank %}
+            </a>
+            {% endif %}
+
+
+          </div>
+          {% endif %}
+        {% endif %}
+
+
+      </div>
+
+    </div>
+  </div>
+
+  {% if block.settings.wrapper == true %}
+</div>
+{% endif %}
+
+
+
+{% schema %}
+
+{
+  "name": "Image Text Button",
+  "class": "shopify-section__imgage-text-button",
+  "settings":
+  [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+    "type": "color",
+    "id": "background-color",
+    "label": "Background Color",
+    "default": "#ffffff"
+  },
+    {
+      "type": "checkbox",
+      "id": "wrapper",
+      "label": "Wrapper",
+      "default":   false,
+      "info":      "Create a 100% Wrapper"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Container width",
+      "default": "50%",
+      "options": [
+        {
+          "value": "25%",
+          "label": "25%"
+        },
+        {
+          "value": "33%",
+          "label": "33%"
+        },
+        {
+          "value": "50%",
+          "label": "50%"
+        },
+
+        {
+          "value": "66%",
+          "label": "66%"
+        },
+        {
+
+          "value": "75%",
+          "label": "75%"
+        },
+        {
+          "value": "100%",
+          "label": "100%"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "boss",
+      "label": "Big on small screens",
+      "default": true,
+      "info": "Big on small screens"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile-two",
+      "label": "mobile two images",
+      "default": false
+    },
+    {
+      "type":      "range",
+      "id":        "inner__width",
+      "min":        0,
+      "max":        100,
+      "step":       5,
+      "unit":       "%",
+      "label":     "Inner Width",
+      "default":   100
+    },
+    {
+      "type": "select",
+      "id": "innner_alignment",
+      "label": "Inner alignment",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ]
+    },
+    {
+    "type": "checkbox",
+    "id": "jsrenderheight",
+    "label": "render height",
+    "default": false,
+    "info": "Berechnet höhe mit eingestellter Ratio"
+    },
+    {
+      "type":      "range",
+      "id":        "margin__top",
+      "min":        0,
+      "max":        100,
+      "step":       1,
+      "unit":       "%",
+      "label":     "Margin Top",
+      "default":   0
+    },
+    {
+      "type":      "range",
+      "id":        "margin__left",
+      "min":        0,
+      "max":        100,
+      "step":       1,
+      "unit":       "%",
+      "label":     "Marginp Left",
+      "default":   0
+    },
+    {
+      "type": "url",
+      "id": "image_link",
+      "label": "Link"
+    },
+    {
+      "type": "richtext",
+      "id": "image-link-text",
+      "label": "CTA"
+    },
+    {
+      "type": "select",
+      "id": "link-style",
+      "label": "CTA Style",
+      "default": "button",
+      "options": [
+        {
+          "value": "button",
+          "label": "button"
+        },
+        {
+          "value": "link",
+          "label": "link"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "button-color",
+      "label": "Button Farbe",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "button-position",
+      "label": "Button Position bottom",
+      "default": true,
+      "info": "Button/Link unter Text oder unten im Bild"
+    },
+    {
+      "type": "select",
+      "id": "image-teaser-link_alignment",
+      "label": "Link alignment",
+      "default": "bottom-center",
+      "options": [
+      {
+      "value": "bottom-center",
+      "label": "Bottom Center"
+      },
+      {
+      "value": "bottom-left",
+      "label": "Bottom Left"
+      },
+      {
+      "value": "bottom-right",
+      "label": "Bottom Right"
+      },              
+      {
+      "value": "top-center",
+      "label": "Top Center"
+      },
+      {
+      "value": "top-left",
+      "label": "Top Left"
+      },
+      {
+      "value": "top-right",
+      "label": "Top Right"
+      },              
+      {
+      "value": "under",
+      "label": "Under"
+      },
+      {
+      "value": "under-center",
+      "label": "Under Center"
+      }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link Schrift Farbe",
+      "default": "#333333"
+    },
+
+    {
+      "type": "richtext",
+      "id": "image-teaser-text",
+      "label": "Teaser Text"
+    },
+    {
+      "type":      "range",
+      "id":        "image-text-font-size",
+      "min":        14,
+      "max":        80,
+      "step":       1,
+      "unit":       "px",
+      "label":     "Text Font Size",
+      "default":   15
+    },
+    {
+      "type": "select",
+      "id": "image-text-mobile-font-size",
+      "label": "Mobile Text Font Size",
+      "default": "middle",
+      "options": [
+        {
+          "value": "big",
+          "label": "big"
+        },
+        {
+          "value": "middle",
+          "label": "middle"
+        },
+        {
+          "value": "small",
+          "label": "small"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "font-weight",
+      "label": "Teaser Text Font Weight",
+      "default": "700",
+      "options": [
+        {
+          "value": "700",
+          "label": "700"
+        },
+        {
+          "value": "500",
+          "label": "500"
+        },
+        {
+          "value": "400",
+          "label": "400"
+        },
+        {
+          "value": "300",
+          "label": "300"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "text-background-color",
+      "label": "Text Background Color",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Font Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile-text-position",
+      "label": "Mobile on top of image",
+      "default": true,
+      "info": "Mobile on top of image or below"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Image",
+      "name": "Image with text and button"
+    }
+  ]
+}
+
+{% endschema %}

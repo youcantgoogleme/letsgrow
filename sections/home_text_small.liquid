@@ -1,0 +1,174 @@
+
+{% include 'block__assign_section_width' %}
+
+<div class="{{settings.gutter}} {{settings.container}}">
+    <div class="row">
+		<div class="home-content-wrapper clear">
+          <div class="{{ block_width }}">
+            <div class="block__text-teaser-small {% if section.settings.align_text != blank %} align-{{ section.settings.align_text }} {% endif %} " style="width:{{ section.settings.inner__width}}%;{% if section.settings.margin__left != 0 %}margin-left:{{ section.settings.margin__left }}%;{% endif %} {% if section.settings.margin__top != 0 %}margin-top:{{ section.settings.margin__top }}%;{% endif %}">
+              {% if section.settings.title != blank %}
+                <h2 class="title">{{ section.settings.title | escape }}</h2>
+              {% endif %}
+              {% if section.settings.text != blank %}
+              <div class="main-text">{{ section.settings.text }}</div>
+              {% endif %}
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+
+{% schema %}
+  {
+    "name": "Text Small",
+	"class": "section__home__text__small",
+    "settings": [
+		{
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Talk about your brand"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          },
+          {
+            "type": "checkbox",
+            "id": "wrapper",
+            "label": "Wrapper",
+            "default":   false,
+            "info":      "Create a 100% Wrapper"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+
+              {
+                "value": "66%",
+                "label": "66%"
+              },
+
+              {
+                "value": "75%",
+                "label": "75%"
+              },
+
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+              "type":      "range",
+              "id":        "margin-top",
+              "min":        0,
+              "max":        24,
+              "step":       1,
+              "unit":       "em",
+              "label":     "margin top",
+              "default":   15
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Block alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "left",
+                "label": "left"
+              },
+              {
+                "value": "center",
+                "label": "center"
+              },
+              {
+                "value": "right",
+                "label": "right"
+              }
+            ]
+          },
+          {
+              "type":      "range",
+              "id":        "inner__width",
+              "min":        0,
+              "max":        100,
+              "step":       5,
+              "unit":       "%",
+              "label":     "Inner Width",
+              "default":   100
+          },
+          {
+              "type":      "range",
+              "id":        "margin__top",
+              "min":        0,
+              "max":        100,
+              "step":       1,
+              "unit":       "%",
+              "label":     "Margin Top",
+              "default":   0
+          },
+          {
+              "type":      "range",
+              "id":        "margin__left",
+              "min":        0,
+              "max":        100,
+              "step":       1,
+              "unit":       "%",
+              "label":     "Marginp Left",
+              "default":   0
+          },
+          {
+            "type": "select",
+            "id": "align_text",
+            "label": "Text alignment",
+            "default": "left",
+            "options": [
+              {"value": "left", "label": "Left"},
+              {"value": "center", "label": "Centered"},
+              {"value": "right", "label": "Right"}
+
+            ]
+
+          }
+	
+	],
+    "presets": [
+      {
+        "category": "Text",
+        "name": "Text Small ( SEO )"
+      }
+    ]
+
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+
+

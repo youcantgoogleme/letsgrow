@@ -1,0 +1,153 @@
+
+
+
+{% case block.settings.width-a %}
+
+{% when '25%' %}
+{% if block.type == 'four-image-block' %}
+{% assign block_width_a = 'col-xs-6 col-xsm-6 col-sm-3' %}
+{% else %}
+{% assign block_width_a = 'col-xs-12 col-xsm-6 col-sm-3' %}
+{% endif %}
+
+{% assign image_size_a = '400x' %}
+
+{% when '33%' %}
+{% assign block_width_a = 'col-xs-12 col-xsm-6 col-sm-4' %}
+{% assign image_size_a = '600x' %}
+
+{% when '50%' %}
+{% if block.type == 'four-image-block' %}
+{% assign block_width_a = 'col-xs-6 col-xsm-6' %}
+{% else %}
+{% assign block_width_a = 'col-xs-12 col-xsm-6' %}
+{% endif %}
+
+
+{% assign image_size_a = '800x' %}
+
+{% when '66%' %}
+{% assign block_width_a = 'col-xs-12 col-xsm-8' %}
+{% assign image_size_a = '880x' %}
+
+{% when '75%' %}
+{% assign block_width_a = 'col-xs-12 col-xsm-10' %}
+{% assign image_size_a = '880x' %}
+
+{% when '100%' %}
+{% assign block_width_a = 'col-xs-12 col-xsm-12' %}
+{% assign image_size_a = '880x' %}
+
+{% endcase %}
+
+{% case block.settings.width-b %}
+
+{% when '25%' %}
+{% if block.type == 'four-image-block' %}
+{% assign block_width_b = 'col-xs-6 col-xsm-6 col-sm-3' %}
+{% else %}
+{% assign block_width_b = 'col-xs-12 col-xsm-6 col-sm-3' %}
+{% endif %}
+
+{% assign image_size_b = '400x' %}
+
+{% when '33%' %}
+{% assign block_width_b = 'col-xs-12 col-xsm-6 col-sm-4' %}
+{% assign image_size_b = '600x' %}
+
+{% when '50%' %}
+{% if block.type == 'four-image-block' %}
+{% assign block_width_b = 'col-xs-6 col-xsm-6' %}
+{% else %}
+{% assign block_width_b = 'col-xs-12 col-xsm-6' %}
+{% endif %}
+
+
+{% assign image_size_b = '800x' %}
+
+{% when '66%' %}
+{% assign block_width_b = 'col-xs-12 col-xsm-8' %}
+{% assign image_size_b = '880x' %}
+
+{% when '75%' %}
+{% assign block_width_b = 'col-xs-12 col-xsm-10' %}
+{% assign image_size_b = '880x' %}
+
+{% when '100%' %}
+{% assign block_width_b = 'col-xs-12 col-xsm-12' %}
+{% assign image_size_b = '880x' %}
+
+{% endcase %}
+
+{% case block.settings.width-c %}
+
+{% when '25%' %}
+{% if block.type == 'four-image-block' %}
+{% assign block_width_c = 'col-xs-6 col-xsm-6 col-sm-3' %}
+{% else %}
+{% assign block_width_c = 'col-xs-12 col-xsm-6 col-sm-3' %}
+{% endif %}
+
+{% assign image_size_c = '400x' %}
+
+{% when '33%' %}
+{% assign block_width_c = 'col-xs-12 col-xsm-6 col-sm-4' %}
+{% assign image_size_c = '600x' %}
+
+{% when '50%' %}
+{% if block.type == 'four-image-block' %}
+{% assign block_width_c = 'col-xs-6 col-xsm-6' %}
+{% else %}
+{% assign block_width_c = 'col-xs-12 col-xsm-6' %}
+{% endif %}
+
+
+{% assign image_size_c = '800x' %}
+{% when '75%' %}
+{% assign block_width_c = 'col-xs-12 col-xsm-10' %}
+{% assign image_size_c = '880x' %}
+
+{% when '100%' %}
+{% assign block_width_c = 'col-xs-12 col-xsm-12' %}
+{% assign image_size_c = '880x' %}
+
+{% endcase %}
+
+{% case block.settings.width-d %}
+
+{% when '25%' %}
+{% if block.type == 'four-image-block' %}
+{% assign block_width_d = 'col-xs-6 col-xsm-6 col-sm-3' %}
+{% else %}
+{% assign block_width_d = 'col-xs-12 col-xsm-6' %}
+{% endif %}
+
+{% assign image_size_d = '400x' %}
+
+{% when '33%' %}
+{% assign block_width_d = 'col-xs-12 col-xsm-6 col-sm-4' %}
+{% assign image_size_d = '600x' %}
+
+{% when '50%' %}
+{% if block.type == 'four-image-block' %}
+{% assign block_width_d = 'col-xs-6 col-xsm-6' %}
+{% else %}
+{% assign block_width_d = 'col-xs-12 col-xsm-6' %}
+{% endif %}
+
+
+{% assign image_size_d = '800x' %}
+
+{% when '66%' %}
+{% assign block_width_d = 'col-xs-12 col-xsm-8' %}
+{% assign image_size_d = '880x' %}
+
+{% when '75%' %}
+{% assign block_width_d = 'col-xs-12 col-xsm-10' %}
+{% assign image_size_d = '880x' %}
+
+{% when '100%' %}
+{% assign block_width_d = 'col-xs-12 col-xsm-12' %}
+{% assign image_size_d = '880x' %}
+
+{% endcase %}
