@@ -5939,7 +5939,9 @@
             "type": "Image-Block",
             "settings": {
               "width": "100%",
+              "image": "shopify:\/\/shop_images\/picture_test3.jpg",
               "teaser_link": "shopify:\/\/collections\/assam-mens-jacket",
+              "image-two": "shopify:\/\/shop_images\/herren.jpg",
               "teaser_link-two": "shopify:\/\/collections\/shirts",
               "teaser_link-mobile": "",
               "teaser-image-text-mobile": "",
