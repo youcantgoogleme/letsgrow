@@ -22,7 +22,7 @@ are still using our apps. Otherwise, the apps may not work as expected.
       {%- capture product_images -%}
         {%- for image in product.images -%}
           {
-            "id": {{ image.id }},
+            "id": {{ image.id }},
             "object": "product_image",
             "src": {{ image.src | json }},
             "position": {{ image.position }}
@@ -33,7 +33,7 @@ are still using our apps. Otherwise, the apps may not work as expected.
       {%- capture product_variants -%}
         {%- for variant in product.variants -%}
           {
-            "id": {{ variant.id }},
+            "id": {{ variant.id }},
             "object": "variant",
             "title": {{ variant.title | json }},
             "url": {{ shop.secure_url | append: variant.url | json }},
@@ -123,4 +123,16 @@ are still using our apps. Otherwise, the apps may not work as expected.
       }
     })
   {%- endpaginate -%}
-{%- endif -%}
+{%- endif -%}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{ image.id }}"
+  to: "{{ image.id }}"
+  position: 970..984
+- from: "{{ variant.id }}"
+  to: "{{ variant.id }}"
+  position: 1340..1356
+{%- endcomment -%}

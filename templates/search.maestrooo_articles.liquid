@@ -29,7 +29,7 @@ are still using our apps. Otherwise, the apps may not work as expected.
         "id": {{ article_blog.id }},
         "object": "blog",
         "title": {{ article_blog.title | json }},
-        "url": {{ shop.secure_url | append: article_blog.url | json }},
+        "url": {{ shop.secure_url | append: article_blog.url | json }},
         "handle": {{ article_blog.handle | json }}
       },
       "title": {{ article.title | json }},
@@ -61,7 +61,7 @@ are still using our apps. Otherwise, the apps may not work as expected.
               "id": {{ article_blog.id }},
               "object": "blog",
               "title": {{ article_blog.title | json }},
-              "url": {{ shop.secure_url | append: article_blog.url | json }},
+              "url": {{ shop.secure_url | append: article_blog.url | json }},
               "handle": {{ article_blog.handle | json }}
             },
             "title": {{ article.title | json }},
@@ -87,4 +87,16 @@ are still using our apps. Otherwise, the apps may not work as expected.
       }
     })
   {%- endpaginate -%}
-{%- endif -%}
+{%- endif -%}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{ shop.secure_url | append: article_blog.url | json }}"
+  to: "{{ shop.secure_url | append: article_blog.url | json }}"
+  position: 1236..1291
+- from: "{{ shop.secure_url | append: article_blog.url | json }}"
+  to: "{{ shop.secure_url | append: article_blog.url | json }}"
+  position: 2498..2553
+{%- endcomment -%}
